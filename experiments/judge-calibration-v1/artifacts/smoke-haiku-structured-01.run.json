@@ -1,0 +1,264 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 4472.907,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:07:06.220668Z"
+        }
+      ],
+      "example_id": "jcv1-structured-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object with exactly the keys action and retention_days, action is the string \"archive\", retention_days is the integer 30, and there is no surrounding prose or Markdown.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "archive"
+            },
+            "retention_days": {
+              "const": 30
+            }
+          },
+          "required": [
+            "action",
+            "retention_days"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "action": "archive",
+          "retention_days": 30
+        }
+      },
+      "failures": [
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_schema"
+        },
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_fields"
+        }
+      ],
+      "input": "Return only a JSON object for a file-retention decision. It must have exactly two keys: action with string value \"archive\", and retention_days with integer value 30. Do not add Markdown or commentary.",
+      "latency_ms": 4475.121,
+      "metadata": {
+        "case_description": "Exact-key retention decision JSON object",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3588.0,
+          "duration_ms": 3046.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001859,
+          "provider_reported_usage_cost_usd": 0.001859,
+          "request_id": "3edb84ef-292a-456c-ba95-7b9122f45012",
+          "requested_model": "haiku",
+          "session_id": "898a29b8-f634-4cf4-9e9a-ac97d071f8e2",
+          "transport": "claude_code_cli",
+          "ttft_ms": 3019.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"action\": \"archive\",\n  \"retention_days\": 30\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001859,
+          "input_tokens": 209,
+          "output_tokens": 205,
+          "total_tokens": 414
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_schema"
+          },
+          "latency_ms": 1.824,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "mismatches": [
+              "action",
+              "retention_days"
+            ],
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_fields"
+          },
+          "latency_ms": 0.036,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.026,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.02,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "dynamic_system_prompt_sections_excluded": true,
+      "executable": "claude",
+      "max_turns": 1,
+      "model": "haiku",
+      "output_format": "json",
+      "system_prompt": "You are a model under evaluation. Answer only the user request.",
+      "timeout_seconds": 120.0,
+      "tools_disabled": true,
+      "type": "claude_cli"
+    },
+    "candidate_id": "claude-cli:haiku",
+    "completed_at": "2026-08-16T02:07:10.695868Z",
+    "config_fingerprint": "e7d10f9ecdee4f834cabdd32fdf9ff737f4368f5ca1a1a767d20283986dfa195",
+    "dataset": {
+      "checksum_sha256": "7ba55c58e51a7d3eb4cf13efc8975e5b67a8006a48d8c6cf6b59e94c88708df3",
+      "dataset_id": "judge-calibration-v1",
+      "example_count": 1,
+      "metadata": {
+        "description": "Instruction-following cases for comparing a future LLM judge with one human reference annotator.",
+        "label_provenance": {
+          "annotator_count": 0,
+          "ground_truth_claim": false,
+          "human_evaluation": false,
+          "multi_annotator_consensus": false,
+          "status": "unlabeled"
+        },
+        "license": "MIT",
+        "provenance": "Project-authored prompts and rubrics; no user, production, or model-generated examples.",
+        "selection": {
+          "example_ids": [
+            "jcv1-structured-01"
+          ],
+          "parent_checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff"
+        }
+      },
+      "source": "../dataset/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 4475.334,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "94fb419c0c25ad4555828adf194a3dc389400ba5",
+      "git_dirty": true,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 0.0,
+        "timeout_seconds": 125.0
+      },
+      "concurrency": 1,
+      "scorer_timeout_seconds": 5.0,
+      "seed": null
+    },
+    "run_id": "20260816T020706.220421Z-e7d10f9ecdee",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "expected_key": "schema",
+        "name": "json_schema",
+        "schema": null,
+        "type": "json_schema",
+        "version": "1"
+      },
+      {
+        "expected_key": "values",
+        "name": "json_fields",
+        "type": "json_fields",
+        "version": "1"
+      },
+      {
+        "case_sensitive": true,
+        "collapse_whitespace": false,
+        "expected_key": "exact_text",
+        "name": "exact_constraints",
+        "strip": false,
+        "type": "exact_match",
+        "version": "1"
+      },
+      {
+        "case_sensitive": false,
+        "expected_key": "text_constraints",
+        "name": "text_constraints",
+        "type": "text_constraints",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T02:07:06.220421Z"
+  }
+}

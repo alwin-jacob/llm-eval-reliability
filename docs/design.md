@@ -51,7 +51,7 @@ flowchart LR
 Package boundaries:
 
 - `dataset`: manifest/path validation, JSONL parsing, uniqueness checks, digesting.
-- `candidates`: provider-independent request/response contract and local fixture adapter.
+- `candidates`: provider-independent contract, local fixtures, and immutable run replay.
 - `claude_cli`: subprocess isolation, Claude Code envelope parsing, usage normalization,
   and provider failure classification.
 - `scorers`: deterministic, schema, and candidate-backed judge implementations.
@@ -59,6 +59,8 @@ Package boundaries:
 - `engine`: concurrent orchestration and per-example isolation.
 - `artifacts`: stable serialization and atomic persistence.
 - `analysis`: aggregates, failure taxonomy, slices, and judge/reference agreement.
+- `annotations`: single-human reference persistence, interactive labeling, and aligned
+  human/judge/deterministic-scorer analysis.
 - `regression`: baseline/candidate alignment and policy enforcement.
 - `config`: strict JSON configuration and construction of built-in components.
 - `cli` / `api`: thin interfaces; neither owns evaluation logic.
@@ -92,6 +94,15 @@ candidate regression measurement.
 The engine stores one `ExampleResult` per dataset example. `completed` means evaluation
 ran to completion even if quality scores failed; `partial` means one or more evaluators
 failed; `failed` means the candidate produced no scoreable response.
+
+Human annotations are separate artifacts keyed to a source run ID and dataset checksum.
+They never embed or overwrite candidate responses. Metadata fixes the interpretation at one
+annotator, no adjudication, no consensus, and no ground-truth claim. A run-artifact candidate
+replays frozen responses for later model judging and rejects a mismatched dataset checksum.
+
+Focused runs select explicit example IDs and derive a new dataset checksum containing the
+parent checksum and ordered selection. This lets a one-case transport smoke run remain
+distinguishable from the planned full experiment.
 
 ## Retry and timeout semantics
 

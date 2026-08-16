@@ -148,6 +148,148 @@ class ContainsAllScorer(Scorer):
         return ScoreResult.failed_result(self.name, self.version, score=score, details=details)
 
 
+class TextConstraintScorer(Scorer):
+    """Check explicit lexical and layout constraints without judging semantics."""
+
+    version = "1"
+    _allowed_constraints = {
+        "required_terms",
+        "forbidden_terms",
+        "exact_word_count",
+        "exact_line_count",
+        "line_prefix",
+        "starts_with",
+        "ends_with",
+    }
+
+    def __init__(
+        self,
+        *,
+        name: str = "text_constraints",
+        expected_key: str = "text_constraints",
+        case_sensitive: bool = False,
+    ) -> None:
+        self.name = name
+        self.expected_key = expected_key
+        self.case_sensitive = case_sensitive
+
+    def configuration(self) -> dict[str, Any]:
+        return {
+            "type": "text_constraints",
+            "name": self.name,
+            "version": self.version,
+            "expected_key": self.expected_key,
+            "case_sensitive": self.case_sensitive,
+        }
+
+    async def score(self, example: EvaluationExample, response: CandidateResponse) -> ScoreResult:
+        expected = example.expected.get(self.expected_key)
+        if expected is None:
+            return ScoreResult.skipped_result(
+                self.name, self.version, reason=f"expected.{self.expected_key} is absent"
+            )
+        constraints = self._validate_constraints(expected)
+        output = response.output.strip()
+        comparable = output if self.case_sensitive else output.casefold()
+        lines = output.splitlines()
+        words = output.split()
+        checks: dict[str, bool] = {}
+
+        required = constraints.get("required_terms")
+        if isinstance(required, list):
+            checks["required_terms"] = all(
+                (term if self.case_sensitive else term.casefold()) in comparable
+                for term in required
+            )
+        forbidden = constraints.get("forbidden_terms")
+        if isinstance(forbidden, list):
+            checks["forbidden_terms"] = all(
+                (term if self.case_sensitive else term.casefold()) not in comparable
+                for term in forbidden
+            )
+        exact_word_count = constraints.get("exact_word_count")
+        if isinstance(exact_word_count, int):
+            checks["exact_word_count"] = len(words) == exact_word_count
+        exact_line_count = constraints.get("exact_line_count")
+        if isinstance(exact_line_count, int):
+            checks["exact_line_count"] = len(lines) == exact_line_count
+        line_prefix = constraints.get("line_prefix")
+        if isinstance(line_prefix, str):
+            prefix = line_prefix if self.case_sensitive else line_prefix.casefold()
+            checks["line_prefix"] = bool(lines) and all(
+                (line if self.case_sensitive else line.casefold()).startswith(prefix)
+                for line in lines
+            )
+        starts_with = constraints.get("starts_with")
+        if isinstance(starts_with, str):
+            prefix = starts_with if self.case_sensitive else starts_with.casefold()
+            checks["starts_with"] = comparable.startswith(prefix)
+        ends_with = constraints.get("ends_with")
+        if isinstance(ends_with, str):
+            suffix = ends_with if self.case_sensitive else ends_with.casefold()
+            checks["ends_with"] = comparable.endswith(suffix)
+
+        details = {
+            "constraints": constraints,
+            "checks": checks,
+            "observed_word_count": len(words),
+            "observed_line_count": len(lines),
+        }
+        passed = all(checks.values())
+        if passed:
+            return ScoreResult.passed_result(self.name, self.version, details=details)
+        score = sum(checks.values()) / len(checks) if checks else 1.0
+        return ScoreResult.failed_result(
+            self.name,
+            self.version,
+            score=score,
+            details=details,
+        )
+
+    def _validate_constraints(self, value: Any) -> dict[str, Any]:
+        if not isinstance(value, dict):
+            raise EvaluatorError(
+                f"expected.{self.expected_key} must be an object",
+                code="invalid_expectation",
+            )
+        unknown = sorted(set(value) - self._allowed_constraints)
+        if unknown:
+            raise EvaluatorError(
+                f"unknown text constraints: {', '.join(unknown)}",
+                code="invalid_expectation",
+            )
+        if not value:
+            raise EvaluatorError("text constraints cannot be empty", code="invalid_expectation")
+        for key in ("required_terms", "forbidden_terms"):
+            items = value.get(key)
+            if items is not None and (
+                not isinstance(items, list)
+                or not items
+                or not all(isinstance(item, str) and item for item in items)
+            ):
+                raise EvaluatorError(
+                    f"text constraint {key} must be a non-empty string array",
+                    code="invalid_expectation",
+                )
+        for key in ("exact_word_count", "exact_line_count"):
+            count = value.get(key)
+            if count is not None and (
+                not isinstance(count, int) or isinstance(count, bool) or count < 1
+            ):
+                raise EvaluatorError(
+                    f"text constraint {key} must be a positive integer",
+                    code="invalid_expectation",
+                )
+        for key in ("line_prefix", "starts_with", "ends_with"):
+            text = value.get(key)
+            if text is not None and (not isinstance(text, str) or not text):
+                raise EvaluatorError(
+                    f"text constraint {key} must be a non-empty string",
+                    code="invalid_expectation",
+                )
+        return value
+
+
 class JsonSchemaScorer(Scorer):
     version = "1"
 

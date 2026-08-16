@@ -1,0 +1,16 @@
+{
+  "schema_version": "1",
+  "dataset_id": "judge-calibration-v1",
+  "version": "1.0.0",
+  "data_file": "data.jsonl",
+  "description": "Instruction-following cases for comparing a future LLM judge with one human reference annotator.",
+  "provenance": "Project-authored prompts and rubrics; no user, production, or model-generated examples.",
+  "label_provenance": {
+    "status": "unlabeled",
+    "annotator_count": 0,
+    "human_evaluation": false,
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false
+  },
+  "license": "MIT"
+}

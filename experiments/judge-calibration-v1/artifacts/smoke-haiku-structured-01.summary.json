@@ -1,0 +1,239 @@
+{
+  "candidate_id": "claude-cli:haiku",
+  "counts": {
+    "completed": 1,
+    "failed": 0,
+    "partial": 0,
+    "total": 1
+  },
+  "dataset": {
+    "checksum_sha256": "7ba55c58e51a7d3eb4cf13efc8975e5b67a8006a48d8c6cf6b59e94c88708df3",
+    "dataset_id": "judge-calibration-v1",
+    "example_count": 1,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {
+      "malformed_json": 2
+    },
+    "by_origin": {
+      "model": 2
+    },
+    "by_stage": {
+      "scorer:json_fields": 1,
+      "scorer:json_schema": 1
+    },
+    "total": 2
+  },
+  "latency_ms": {
+    "count": 1,
+    "max": 4475.121,
+    "mean": 4475.121,
+    "min": 4475.121,
+    "p50": 4475.121,
+    "p95": 4475.121
+  },
+  "reliability": {
+    "attempts_total": 1,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 1.0,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T020706.220421Z-e7d10f9ecdee",
+  "schema_version": "1.0",
+  "scorers": {
+    "exact_constraints": {
+      "counts": {
+        "error": 0,
+        "fail": 0,
+        "measured": 0,
+        "pass": 0,
+        "skipped": 1
+      },
+      "coverage": 0.0,
+      "latency_ms": {
+        "count": 1,
+        "max": 0.026,
+        "mean": 0.026,
+        "min": 0.026,
+        "p50": 0.026,
+        "p95": 0.026
+      },
+      "mean_score": null,
+      "pass_rate": null
+    },
+    "json_fields": {
+      "counts": {
+        "error": 0,
+        "fail": 1,
+        "measured": 1,
+        "pass": 0,
+        "skipped": 0
+      },
+      "coverage": 1.0,
+      "latency_ms": {
+        "count": 1,
+        "max": 0.036,
+        "mean": 0.036,
+        "min": 0.036,
+        "p50": 0.036,
+        "p95": 0.036
+      },
+      "mean_score": 0.0,
+      "pass_rate": 0.0
+    },
+    "json_schema": {
+      "counts": {
+        "error": 0,
+        "fail": 1,
+        "measured": 1,
+        "pass": 0,
+        "skipped": 0
+      },
+      "coverage": 1.0,
+      "latency_ms": {
+        "count": 1,
+        "max": 1.824,
+        "mean": 1.824,
+        "min": 1.824,
+        "p50": 1.824,
+        "p95": 1.824
+      },
+      "mean_score": 0.0,
+      "pass_rate": 0.0
+    },
+    "text_constraints": {
+      "counts": {
+        "error": 0,
+        "fail": 0,
+        "measured": 0,
+        "pass": 0,
+        "skipped": 1
+      },
+      "coverage": 0.0,
+      "latency_ms": {
+        "count": 1,
+        "max": 0.02,
+        "mean": 0.02,
+        "min": 0.02,
+        "p50": 0.02,
+        "p95": 0.02
+      },
+      "mean_score": null,
+      "pass_rate": null
+    }
+  },
+  "slices": [
+    {
+      "count": 1,
+      "counts": {
+        "completed": 1,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "exact_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 1
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 1,
+            "max": 0.026,
+            "mean": 0.026,
+            "min": 0.026,
+            "p50": 0.026,
+            "p95": 0.026
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_fields": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 1,
+            "pass": 0,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 1,
+            "max": 0.036,
+            "mean": 0.036,
+            "min": 0.036,
+            "p50": 0.036,
+            "p95": 0.036
+          },
+          "mean_score": 0.0,
+          "pass_rate": 0.0
+        },
+        "json_schema": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 1,
+            "pass": 0,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 1,
+            "max": 1.824,
+            "mean": 1.824,
+            "min": 1.824,
+            "p50": 1.824,
+            "p95": 1.824
+          },
+          "mean_score": 0.0,
+          "pass_rate": 0.0
+        },
+        "text_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 1
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 1,
+            "max": 0.02,
+            "mean": 0.02,
+            "min": 0.02,
+            "p50": 0.02,
+            "p95": 0.02
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "structured_output"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 1,
+      "total": 0.001859
+    },
+    "input_tokens": {
+      "available_count": 1,
+      "total": 209
+    },
+    "output_tokens": {
+      "available_count": 1,
+      "total": 205
+    },
+    "responses": 1,
+    "total_tokens": {
+      "available_count": 1,
+      "total": 414
+    }
+  }
+}

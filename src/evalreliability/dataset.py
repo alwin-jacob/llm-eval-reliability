@@ -85,6 +85,41 @@ def load_dataset(directory: str | Path, *, source: str | None = None) -> Evaluat
     return EvaluationDataset(descriptor=descriptor, examples=tuple(examples))
 
 
+def select_examples(
+    dataset: EvaluationDataset, example_ids: list[str] | tuple[str, ...]
+) -> EvaluationDataset:
+    """Return a provenance-preserving ordered subset for smoke and focused runs."""
+
+    if not example_ids:
+        raise DatasetValidationError("example selection must contain at least one ID")
+    if not all(isinstance(example_id, str) and example_id for example_id in example_ids):
+        raise DatasetValidationError("selected example IDs must be non-empty strings")
+    if len(example_ids) != len(set(example_ids)):
+        raise DatasetValidationError("selected example IDs must be unique")
+    by_id = {example.id: example for example in dataset.examples}
+    missing = [example_id for example_id in example_ids if example_id not in by_id]
+    if missing:
+        raise DatasetValidationError(f"selected example IDs not found: {', '.join(missing)}")
+
+    selected = tuple(by_id[example_id] for example_id in example_ids)
+    selection = {
+        "parent_checksum_sha256": dataset.descriptor.checksum_sha256,
+        "example_ids": list(example_ids),
+    }
+    canonical = json.dumps(selection, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    metadata = dict(dataset.descriptor.metadata)
+    metadata["selection"] = selection
+    descriptor = DatasetDescriptor(
+        dataset_id=dataset.descriptor.dataset_id,
+        version=dataset.descriptor.version,
+        checksum_sha256=hashlib.sha256(canonical).hexdigest(),
+        example_count=len(selected),
+        source=dataset.descriptor.source,
+        metadata=metadata,
+    )
+    return EvaluationDataset(descriptor=descriptor, examples=selected)
+
+
 def _parse_example(record: dict[str, Any], path: Path, line_number: int) -> EvaluationExample:
     example_id = record.get("id")
     prompt = record.get("input")

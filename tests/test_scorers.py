@@ -18,6 +18,7 @@ from evalreliability.scorers import (
     JsonFieldsScorer,
     JsonSchemaScorer,
     JudgeScorer,
+    TextConstraintScorer,
 )
 
 
@@ -37,6 +38,43 @@ async def test_deterministic_scorers_are_explicit_about_normalization_and_covera
     assert exact.outcome == ScoreOutcome.PASS
     assert contains.outcome == ScoreOutcome.PASS
     assert skipped.outcome == ScoreOutcome.SKIPPED
+
+
+@pytest.mark.asyncio
+async def test_text_constraint_scorer_reports_each_lexical_and_layout_check() -> None:
+    example = EvaluationExample(
+        "one",
+        "question",
+        {
+            "text_constraints": {
+                "required_terms": ["risk", "rollback"],
+                "forbidden_terms": ["0", "1"],
+                "exact_line_count": 1,
+                "starts_with": "DECISION:",
+                "ends_with": "approved.",
+            }
+        },
+    )
+
+    passed = await TextConstraintScorer(case_sensitive=True).score(
+        example,
+        CandidateResponse(output="DECISION: risk review and rollback make this approved."),
+    )
+    failed = await TextConstraintScorer(case_sensitive=True).score(
+        example,
+        CandidateResponse(output="DECISION: risk review makes this approved.\nrollback option 1"),
+    )
+
+    assert passed.outcome == ScoreOutcome.PASS
+    assert all(passed.details["checks"].values())
+    assert failed.outcome == ScoreOutcome.FAIL
+    assert failed.details["checks"] == {
+        "required_terms": True,
+        "forbidden_terms": False,
+        "exact_line_count": False,
+        "starts_with": True,
+        "ends_with": False,
+    }
 
 
 @pytest.mark.asyncio

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1",
+  "experiment_id": "judge-calibration-v1",
+  "research_question": "How reliably can an LLM judge detect subtle instruction-following failures, and where does it disagree with a human reference?",
+  "status": "designed_unlabeled",
+  "sample_size": 16,
+  "slices": {
+    "structured_output": 4,
+    "exact_constraints": 4,
+    "multi_constraint": 4,
+    "semantic_constraint": 4
+  },
+  "candidate": {
+    "transport": "claude_code_cli",
+    "requested_model": "haiku",
+    "full_experiment_outputs_collected": 0
+  },
+  "future_judge": {
+    "transport": "claude_code_cli",
+    "requested_model": "sonnet",
+    "status": "not_run"
+  },
+  "human_reference": {
+    "status": "unlabeled",
+    "annotator_count": 0,
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false
+  },
+  "setup_smoke": {
+    "status": "completed",
+    "sample_size": 1,
+    "case_id": "jcv1-structured-01",
+    "run_id": "20260816T020706.220421Z-e7d10f9ecdee",
+    "requested_model": "haiku",
+    "canonical_model": "claude-haiku-4-5-20251001",
+    "candidate_call_succeeded": true,
+    "deterministic_result": "fail",
+    "failure_mode": "valid requested object wrapped in a Markdown code fence",
+    "human_labels_collected": 0,
+    "judge_calls_made": 0,
+    "limitations": "One transport-smoke case is not an estimate of candidate or judge reliability."
+  },
+  "planned_real_model_calls": {
+    "candidate": 16,
+    "judge": 16,
+    "total": 32
+  }
+}

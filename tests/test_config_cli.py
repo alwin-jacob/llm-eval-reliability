@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from evalreliability.candidates import RunArtifactCandidate
 from evalreliability.claude_cli import ClaudeCliCandidate
 from evalreliability.cli import EXIT_ERROR, EXIT_OK, EXIT_REGRESSION, main
 from evalreliability.config import load_evaluation_spec
@@ -39,11 +40,67 @@ def test_real_claude_example_config_constructs_without_invoking_provider() -> No
     assert spec.evaluation.candidate_policy.max_attempts == 1
 
 
+def test_judge_calibration_candidate_config_constructs_without_invoking_provider() -> None:
+    spec = load_evaluation_spec(
+        PROJECT_ROOT / "experiments/judge-calibration-v1/configs/candidate-haiku.json"
+    )
+
+    assert spec.dataset.descriptor.example_count == 16
+    assert isinstance(spec.candidate, ClaudeCliCandidate)
+    assert spec.candidate.identifier == "claude-cli:haiku"
+    assert spec.evaluation.concurrency == 1
+    assert spec.evaluation.candidate_policy.max_attempts == 1
+    assert [scorer.name for scorer in spec.scorers] == [
+        "json_schema",
+        "json_fields",
+        "exact_constraints",
+        "text_constraints",
+    ]
+
+
+def test_future_judge_config_targets_frozen_outputs_and_excludes_human_fields() -> None:
+    config_path = PROJECT_ROOT / "experiments/judge-calibration-v1/configs/future-judge-sonnet.json"
+    payload = json.loads(config_path.read_text(encoding="utf-8"))
+    judge = payload["scorers"][0]
+
+    assert payload["candidate"]["type"] == "run_artifact"
+    assert judge["candidate"]["type"] == "claude_cli"
+    assert judge["candidate"]["model"] == "sonnet"
+    assert judge["invocation"]["max_attempts"] == 1
+    assert judge["exclude_expected_keys"] == [
+        "human_reference_label",
+        "human_reference_status",
+    ]
+
+
 def test_config_can_disable_external_process_candidates() -> None:
     config = PROJECT_ROOT / "examples/configs/real/claude-sonnet-smoke.json"
 
     with pytest.raises(ConfigurationError, match="external-process candidates are disabled"):
         load_evaluation_spec(config, allow_external_processes=False)
+
+
+def test_run_artifact_candidate_config_replays_frozen_responses(tmp_path: Path) -> None:
+    config = tmp_path / "replay.json"
+    config.write_text(
+        json.dumps(
+            {
+                "schema_version": "1",
+                "dataset": str(PROJECT_ROOT / "examples/datasets/core/v1"),
+                "candidate": {
+                    "type": "run_artifact",
+                    "run_file": str(PROJECT_ROOT / "examples/artifacts/candidate.run.json"),
+                },
+                "scorers": [{"type": "exact_match"}],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    spec = load_evaluation_spec(config)
+
+    assert isinstance(spec.candidate, RunArtifactCandidate)
+    assert spec.candidate.configuration()["response_count"] == 6
 
 
 def test_config_rejects_unknown_fields(tmp_path: Path) -> None:
@@ -142,3 +199,42 @@ def test_cli_returns_error_for_bad_config(tmp_path: Path) -> None:
     bad_config.write_text("{}", encoding="utf-8")
 
     assert main(["run", str(bad_config), "--output", str(tmp_path / "run.json")]) == EXIT_ERROR
+
+
+def test_cli_can_select_one_fixture_example(tmp_path: Path) -> None:
+    output = tmp_path / "selected.run.json"
+
+    exit_code = main(
+        [
+            "run",
+            str(PROJECT_ROOT / "examples/configs/candidate.json"),
+            "--example-id",
+            "multiply",
+            "--output",
+            str(output),
+        ]
+    )
+    payload = json.loads(output.read_text(encoding="utf-8"))
+
+    assert exit_code == EXIT_OK
+    assert payload["metadata"]["dataset"]["example_count"] == 1
+    assert [item["example_id"] for item in payload["examples"]] == ["multiply"]
+
+
+def test_cli_refuses_to_overwrite_raw_run_with_annotations() -> None:
+    raw_run = PROJECT_ROOT / "examples/artifacts/candidate.run.json"
+
+    exit_code = main(
+        [
+            "annotate",
+            str(raw_run),
+            "--output",
+            str(raw_run),
+            "--experiment",
+            "judge-calibration-v1",
+            "--annotator",
+            "annotator-1",
+        ]
+    )
+
+    assert exit_code == EXIT_ERROR
