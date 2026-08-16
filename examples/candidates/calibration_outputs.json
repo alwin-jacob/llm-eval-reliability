@@ -1,0 +1,10 @@
+{
+  "cal-01": "4",
+  "cal-02": "Tokyo",
+  "cal-03": "Jitter spreads retry attempts over time so clients do not retry in lockstep.",
+  "cal-04": "{\"count\":3}",
+  "cal-05": "5",
+  "cal-06": "Kyoto",
+  "cal-07": "Jitter makes retries faster.",
+  "cal-08": "{\"count\":\"three\"}"
+}

@@ -1,0 +1,140 @@
+{
+  "alignment": {
+    "added_in_candidate": [],
+    "common_examples": 6,
+    "missing_in_candidate": [],
+    "same_dataset": true,
+    "same_scorers": true
+  },
+  "baseline_run_id": "20260816T004439.416611Z-53508981b9d7",
+  "candidate_run_id": "20260816T004439.416609Z-c430c1318951",
+  "metric_comparisons": [
+    {
+      "baseline_coverage": 0.333333,
+      "baseline_mean_score": 0.5,
+      "baseline_measured": 2,
+      "candidate_coverage": 0.333333,
+      "candidate_mean_score": 1.0,
+      "candidate_measured": 2,
+      "coverage_delta": 0.0,
+      "delta": 0.5,
+      "scorer": "exact_match"
+    },
+    {
+      "baseline_coverage": 0.333333,
+      "baseline_mean_score": 0.833333,
+      "baseline_measured": 2,
+      "candidate_coverage": 0.333333,
+      "candidate_mean_score": 0.75,
+      "candidate_measured": 2,
+      "coverage_delta": 0.0,
+      "delta": -0.083333,
+      "scorer": "contains_all"
+    },
+    {
+      "baseline_coverage": 0.333333,
+      "baseline_mean_score": 0.5,
+      "baseline_measured": 2,
+      "candidate_coverage": 0.333333,
+      "candidate_mean_score": 1.0,
+      "candidate_measured": 2,
+      "coverage_delta": 0.0,
+      "delta": 0.5,
+      "scorer": "json_schema"
+    },
+    {
+      "baseline_coverage": 0.333333,
+      "baseline_mean_score": 0.5,
+      "baseline_measured": 2,
+      "candidate_coverage": 0.333333,
+      "candidate_mean_score": 1.0,
+      "candidate_measured": 2,
+      "coverage_delta": 0.0,
+      "delta": 0.5,
+      "scorer": "json_fields"
+    }
+  ],
+  "passed": true,
+  "per_example_regressions": [
+    {
+      "baseline": 1.0,
+      "candidate": 0.5,
+      "drop": 0.5,
+      "example_id": "artifact-properties",
+      "scorer": "contains_all"
+    }
+  ],
+  "policy": {
+    "max_failure_rate_increase": 0.0,
+    "max_new_failed_examples": 0,
+    "max_new_operational_failures": 0,
+    "max_per_example_regressions": 1,
+    "metrics": [
+      {
+        "max_coverage_drop": null,
+        "max_drop": 0.0,
+        "min_candidate": 0.9,
+        "min_coverage": 0.333333,
+        "scorer": "exact_match"
+      },
+      {
+        "max_coverage_drop": null,
+        "max_drop": 0.1,
+        "min_candidate": 0.7,
+        "min_coverage": 0.333333,
+        "scorer": "contains_all"
+      },
+      {
+        "max_coverage_drop": null,
+        "max_drop": 0.0,
+        "min_candidate": 0.9,
+        "min_coverage": 0.333333,
+        "scorer": "json_schema"
+      },
+      {
+        "max_coverage_drop": null,
+        "max_drop": 0.0,
+        "min_candidate": 0.9,
+        "min_coverage": 0.333333,
+        "scorer": "json_fields"
+      }
+    ],
+    "per_example_min_drop": 0.0,
+    "require_same_dataset": true,
+    "require_same_examples": true,
+    "require_same_scorers": true,
+    "slices": [
+      {
+        "dimension": "format",
+        "max_drop": 0.0,
+        "min_candidate": 0.9,
+        "min_examples": 2,
+        "scorer": "json_schema",
+        "value": "json"
+      }
+    ]
+  },
+  "reliability": {
+    "baseline_failure_rate": 0.0,
+    "candidate_failure_rate": 0.0,
+    "failure_rate_delta": 0.0,
+    "new_failed_example_ids": [],
+    "new_operational_failure_ids": []
+  },
+  "schema_version": "1.0",
+  "slice_comparisons": [
+    {
+      "baseline_count": 2,
+      "baseline_mean_score": 0.5,
+      "baseline_measured": 2,
+      "candidate_count": 2,
+      "candidate_mean_score": 1.0,
+      "candidate_measured": 2,
+      "delta": 0.5,
+      "dimension": "format",
+      "scorer": "json_schema",
+      "value": "json"
+    }
+  ],
+  "violations": []
+}

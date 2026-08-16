@@ -1,0 +1,689 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.049,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417306Z"
+        }
+      ],
+      "example_id": "cal-01",
+      "expected": {
+        "criteria": "The answer must be 4.",
+        "reference_label": "pass"
+      },
+      "failures": [],
+      "input": "What is 2 + 2?",
+      "latency_ms": 0.613,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "closed_qa"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "4",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.006,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.417507Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.98,\"rationale\":\"The response is exactly 4.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response is exactly 4.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 0.201,
+          "outcome": "pass",
+          "passed": true,
+          "score": 0.98,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.014,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417390Z"
+        }
+      ],
+      "example_id": "cal-02",
+      "expected": {
+        "criteria": "The answer must identify Tokyo.",
+        "reference_label": "pass"
+      },
+      "failures": [],
+      "input": "Name the capital of Japan.",
+      "latency_ms": 0.534,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "closed_qa"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "Tokyo",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.006,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.417704Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.95,\"rationale\":\"The response identifies Tokyo.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response identifies Tokyo.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 0.067,
+          "outcome": "pass",
+          "passed": true,
+          "score": 0.95,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417419Z"
+        }
+      ],
+      "example_id": "cal-03",
+      "expected": {
+        "criteria": "The answer must connect jitter to avoiding synchronized retries.",
+        "reference_label": "pass"
+      },
+      "failures": [],
+      "input": "Explain why retries need jitter.",
+      "latency_ms": 0.509,
+      "metadata": {
+        "slices": {
+          "response_style": "detailed",
+          "task": "explanation"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "Jitter spreads retry attempts over time so clients do not retry in lockstep.",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.005,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.417774Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.85,\"rationale\":\"It explains avoiding synchronized retries.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "It explains avoiding synchronized retries.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 0.048,
+          "outcome": "pass",
+          "passed": true,
+          "score": 0.85,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417438Z"
+        }
+      ],
+      "example_id": "cal-04",
+      "expected": {
+        "criteria": "The output must be valid JSON and count must be an integer.",
+        "reference_label": "pass"
+      },
+      "failures": [],
+      "input": "Return JSON with an integer field named count.",
+      "latency_ms": 0.494,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "structured"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "{\"count\":3}",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.005,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.417825Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.90,\"rationale\":\"It is JSON with an integer count.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "It is JSON with an integer count.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 0.044,
+          "outcome": "pass",
+          "passed": true,
+          "score": 0.9,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417951Z"
+        }
+      ],
+      "example_id": "cal-05",
+      "expected": {
+        "criteria": "The answer must be 4.",
+        "reference_label": "fail"
+      },
+      "failures": [],
+      "input": "What is 2 + 2?",
+      "latency_ms": 0.305,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "closed_qa"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "5",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.004,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.418034Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.05,\"rationale\":\"The arithmetic answer is incorrect.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The arithmetic answer is incorrect.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 0.054,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.05,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417975Z"
+        }
+      ],
+      "example_id": "cal-06",
+      "expected": {
+        "criteria": "The answer must identify Tokyo.",
+        "reference_label": "fail"
+      },
+      "failures": [],
+      "input": "Name the capital of Japan.",
+      "latency_ms": 0.286,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "closed_qa"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "Kyoto",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.004,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.418092Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.10,\"rationale\":\"Kyoto is not the requested capital.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "Kyoto is not the requested capital.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 0.042,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.1,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417988Z"
+        }
+      ],
+      "example_id": "cal-07",
+      "expected": {
+        "criteria": "The answer must connect jitter to avoiding synchronized retries.",
+        "reference_label": "fail"
+      },
+      "failures": [],
+      "input": "Explain why retries need jitter.",
+      "latency_ms": 0.276,
+      "metadata": {
+        "slices": {
+          "response_style": "detailed",
+          "task": "explanation"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "Jitter makes retries faster.",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.004,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.418138Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.65,\"rationale\":\"It mentions a retry benefit, though imprecisely.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "It mentions a retry benefit, though imprecisely.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 0.04,
+          "outcome": "pass",
+          "passed": true,
+          "score": 0.65,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.418000Z"
+        }
+      ],
+      "example_id": "cal-08",
+      "expected": {
+        "criteria": "The output must be valid JSON and count must be an integer.",
+        "reference_label": "fail"
+      },
+      "failures": [],
+      "input": "Return JSON with an integer field named count.",
+      "latency_ms": 0.267,
+      "metadata": {
+        "slices": {
+          "response_style": "direct",
+          "task": "structured"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "calibration-responses-v1",
+        "output": "{\"count\":\"three\"}",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 0.004,
+                "outcome": "success",
+                "started_at": "2026-08-16T00:44:39.418183Z"
+              }
+            ],
+            "judge_candidate_id": "scripted-judge-v1",
+            "judge_finish_reason": "stop",
+            "judge_model_id": "scripted-judge-v1",
+            "judge_output": "{\"score\":0.20,\"rationale\":\"The count value is a string, not an integer.\"}",
+            "judge_provider": "fixture",
+            "judge_usage": {
+              "cost_usd": null,
+              "input_tokens": null,
+              "output_tokens": null,
+              "total_tokens": null
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The count value is a string, not an integer.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 0.04,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.2,
+          "scorer_name": "scripted_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "delay_seconds": 0.0,
+      "fixture_payload_sha256": "a1589d94071c39ce72ab31eac85160f8090c79ed40956a0cd22c1ba16aea2929",
+      "identifier": "calibration-responses-v1",
+      "response_count": 8,
+      "type": "fixture"
+    },
+    "candidate_id": "calibration-responses-v1",
+    "completed_at": "2026-08-16T00:44:39.418298Z",
+    "config_fingerprint": "04ec5cf6f931214ad3fcf5794cbad0e74881073693c44737b82923e58e2f9485",
+    "dataset": {
+      "checksum_sha256": "b36df631341cc5b2abcecfe0a4fdaff377d5767a539ff9d97ced3f04f66c9ae5",
+      "dataset_id": "judge-calibration-synthetic",
+      "example_count": 8,
+      "metadata": {
+        "description": "Synthetic reference labels for exercising judge agreement analysis.",
+        "label_provenance": {
+          "adjudicated": false,
+          "annotator_count": 0,
+          "human_evaluation": false,
+          "type": "synthetic_specification",
+          "warning": "These are not collected human judgments and cannot support a human-calibration claim."
+        },
+        "license": "MIT",
+        "provenance": "Project-authored synthetic prompts, responses, and specification labels."
+      },
+      "source": "../datasets/judge_calibration/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 1.555,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "bbaddc308426ccc572d53beb479cb459fcd404a9",
+      "git_dirty": false,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 4.0,
+        "timeout_seconds": 2.0
+      },
+      "concurrency": 4,
+      "scorer_timeout_seconds": 2.0,
+      "seed": 17
+    },
+    "run_id": "20260816T004439.416663Z-04ec5cf6f931",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "candidate": {
+          "delay_seconds": 0.0,
+          "fixture_payload_sha256": "f45753b3ec99acfd3959cd34271e8c9853694528c83621956706b15a1cabaf5a",
+          "identifier": "scripted-judge-v1",
+          "response_count": 8,
+          "type": "fixture"
+        },
+        "candidate_id": "scripted-judge-v1",
+        "claim": "judge output is a measurement, not ground truth",
+        "exclude_expected_keys": [
+          "reference_label",
+          "human_label"
+        ],
+        "invocation": {
+          "initial_backoff_seconds": 0.0,
+          "jitter_ratio": 0.0,
+          "max_attempts": 1,
+          "max_backoff_seconds": 4.0,
+          "timeout_seconds": 2.0
+        },
+        "name": "scripted_judge",
+        "pass_threshold": 0.5,
+        "rubric": "Use expected.criteria. Score at least 0.5 only when the candidate output satisfies it.",
+        "seed": 17,
+        "type": "judge",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T00:44:39.416663Z"
+  }
+}

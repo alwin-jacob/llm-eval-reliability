@@ -1,0 +1,8 @@
+{
+  "capital-france": "Paris",
+  "multiply": "41",
+  "retry-explanation": "Use exponential backoff and retry only retryable errors.",
+  "artifact-properties": "Artifacts should be atomic and machine-readable.",
+  "classify-ticket": "{\"category\":\"account_access\",\"urgent\":false}",
+  "extract-order": "order A-104 has three items"
+}

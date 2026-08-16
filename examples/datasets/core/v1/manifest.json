@@ -1,0 +1,9 @@
+{
+  "schema_version": "1",
+  "dataset_id": "core-capabilities",
+  "version": "1.0.0",
+  "data_file": "data.jsonl",
+  "description": "Small synthetic dataset exercising text and structured-output scorers.",
+  "provenance": "Project-authored synthetic examples; no user or production data.",
+  "license": "MIT"
+}

@@ -1,0 +1,26 @@
+{
+  "require_same_dataset": true,
+  "require_same_examples": true,
+  "require_same_scorers": true,
+  "max_new_failed_examples": 0,
+  "max_new_operational_failures": 0,
+  "max_failure_rate_increase": 0.0,
+  "max_per_example_regressions": 1,
+  "per_example_min_drop": 0.0,
+  "metrics": [
+    {"scorer": "exact_match", "min_candidate": 0.9, "max_drop": 0.0, "min_coverage": 0.333333},
+    {"scorer": "contains_all", "min_candidate": 0.7, "max_drop": 0.1, "min_coverage": 0.333333},
+    {"scorer": "json_schema", "min_candidate": 0.9, "max_drop": 0.0, "min_coverage": 0.333333},
+    {"scorer": "json_fields", "min_candidate": 0.9, "max_drop": 0.0, "min_coverage": 0.333333}
+  ],
+  "slices": [
+    {
+      "dimension": "format",
+      "value": "json",
+      "scorer": "json_schema",
+      "min_examples": 2,
+      "min_candidate": 0.9,
+      "max_drop": 0.0
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "capital-france": "Paris",
+  "multiply": "42",
+  "retry-explanation": "Use exponential backoff with jitter and classify whether each error is retryable.",
+  "artifact-properties": "Artifacts should be atomic JSON records.",
+  "classify-ticket": "{\"category\":\"account_access\",\"urgent\":false}",
+  "extract-order": "{\"order_id\":\"A-104\",\"item_count\":3}"
+}

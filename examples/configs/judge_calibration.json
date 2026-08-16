@@ -1,0 +1,40 @@
+{
+  "schema_version": "1",
+  "dataset": "../datasets/judge_calibration/v1",
+  "candidate": {
+    "type": "fixture",
+    "identifier": "calibration-responses-v1",
+    "responses_file": "../candidates/calibration_outputs.json"
+  },
+  "scorers": [
+    {
+      "type": "judge",
+      "name": "scripted_judge",
+      "rubric": "Use expected.criteria. Score at least 0.5 only when the candidate output satisfies it.",
+      "pass_threshold": 0.5,
+      "seed": 17,
+      "candidate": {
+        "type": "fixture",
+        "identifier": "scripted-judge-v1",
+        "responses_file": "../candidates/calibration_judge.json"
+      },
+      "invocation": {
+        "timeout_seconds": 2.0,
+        "max_attempts": 1,
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0
+      }
+    }
+  ],
+  "evaluation": {
+    "concurrency": 4,
+    "scorer_timeout_seconds": 2.0,
+    "seed": 17,
+    "candidate_invocation": {
+      "timeout_seconds": 2.0,
+      "max_attempts": 1,
+      "initial_backoff_seconds": 0.0,
+      "jitter_ratio": 0.0
+    }
+  }
+}

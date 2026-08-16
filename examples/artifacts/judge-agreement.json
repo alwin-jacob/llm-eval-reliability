@@ -1,0 +1,143 @@
+{
+  "accuracy": 0.875,
+  "caution": "Agreement measures consistency with the supplied references; it does not prove that either references or judge outputs are ground truth.",
+  "cohen_kappa": 0.75,
+  "confusion_matrix": {
+    "fail": {
+      "fail": 3,
+      "pass": 1
+    },
+    "pass": {
+      "fail": 0,
+      "pass": 4
+    }
+  },
+  "counts": {
+    "disagreements": 1,
+    "judged": 8,
+    "labeled": 8,
+    "missing_judgment": 0,
+    "missing_reference": 0,
+    "run_examples": 8
+  },
+  "coverage": 1.0,
+  "disagreements": [
+    {
+      "candidate_output": "Jitter makes retries faster.",
+      "example_id": "cal-07",
+      "predicted": "pass",
+      "rationale": "It mentions a retry benefit, though imprecisely.",
+      "reference": "fail",
+      "slices": {
+        "response_style": "detailed",
+        "task": "explanation"
+      }
+    }
+  ],
+  "ground_truth_claim": false,
+  "judge_scorer": "scripted_judge",
+  "label_provenance": {
+    "adjudicated": false,
+    "annotator_count": 0,
+    "human_evaluation": false,
+    "type": "synthetic_specification",
+    "warning": "These are not collected human judgments and cannot support a human-calibration claim."
+  },
+  "missing_judgment_ids": [],
+  "missing_reference_ids": [],
+  "reference_key": "reference_label",
+  "run_id": "20260816T004439.416663Z-04ec5cf6f931",
+  "schema_version": "1.0",
+  "slices": [
+    {
+      "accuracy": 0.5,
+      "cohen_kappa": 0.0,
+      "confusion_matrix": {
+        "fail": {
+          "fail": 0,
+          "pass": 1
+        },
+        "pass": {
+          "fail": 0,
+          "pass": 1
+        }
+      },
+      "count": 2,
+      "dimension": "response_style",
+      "disagreements": 1,
+      "value": "detailed"
+    },
+    {
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "confusion_matrix": {
+        "fail": {
+          "fail": 3,
+          "pass": 0
+        },
+        "pass": {
+          "fail": 0,
+          "pass": 3
+        }
+      },
+      "count": 6,
+      "dimension": "response_style",
+      "disagreements": 0,
+      "value": "direct"
+    },
+    {
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "confusion_matrix": {
+        "fail": {
+          "fail": 2,
+          "pass": 0
+        },
+        "pass": {
+          "fail": 0,
+          "pass": 2
+        }
+      },
+      "count": 4,
+      "dimension": "task",
+      "disagreements": 0,
+      "value": "closed_qa"
+    },
+    {
+      "accuracy": 0.5,
+      "cohen_kappa": 0.0,
+      "confusion_matrix": {
+        "fail": {
+          "fail": 0,
+          "pass": 1
+        },
+        "pass": {
+          "fail": 0,
+          "pass": 1
+        }
+      },
+      "count": 2,
+      "dimension": "task",
+      "disagreements": 1,
+      "value": "explanation"
+    },
+    {
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "confusion_matrix": {
+        "fail": {
+          "fail": 1,
+          "pass": 0
+        },
+        "pass": {
+          "fail": 0,
+          "pass": 1
+        }
+      },
+      "count": 2,
+      "dimension": "task",
+      "disagreements": 0,
+      "value": "structured"
+    }
+  ]
+}
