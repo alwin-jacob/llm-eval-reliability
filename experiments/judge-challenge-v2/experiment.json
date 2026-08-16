@@ -2,7 +2,7 @@
   "schema_version": "1",
   "experiment_id": "judge-challenge-v2",
   "purpose": "Controlled judge challenge set for subtle near-miss discrimination; not a benchmark of candidate-model quality.",
-  "status": "designed_unlabeled_not_judged",
+  "status": "judge_evaluated_independent_single_annotator_reference",
   "dataset": {
     "dataset_id": "judge-challenge-v2",
     "version": "1.0.0",
@@ -15,9 +15,10 @@
   "construction": {
     "intended_pass": 12,
     "intended_fail": 12,
-    "label_role": "authorial_construction_only",
+    "label_role": "experiment_authoring_metadata",
     "human_reference": false,
-    "ground_truth_claim": false
+    "ground_truth_claim": false,
+    "used_as_judge_reference": false
   },
   "controlled_response_materialization": {
     "status": "completed_without_model_calls",
@@ -32,34 +33,130 @@
     "summary_sha256": "1e09e5e381091acfd5645a48a7fcc4cd71ff0b3d6803c7ed69ee80654e6c597e"
   },
   "human_reference": {
-    "status": "unlabeled",
-    "annotator_count": 0,
+    "status": "completed_independently_from_construction_labels",
+    "annotator_id": "alwin",
+    "annotator_name": "Alwin",
+    "annotator_count": 1,
+    "pass_count": 12,
+    "fail_count": 12,
+    "missing_count": 0,
     "ground_truth_claim": false,
-    "multi_annotator_consensus": false
+    "multi_annotator_consensus": false,
+    "adjudicated": false,
+    "artifact": "annotations/human-reference.json",
+    "artifact_sha256": "be3f687523fb5fef9b6e32f5da9dcdd4175d9d285fc1bfc075d85e02494a2af8"
   },
-  "future_judge": {
+  "human_vs_authorial_construction": {
+    "sample_size": 24,
+    "agreement_count": 24,
+    "accuracy": 1.0,
+    "cohen_kappa": 1.0,
+    "disagreements": [],
+    "interpretation": "dataset_validation_only_not_ground_truth"
+  },
+  "judge_evaluation": {
     "transport": "claude_code_cli",
     "requested_model": "sonnet",
-    "status": "not_run",
-    "calls_completed": 0,
+    "canonical_model": "claude-sonnet-5",
+    "status": "completed",
+    "run_id": "20260816T182947.417082Z-0b7c10ee726c",
+    "started_at": "2026-08-16T18:29:47.417082Z",
+    "completed_at": "2026-08-16T18:30:27.174166Z",
+    "elapsed_ms": 39756.915,
+    "config_fingerprint_sha256": "0b7c10ee726c29fb1e1515c19243b99a8f43a7cdc30206bca983fe502baab303",
+    "calls_completed": 24,
+    "attempts_total": 24,
     "max_attempts": 1,
     "concurrency": 2,
-    "output_contract": "binary_verdict",
-    "prompt_payload_fields": [
+    "raw_outputs_preserved": 24,
+    "labels": {
+      "pass": 12,
+      "fail": 12,
+      "invalid": 0
+    },
+    "agreement_with_human_reference": {
+      "paired_sample_size": 24,
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "pass_case_accuracy": 1.0,
+      "pass_case_sample_size": 12,
+      "fail_case_accuracy": 1.0,
+      "fail_case_sample_size": 12,
+      "confusion_matrix": {
+        "human_pass_judge_pass": 12,
+        "human_pass_judge_fail": 0,
+        "human_fail_judge_pass": 0,
+        "human_fail_judge_fail": 12
+      },
+      "false_positives": [],
+      "false_negatives": [],
+      "disagreements": []
+    },
+    "invalid_outputs": {
+      "count": 0,
+      "rate": 0.0,
+      "case_ids": []
+    },
+    "usage": {
+      "sample_size": 24,
+      "input_tokens": 10530,
+      "output_tokens": 2720,
+      "total_tokens": 13250,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "provider_reported_usage_cost_usd": 0.090481,
+      "cost_interpretation": "provider_usage_accounting_not_billing_evidence"
+    },
+    "latency_ms": {
+      "count": 24,
+      "min": 2719.115,
+      "mean": 3309.403583,
+      "p50": 3087.629,
+      "p95": 5089.714,
+      "max": 5454.474
+    },
+    "ttft_ms": {
+      "count": 24,
+      "min": 1806.0,
+      "mean": 2392.666667,
+      "p50": 2206.0,
+      "p95": 3210.0,
+      "max": 3856.0
+    },
+    "rationale_analysis": {
+      "valid_disagreement_count": 0,
+      "invalid_result_count": 0,
+      "observation": "All PASS rationales identified a preserved requirement and all FAIL rationales identified the changed semantic requirement; no error rationale exists to analyze."
+    },
+    "artifacts": {
+      "run": "artifacts/judge-sonnet.run.json",
+      "run_sha256": "7f5137bf45dc3bd345da9f7a50d51f419fe6dce437ae2afe660c7ce3e05428ea",
+      "summary": "artifacts/judge-sonnet.summary.json",
+      "summary_sha256": "78a5c7ff62134f794e2a1414e9b22044e498ca01d3b90a945432fde23672a67d",
+      "analysis": "artifacts/judge-sonnet.analysis.json",
+      "analysis_sha256": "3f1dde4f946be328449ad2059f159a51ae66fc763ad1023b84432c9e46aa4a73"
+    }
+  },
+  "prompt_isolation": {
+    "payload_fields": [
       "input",
       "candidate_output",
       "rubric"
-    ]
-  },
-  "leakage_controls": {
-    "neutral_variant_ids": true,
+    ],
     "construction_label_excluded": true,
     "human_fields_excluded": true,
     "pair_id_excluded": true,
+    "challenge_family_excluded": true,
     "sibling_response_excluded": true,
     "deterministic_results_excluded": true,
+    "expected_outcome_excluded": true,
     "independent_cli_invocation_per_case": true
   },
-  "real_model_calls_completed": 0,
-  "experimental_results": null
+  "real_model_calls_completed": 24,
+  "limitations": [
+    "The independent human reference is one annotator, not ground truth, adjudication, or multi-annotator consensus.",
+    "The balanced, contrastive, project-authored set is not representative of natural model traffic or candidate-model quality.",
+    "Each family has two cases and cannot support comparative family-level reliability claims.",
+    "One judgment per case cannot estimate stochastic judge stability."
+  ]
 }

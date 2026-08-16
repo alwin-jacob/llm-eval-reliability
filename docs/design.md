@@ -59,7 +59,7 @@ Package boundaries:
 - `engine`: concurrent orchestration and per-example isolation.
 - `artifacts`: stable serialization and atomic persistence.
 - `analysis`: aggregates, failure taxonomy, slices, and judge/reference agreement.
-- `annotations`: single-human reference persistence, interactive labeling, and aligned
+- `annotations`: single-annotator reference persistence, interactive labeling, and aligned
   human/judge/deterministic-scorer analysis.
 - `regression`: baseline/candidate alignment and policy enforcement.
 - `config`: strict JSON configuration and construction of built-in components.

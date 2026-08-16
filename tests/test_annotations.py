@@ -30,7 +30,14 @@ def _dataset() -> EvaluationDataset:
                 "human_reference_label": None,
                 "human_reference_status": "unlabeled",
             },
-            metadata={"slices": {"constraint_type": "first" if index < 2 else "second"}},
+            metadata={
+                "slices": {"constraint_type": "first" if index < 2 else "second"},
+                "construction": {
+                    "intended_label": "pass" if index in (0, 2) else "fail",
+                    "label_source": "authorial_construction",
+                    "human_reference": False,
+                },
+            },
         )
         for index in range(4)
     )
@@ -201,6 +208,17 @@ async def test_annotation_workflow_preserves_raw_run_and_analysis_reports_agreem
     assert deterministic["sample_size"] == 4
     assert deterministic["accuracy"] == 0.5
     assert report["reference_metadata"]["ground_truth_claim"] is False
+    construction = report["authorial_construction_validation"]
+    assert construction["label_role"] == "experiment_authoring_metadata"
+    assert construction["used_as_judge_reference"] is False
+    assert construction["ground_truth_claim"] is False
+    assert construction["construction"] == {
+        "sample_size": 4,
+        "pass_count": 2,
+        "fail_count": 2,
+        "pass_rate": 0.5,
+    }
+    assert construction["human_vs_construction"]["accuracy"] == 0.5
 
 
 @pytest.mark.asyncio

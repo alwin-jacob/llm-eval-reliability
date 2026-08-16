@@ -7,6 +7,7 @@ from pathlib import Path
 
 import pytest
 
+from evalreliability.annotations import analyze_human_referenced_run, read_annotations
 from evalreliability.artifacts import read_run
 from evalreliability.candidates import Candidate, ControlledResponseCandidate, RunArtifactCandidate
 from evalreliability.config import load_evaluation_spec
@@ -69,6 +70,61 @@ def test_controlled_response_artifact_is_explicitly_non_model_and_exact() -> Non
         assert result.response.provider == "controlled_experiment_fixture"
         assert result.response.metadata["model_call"] is False
         assert result.scores[0].outcome == ScoreOutcome.SKIPPED
+
+
+def test_independent_reference_is_complete_and_construction_is_validation_only() -> None:
+    run = read_run(EXPERIMENT_ROOT / "artifacts/controlled-responses.run.json")
+    annotations = read_annotations(EXPERIMENT_ROOT / "annotations/human-reference.json")
+
+    assert annotations.annotator_id == "alwin"
+    assert len(annotations.annotations) == 24
+    report = analyze_human_referenced_run(run, annotations)
+    validation = report["authorial_construction_validation"]
+
+    assert validation["label_role"] == "experiment_authoring_metadata"
+    assert validation["used_as_judge_reference"] is False
+    assert validation["ground_truth_claim"] is False
+    assert validation["construction"]["sample_size"] == 24
+    assert validation["human_vs_construction"]["sample_size"] == 24
+    assert validation["human_vs_construction"]["accuracy"] == 1.0
+
+
+def test_packaged_sonnet_analysis_is_reproducible_from_frozen_evidence() -> None:
+    candidate_run = read_run(EXPERIMENT_ROOT / "artifacts/controlled-responses.run.json")
+    annotations = read_annotations(EXPERIMENT_ROOT / "annotations/human-reference.json")
+    judge_run = read_run(EXPERIMENT_ROOT / "artifacts/judge-sonnet.run.json")
+    packaged = json.loads(
+        (EXPERIMENT_ROOT / "artifacts/judge-sonnet.analysis.json").read_text(encoding="utf-8")
+    )
+    generated = analyze_human_referenced_run(
+        candidate_run,
+        annotations,
+        judge_run=judge_run,
+        judge_scorer="sonnet_challenge_judge",
+        slice_dimension="challenge_family",
+    )
+
+    assert packaged == generated
+    assert len(judge_run.examples) == 24
+    judge_scores = [
+        next(score for score in example.scores if score.scorer_name == "sonnet_challenge_judge")
+        for example in judge_run.examples
+    ]
+    assert sum(len(score.details["judge_attempts"]) for score in judge_scores) == 24
+    assert all(len(score.details["judge_attempts"]) == 1 for score in judge_scores)
+    assert all(isinstance(score.details["judge_output"], str) for score in judge_scores)
+    assert packaged["judge"] == {
+        "sample_size": 24,
+        "pass_count": 12,
+        "fail_count": 12,
+        "pass_rate": 0.5,
+    }
+    assert packaged["judge_execution"]["invalid_output_count"] == 0
+    assert packaged["judge_vs_human"]["sample_size"] == 24
+    assert packaged["judge_vs_human"]["accuracy"] == 1.0
+    assert packaged["judge_vs_human"]["cohen_kappa"] == 1.0
+    assert len(packaged["per_slice"]) == 12
+    assert all(item["sample_size"] == 2 for item in packaged["per_slice"])
 
 
 def test_sonnet_config_replays_frozen_responses_once_with_rubric_only_prompt() -> None:

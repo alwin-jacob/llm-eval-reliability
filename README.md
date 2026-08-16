@@ -8,8 +8,8 @@ machine-checkable exit status.
 This is a working first version, not a hosted platform. Its built-in fixture adapter makes
 the complete workflow deterministic in CI. A Claude Code CLI adapter supports opt-in local
 calls through an existing Claude login using the same asynchronous `Candidate` boundary.
-The checked-in measurements use fixtures and small synthetic datasets and are not claims
-about model quality, production reliability, or scale.
+Checked-in evidence includes deterministic fixtures and two small Claude CLI judge
+experiments. None is a claim about general model quality, production reliability, or scale.
 
 ## What is implemented
 
@@ -29,7 +29,7 @@ about model quality, production reliability, or scale.
   per-example policies; a failed policy exits with status `2`.
 - Judge/reference agreement with coverage, confusion matrix, Cohen's kappa, disagreement
   records, slice analysis, and label-provenance warnings.
-- Resumable single-human annotation artifacts and aligned human/judge/deterministic-scorer
+- Resumable single-annotator artifacts and aligned reference/judge/deterministic-scorer
   analysis with explicit sample sizes and no ground-truth claim.
 - A strict JSON-configured CLI and a small path-confined local FastAPI interface.
 - Unit and integration tests for malformed output, candidate timeouts, retries, unexpected
@@ -90,13 +90,21 @@ Missing executables, authentication errors, process timeouts, malformed envelope
 model/API errors, and other nonzero process exits receive distinct failure codes. The
 adapter never substitutes fixture output after a real invocation fails.
 
-### First real evaluation experiment
+### Real judge experiments
 
-[`judge-calibration-v1`](experiments/judge-calibration-v1/README.md) is a designed but
-unlabeled 16-case experiment for instruction-following judge agreement. It has four balanced
-slices, deterministic checks where appropriate, a Haiku candidate config, a future Sonnet
-judge config, and a one-annotator workflow that keeps labels separate from raw outputs. No
-full candidate run, human label, or judge result is checked in or claimed.
+[`judge-calibration-v1`](experiments/judge-calibration-v1/README.md) contains 16 generated
+Haiku responses and 16 Sonnet judge attempts. Its PASS/FAIL reference set was entered with
+AI assistance under operator supervision, so it is an assisted/operator reference—not
+independent human calibration or ground truth. Sonnet matched all 15 parseable reference
+pairs; one judgment was invalid JSON and was not repaired or retried.
+
+[`judge-challenge-v2`](experiments/judge-challenge-v2/README.md) is a controlled 24-response
+challenge set with one independent annotator (Alwin), not a candidate-quality benchmark.
+The human labels were balanced 12 PASS/12 FAIL and matched the authorial construction labels
+on 24/24 cases. One Sonnet judgment per case produced 12 PASS, 12 FAIL, and zero invalid
+outputs; agreement with the human labels was 24/24 (accuracy 1.0, Cohen's kappa 1.0). Each
+of the 12 challenge families has only two cases, and the contrastive, project-authored set
+is not representative traffic, so this result does not establish general Sonnet reliability.
 
 Run the calibration-analysis example separately:
 
@@ -310,8 +318,7 @@ smoke test. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for extension expectations.
   cancellation endpoint, or multi-tenant security model. Bind it locally.
 
 Implementation findings and unresolved questions remain visible in
-[`docs/engineering-log.md`](docs/engineering-log.md). They are not cleaned up to make the
-project appear more mature than it is.
+[`docs/engineering-log.md`](docs/engineering-log.md).
 
 ## License
 

@@ -1,8 +1,8 @@
 {
   "schema_version": "1",
   "experiment_id": "judge-calibration-v1",
-  "research_question": "How reliably can an LLM judge detect subtle instruction-following failures, and where does it disagree with a human reference?",
-  "status": "judge_evaluated_single_human_reference",
+  "research_question": "How reliably can an LLM judge detect subtle instruction-following failures, and where does it disagree with an assisted/operator reference?",
+  "status": "judge_evaluated_assisted_operator_reference",
   "sample_size": 16,
   "slices": {
     "structured_output": 4,
@@ -22,9 +22,11 @@
     "canonical_model": "claude-sonnet-5",
     "status": "completed_with_one_invalid_output"
   },
-  "human_reference": {
+  "assisted_operator_reference": {
     "status": "completed",
-    "annotator_count": 1,
+    "provenance": "AI-assisted label entry under operator supervision",
+    "operator_count": 1,
+    "independent_human_annotation": false,
     "pass_count": 13,
     "fail_count": 3,
     "ground_truth_claim": false,
@@ -41,7 +43,7 @@
     "candidate_call_succeeded": true,
     "deterministic_result": "fail",
     "failure_mode": "valid requested object wrapped in a Markdown code fence",
-    "human_labels_collected": 0,
+    "reference_labels_collected": 0,
     "judge_calls_made": 0,
     "limitations": "One transport-smoke case is not an estimate of candidate or judge reliability."
   },
@@ -60,7 +62,7 @@
     "transport_successes": 16,
     "transport_failures": 0,
     "judge_calls": 0,
-    "human_labels": 0,
+    "reference_labels": 0,
     "usage": {
       "input_tokens": 3309,
       "output_tokens": 5377,
@@ -142,7 +144,7 @@
         "cause": "unescaped quotation marks inside the rationale string"
       }
     ],
-    "agreement_with_single_human_reference": {
+    "agreement_with_assisted_operator_reference": {
       "paired_sample_size": 15,
       "accuracy": 1.0,
       "cohen_kappa": 1.0,
@@ -184,7 +186,7 @@
       "analysis_sha256": "510a66169eba8c42502107cbe652d041c862d14035c886f1df9b91adfcaed73a"
     },
     "limitations": [
-      "The reference is one human annotator, not ground truth or consensus.",
+      "The assisted/operator reference was entered with AI assistance and is not independent human calibration, ground truth, or consensus.",
       "Agreement metrics use 15 parseable paired verdicts, not all 16 requested cases.",
       "The experiment has no repeated judge samples and cannot estimate stochastic stability.",
       "CLI usage metadata lists both Sonnet and Haiku model IDs, so aggregate usage is not attributed exclusively to the canonical response model."

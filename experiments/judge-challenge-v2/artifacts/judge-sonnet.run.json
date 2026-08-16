@@ -1,0 +1,2650 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.02,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:47.417527Z"
+        }
+      ],
+      "example_id": "jcv2-01-a",
+      "expected": {
+        "rubric": "The response must preserve that approval is discretionary permission rather than a duty or guarantee, retain the Friday scope, and retain maintained on-call coverage as a condition. It must not add a new obligation or exception."
+      },
+      "failures": [],
+      "input": "Rewrite this policy as one concise sentence without changing its force: Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+      "latency_ms": 5454.649,
+      "metadata": {
+        "challenge_family": "permission_vs_obligation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+        "pair_id": "jcv2-pair-01",
+        "slices": {
+          "challenge_family": "permission_vs_obligation"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 5454.285,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:47.417647Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2519.0,
+              "duration_ms": 3889.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.00327,
+              "provider_reported_usage_cost_usd": 0.00327,
+              "request_id": "ce2ddc96-7ec9-490c-95c2-65c490e84193",
+              "requested_model": "sonnet",
+              "session_id": "ca6d51fc-abcf-4c5c-8bc9-00c63aa199f5",
+              "transport": "claude_code_cli",
+              "ttft_ms": 3856.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output is identical to the input, preserving discretionary permission ('may approve'), the Friday scope, and the on-call coverage condition exactly, with no added obligations or exceptions.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.00327,
+              "input_tokens": 433,
+              "output_tokens": 81,
+              "total_tokens": 514
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output is identical to the input, preserving discretionary permission ('may approve'), the Friday scope, and the on-call coverage condition exactly, with no added obligations or exceptions.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 5454.474,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:47.417570Z"
+        }
+      ],
+      "example_id": "jcv2-01-b",
+      "expected": {
+        "rubric": "The response must preserve that approval is discretionary permission rather than a duty or guarantee, retain the Friday scope, and retain maintained on-call coverage as a condition. It must not add a new obligation or exception."
+      },
+      "failures": [],
+      "input": "Rewrite this policy as one concise sentence without changing its force: Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+      "latency_ms": 5106.41,
+      "metadata": {
+        "challenge_family": "permission_vs_obligation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Team leads must approve remote work on Fridays when on-call coverage is maintained.",
+        "pair_id": "jcv2-pair-01",
+        "slices": {
+          "challenge_family": "permission_vs_obligation"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Team leads must approve remote work on Fridays when on-call coverage is maintained.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 5089.069,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:47.434298Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 4366.0,
+              "duration_ms": 3366.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003735,
+              "provider_reported_usage_cost_usd": 0.003735,
+              "request_id": "2646e50b-fb19-4259-9f4d-d2d863d00b2f",
+              "requested_model": "sonnet",
+              "session_id": "15fa8179-0e3e-42f1-b76e-24398c32b9e5",
+              "transport": "claude_code_cli",
+              "ttft_ms": 3184.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\":\"FAIL\",\"rationale\":\"The rubric requires preserving discretionary permission ('may approve'), but the candidate changed this to 'must approve,' converting optional discretion into a mandatory obligation. This alters the force of the policy by adding a new obligation not present in the original, which the rubric explicitly prohibits.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003735,
+              "input_tokens": 433,
+              "output_tokens": 112,
+              "total_tokens": 545
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The rubric requires preserving discretionary permission ('may approve'), but the candidate changed this to 'must approve,' converting optional discretion into a mandatory obligation. This alters the force of the policy by adding a new obligation not present in the original, which the rubric explicitly prohibits.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 5089.714,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:52.524040Z"
+        }
+      ],
+      "example_id": "jcv2-02-a",
+      "expected": {
+        "rubric": "The response must preserve that patch coverage is only indicated or likely, not confirmed or certain, and must preserve that deployment verification remains incomplete. It may be concise but must not upgrade the tentative status."
+      },
+      "failures": [],
+      "input": "Summarize this deployment note while preserving its confidence level: Monitoring indicates the patch is likely active on every canary host, but deployment verification is incomplete.",
+      "latency_ms": 3340.968,
+      "metadata": {
+        "challenge_family": "uncertainty_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The patch is active on every canary host, although deployment verification is incomplete.",
+        "pair_id": "jcv2-pair-02",
+        "slices": {
+          "challenge_family": "uncertainty_overclaim"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The patch is active on every canary host, although deployment verification is incomplete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3340.35,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:52.524153Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3328.0,
+              "duration_ms": 2643.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003918,
+              "provider_reported_usage_cost_usd": 0.003918,
+              "request_id": "44117668-0db0-4a11-b843-95250b3c5b5d",
+              "requested_model": "sonnet",
+              "session_id": "99216146-7f49-4034-9e4e-a4b6080311e5",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2619.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The original states the patch is 'likely active' (tentative), but the candidate output asserts 'The patch is active on every canary host' as a flat fact, dropping the hedge and upgrading the confidence level. While it does preserve that verification is incomplete, it fails the requirement not to upgrade the tentative status on patch coverage.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003918,
+              "input_tokens": 432,
+              "output_tokens": 126,
+              "total_tokens": 558
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The original states the patch is 'likely active' (tentative), but the candidate output asserts 'The patch is active on every canary host' as a flat fact, dropping the hedge and upgrading the confidence level. While it does preserve that verification is incomplete, it fails the requirement not to upgrade the tentative status on patch coverage.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3340.815,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:52.872206Z"
+        }
+      ],
+      "example_id": "jcv2-02-b",
+      "expected": {
+        "rubric": "The response must preserve that patch coverage is only indicated or likely, not confirmed or certain, and must preserve that deployment verification remains incomplete. It may be concise but must not upgrade the tentative status."
+      },
+      "failures": [],
+      "input": "Summarize this deployment note while preserving its confidence level: Monitoring indicates the patch is likely active on every canary host, but deployment verification is incomplete.",
+      "latency_ms": 3900.409,
+      "metadata": {
+        "challenge_family": "uncertainty_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Monitoring indicates the patch is likely active on every canary host, while deployment verification remains incomplete.",
+        "pair_id": "jcv2-pair-02",
+        "slices": {
+          "challenge_family": "uncertainty_overclaim"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Monitoring indicates the patch is likely active on every canary host, while deployment verification remains incomplete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3899.864,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:52.872292Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3872.0,
+              "duration_ms": 3226.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003815,
+              "provider_reported_usage_cost_usd": 0.003815,
+              "request_id": "2d47e1b6-45d7-4d89-bb4f-b17864813964",
+              "requested_model": "sonnet",
+              "session_id": "0dd364ef-739a-47c9-93c1-0dc1664a955c",
+              "transport": "claude_code_cli",
+              "ttft_ms": 3210.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output retains the hedged language 'likely' and 'monitoring indicates,' preserving the tentative confidence level rather than asserting certainty. It also explicitly retains that 'deployment verification remains incomplete,' matching the original's caveat. No upgrade in certainty occurs.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003815,
+              "input_tokens": 443,
+              "output_tokens": 116,
+              "total_tokens": 559
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output retains the hedged language 'likely' and 'monitoring indicates,' preserving the tentative confidence level rather than asserting certainty. It also explicitly retains that 'deployment verification remains incomplete,' matching the original's caveat. No upgrade in certainty occurs.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3900.267,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.013,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:55.865045Z"
+        }
+      ],
+      "example_id": "jcv2-03-a",
+      "expected": {
+        "rubric": "The response must preserve the observed decline and its timing after the reminder email while explicitly avoiding or qualifying causation. It must not state or imply that the email caused the decline."
+      },
+      "failures": [],
+      "input": "Rewrite this finding concisely without making a causal claim: Late submissions declined after the reminder email was introduced; this observation alone does not establish that the email caused the decline.",
+      "latency_ms": 2882.974,
+      "metadata": {
+        "challenge_family": "causal_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Late submissions declined after the reminder email, but the observation does not establish that the email caused the decline.",
+        "pair_id": "jcv2-pair-03",
+        "slices": {
+          "challenge_family": "causal_overclaim"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Late submissions declined after the reminder email, but the observation does not establish that the email caused the decline.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2882.475,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:55.865162Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2816.0,
+              "duration_ms": 2140.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003495,
+              "provider_reported_usage_cost_usd": 0.003495,
+              "request_id": "01456e72-c2f1-4468-b1c3-cf0fcc2a6acb",
+              "requested_model": "sonnet",
+              "session_id": "28242561-05cb-4a7b-bdc3-e1b500540d86",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2117.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The response preserves the observed decline in late submissions and its timing relative to the reminder email, and explicitly states that this observation alone does not establish causation. It does not assert or imply that the email caused the decline, satisfying the rubric's requirements.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003495,
+              "input_tokens": 431,
+              "output_tokens": 97,
+              "total_tokens": 528
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response preserves the observed decline in late submissions and its timing relative to the reminder email, and explicitly states that this observation alone does not establish causation. It does not assert or imply that the email caused the decline, satisfying the rubric's requirements.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2882.8,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:56.772678Z"
+        }
+      ],
+      "example_id": "jcv2-03-b",
+      "expected": {
+        "rubric": "The response must preserve the observed decline and its timing after the reminder email while explicitly avoiding or qualifying causation. It must not state or imply that the email caused the decline."
+      },
+      "failures": [],
+      "input": "Rewrite this finding concisely without making a causal claim: Late submissions declined after the reminder email was introduced; this observation alone does not establish that the email caused the decline.",
+      "latency_ms": 3208.334,
+      "metadata": {
+        "challenge_family": "causal_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Late submissions declined after the reminder email because the email caused the decline.",
+        "pair_id": "jcv2-pair-03",
+        "slices": {
+          "challenge_family": "causal_overclaim"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Late submissions declined after the reminder email because the email caused the decline.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3207.806,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:56.772825Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3169.0,
+              "duration_ms": 2476.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003541,
+              "provider_reported_usage_cost_usd": 0.003541,
+              "request_id": "9691934d-129f-44f6-acef-6adaf8071742",
+              "requested_model": "sonnet",
+              "session_id": "3b462f09-6f14-4f60-ada4-dc2b05d9654c",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2458.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The candidate output explicitly states the decline occurred 'because the email caused the decline,' directly asserting causation. This violates the rubric's requirement to avoid or qualify causation and directly contradicts the instruction to rewrite without making a causal claim.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003541,
+              "input_tokens": 422,
+              "output_tokens": 102,
+              "total_tokens": 524
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output explicitly states the decline occurred 'because the email caused the decline,' directly asserting causation. This violates the rubric's requirement to avoid or qualify causation and directly contradicts the instruction to rewrite without making a causal claim.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3208.154,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.022,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:58.748087Z"
+        }
+      ],
+      "example_id": "jcv2-04-a",
+      "expected": {
+        "rubric": "The response must preserve the 90-day inactivity rule and both exceptions. Channels under legal hold and channels in an active security investigation must remain available; neither exception may be narrowed, reversed, or omitted."
+      },
+      "failures": [],
+      "input": "Summarize this retention rule in one sentence: Archive channels after 90 inactive days, except channels under legal hold or in an active security investigation must remain available.",
+      "latency_ms": 3211.746,
+      "metadata": {
+        "challenge_family": "exception_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Archive channels inactive for 90 days unless they are under legal hold or have completed a security investigation.",
+        "pair_id": "jcv2-pair-04",
+        "slices": {
+          "challenge_family": "exception_scope"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Archive channels inactive for 90 days unless they are under legal hold or have completed a security investigation.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3211.037,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:58.748357Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3231.0,
+              "duration_ms": 2445.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003733,
+              "provider_reported_usage_cost_usd": 0.003733,
+              "request_id": "34443947-c7aa-4303-8425-c3b87dff2feb",
+              "requested_model": "sonnet",
+              "session_id": "61a8afba-bcae-4261-bba4-4d1815ab9997",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2419.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The candidate output reverses the security investigation exception: the original states channels in an active security investigation must remain available (not archived), but the candidate says the exception applies only after the investigation has 'completed,' implying active investigations would be archived. This narrows/reverses one of the two required exceptions.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003733,
+              "input_tokens": 440,
+              "output_tokens": 111,
+              "total_tokens": 551
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output reverses the security investigation exception: the original states channels in an active security investigation must remain available (not archived), but the candidate says the exception applies only after the investigation has 'completed,' implying active investigations would be archived. This narrows/reverses one of the two required exceptions.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3211.543,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:29:59.981056Z"
+        }
+      ],
+      "example_id": "jcv2-04-b",
+      "expected": {
+        "rubric": "The response must preserve the 90-day inactivity rule and both exceptions. Channels under legal hold and channels in an active security investigation must remain available; neither exception may be narrowed, reversed, or omitted."
+      },
+      "failures": [],
+      "input": "Summarize this retention rule in one sentence: Archive channels after 90 inactive days, except channels under legal hold or in an active security investigation must remain available.",
+      "latency_ms": 2719.262,
+      "metadata": {
+        "challenge_family": "exception_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Archive channels inactive for 90 days unless they are under legal hold or part of an active security investigation.",
+        "pair_id": "jcv2-pair-04",
+        "slices": {
+          "challenge_family": "exception_scope"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Archive channels inactive for 90 days unless they are under legal hold or part of an active security investigation.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2718.858,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:29:59.981199Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2658.0,
+              "duration_ms": 1986.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003509,
+              "provider_reported_usage_cost_usd": 0.003509,
+              "request_id": "c352e331-6681-46e9-8c27-ae446c421b27",
+              "requested_model": "sonnet",
+              "session_id": "d74f9ad2-c242-4283-bf9d-f17b6764ce90",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1970.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The response preserves the 90-day inactivity threshold for archiving and includes both exceptions (legal hold and active security investigation) that prevent archiving, matching the original rule's intent without narrowing, reversing, or omitting either exception.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003509,
+              "input_tokens": 440,
+              "output_tokens": 96,
+              "total_tokens": 536
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response preserves the 90-day inactivity threshold for archiving and includes both exceptions (legal hold and active security investigation) that prevent archiving, matching the original rule's intent without narrowing, reversing, or omitting either exception.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2719.115,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:01.959886Z"
+        }
+      ],
+      "example_id": "jcv2-05-a",
+      "expected": {
+        "rubric": "The response must preserve the quantifier asymmetry: automatic retry applies to most integrations, while operator-initiated manual retry applies to every integration. It must not broaden automatic retry to all integrations or weaken universal manual retry."
+      },
+      "failures": [],
+      "input": "Condense this capability statement without changing its quantifiers: Most integrations support automatic retry, and every integration supports a manual retry initiated by an operator.",
+      "latency_ms": 2768.347,
+      "metadata": {
+        "challenge_family": "quantifier_shift",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Most integrations support automatic retry, while every integration supports operator-initiated manual retry.",
+        "pair_id": "jcv2-pair-05",
+        "slices": {
+          "challenge_family": "quantifier_shift"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Most integrations support automatic retry, while every integration supports operator-initiated manual retry.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2767.819,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:01.960053Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2660.0,
+              "duration_ms": 1996.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003445,
+              "provider_reported_usage_cost_usd": 0.003445,
+              "request_id": "9b9c5b51-34cf-40cb-a522-6f1cfdaca058",
+              "requested_model": "sonnet",
+              "session_id": "8af2e1ff-8b8a-47e6-808c-fbdb1cc02f70",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1973.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate preserves the quantifier asymmetry: 'most integrations' for automatic retry and 'every integration' for operator-initiated manual retry, matching the original meaning without broadening or weakening either quantifier.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003445,
+              "input_tokens": 444,
+              "output_tokens": 91,
+              "total_tokens": 535
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate preserves the quantifier asymmetry: 'most integrations' for automatic retry and 'every integration' for operator-initiated manual retry, matching the original meaning without broadening or weakening either quantifier.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2768.177,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:02.700344Z"
+        }
+      ],
+      "example_id": "jcv2-05-b",
+      "expected": {
+        "rubric": "The response must preserve the quantifier asymmetry: automatic retry applies to most integrations, while operator-initiated manual retry applies to every integration. It must not broaden automatic retry to all integrations or weaken universal manual retry."
+      },
+      "failures": [],
+      "input": "Condense this capability statement without changing its quantifiers: Most integrations support automatic retry, and every integration supports a manual retry initiated by an operator.",
+      "latency_ms": 3026.905,
+      "metadata": {
+        "challenge_family": "quantifier_shift",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Every integration supports automatic retry and operator-initiated manual retry.",
+        "pair_id": "jcv2-pair-05",
+        "slices": {
+          "challenge_family": "quantifier_shift"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Every integration supports automatic retry and operator-initiated manual retry.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3026.406,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:02.700429Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2898.0,
+              "duration_ms": 2226.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003757,
+              "provider_reported_usage_cost_usd": 0.003757,
+              "request_id": "04001c56-cc63-41d0-a58c-2cce8344e565",
+              "requested_model": "sonnet",
+              "session_id": "4c5d78e3-c519-462c-baf1-83abdf37e49c",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2206.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The original states automatic retry applies to 'most' integrations, but the candidate output changes this to 'every integration supports automatic retry,' broadening the quantifier from 'most' to 'every.' This violates the rubric's explicit requirement not to broaden automatic retry to all integrations.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003757,
+              "input_tokens": 438,
+              "output_tokens": 113,
+              "total_tokens": 551
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The original states automatic retry applies to 'most' integrations, but the candidate output changes this to 'every integration supports automatic retry,' broadening the quantifier from 'most' to 'every.' This violates the rubric's explicit requirement not to broaden automatic retry to all integrations.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3026.768,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.014,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:04.728282Z"
+        }
+      ],
+      "example_id": "jcv2-06-a",
+      "expected": {
+        "rubric": "The response must preserve the strict boundary: only totals less than $10,000 qualify for expedited handling, and exactly $10,000 does not qualify. Inclusive wording such as up to or through $10,000 violates the rule."
+      },
+      "failures": [],
+      "input": "Restate this review threshold clearly: Expedite a request only when its total is strictly below $10,000; totals of $10,000 or more require standard review.",
+      "latency_ms": 2900.013,
+      "metadata": {
+        "challenge_family": "numerical_boundary",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Requests totaling up to $10,000 qualify for expedited handling; larger totals require standard review.",
+        "pair_id": "jcv2-pair-06",
+        "slices": {
+          "challenge_family": "numerical_boundary"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Requests totaling up to $10,000 qualify for expedited handling; larger totals require standard review.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2898.782,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:04.728440Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2887.0,
+              "duration_ms": 2169.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003926,
+              "provider_reported_usage_cost_usd": 0.003926,
+              "request_id": "cf915343-7380-46bd-a0c5-583046f4fc5c",
+              "requested_model": "sonnet",
+              "session_id": "d722a9b8-b666-4a4b-a3d8-fdb9c050bda6",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2145.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The candidate states totals 'up to $10,000' qualify for expedited handling, which is inclusive of exactly $10,000. This contradicts the original rule that requires totals strictly below $10,000, violating the rubric's explicit prohibition on inclusive wording like 'up to' or 'through $10,000'.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003926,
+              "input_tokens": 442,
+              "output_tokens": 122,
+              "total_tokens": 564
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate states totals 'up to $10,000' qualify for expedited handling, which is inclusive of exactly $10,000. This contradicts the original rule that requires totals strictly below $10,000, violating the rubric's explicit prohibition on inclusive wording like 'up to' or 'through $10,000'.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2899.747,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:05.727301Z"
+        }
+      ],
+      "example_id": "jcv2-06-b",
+      "expected": {
+        "rubric": "The response must preserve the strict boundary: only totals less than $10,000 qualify for expedited handling, and exactly $10,000 does not qualify. Inclusive wording such as up to or through $10,000 violates the rule."
+      },
+      "failures": [],
+      "input": "Restate this review threshold clearly: Expedite a request only when its total is strictly below $10,000; totals of $10,000 or more require standard review.",
+      "latency_ms": 2799.383,
+      "metadata": {
+        "challenge_family": "numerical_boundary",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Only requests totaling less than $10,000 qualify for expedited handling; all others require standard review.",
+        "pair_id": "jcv2-pair-06",
+        "slices": {
+          "challenge_family": "numerical_boundary"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Only requests totaling less than $10,000 qualify for expedited handling; all others require standard review.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2798.703,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:05.727443Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2699.0,
+              "duration_ms": 2088.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003552,
+              "provider_reported_usage_cost_usd": 0.003552,
+              "request_id": "73291999-95b9-442d-8876-bba8553f1782",
+              "requested_model": "sonnet",
+              "session_id": "82989abd-17e9-4805-96a8-46871214fef5",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2069.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output states 'less than $10,000' qualifies for expedited handling and 'all others' (including exactly $10,000) require standard review, correctly preserving the strict boundary without inclusive wording like 'up to' or 'through'.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003552,
+              "input_tokens": 441,
+              "output_tokens": 97,
+              "total_tokens": 538
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output states 'less than $10,000' qualifies for expedited handling and 'all others' (including exactly $10,000) require standard review, correctly preserving the strict boundary without inclusive wording like 'up to' or 'through'.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2799.168,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.041,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:07.628439Z"
+        }
+      ],
+      "example_id": "jcv2-07-a",
+      "expected": {
+        "rubric": "The response must preserve that only internal test backups may be unencrypted and that every externally stored backup must remain encrypted, including external test backups. It must not expand the testing exception across the external-storage prohibition."
+      },
+      "failures": [],
+      "input": "Rewrite this backup rule concisely: Encryption may be disabled for internal test backups, but it must never be disabled for any backup sent to an external service.",
+      "latency_ms": 3236.488,
+      "metadata": {
+        "challenge_family": "negation_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Encryption may be disabled for internal test backups, but never for backups sent to an external service.",
+        "pair_id": "jcv2-pair-07",
+        "slices": {
+          "challenge_family": "negation_scope"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Encryption may be disabled for internal test backups, but never for backups sent to an external service.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3235.632,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:07.628959Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2974.0,
+              "duration_ms": 2376.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003733,
+              "provider_reported_usage_cost_usd": 0.003733,
+              "request_id": "4130bedb-cd3f-42df-9b63-9c2a1a865bab",
+              "requested_model": "sonnet",
+              "session_id": "78340362-0095-4ab9-8d95-2c8a644294e2",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2352.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The rewrite preserves the original meaning: encryption may be disabled only for internal test backups, and encryption is never disabled for backups sent to an external service, regardless of whether they are test backups. It does not expand the testing exception to cover external storage, and it does not narrow the external prohibition.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003733,
+              "input_tokens": 432,
+              "output_tokens": 112,
+              "total_tokens": 544
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The rewrite preserves the original meaning: encryption may be disabled only for internal test backups, and encryption is never disabled for backups sent to an external service, regardless of whether they are test backups. It does not expand the testing exception to cover external storage, and it does not narrow the external prohibition.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3236.108,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.031,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:08.526771Z"
+        }
+      ],
+      "example_id": "jcv2-07-b",
+      "expected": {
+        "rubric": "The response must preserve that only internal test backups may be unencrypted and that every externally stored backup must remain encrypted, including external test backups. It must not expand the testing exception across the external-storage prohibition."
+      },
+      "failures": [],
+      "input": "Rewrite this backup rule concisely: Encryption may be disabled for internal test backups, but it must never be disabled for any backup sent to an external service.",
+      "latency_ms": 2932.754,
+      "metadata": {
+        "challenge_family": "negation_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Encryption may be disabled for test backups, including test backups sent to an external service.",
+        "pair_id": "jcv2-pair-07",
+        "slices": {
+          "challenge_family": "negation_scope"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Encryption may be disabled for test backups, including test backups sent to an external service.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2932.069,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:08.526982Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3705.0,
+              "duration_ms": 2256.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003827,
+              "provider_reported_usage_cost_usd": 0.003827,
+              "request_id": "97452ce7-b12f-47a1-a382-31f484693944",
+              "requested_model": "sonnet",
+              "session_id": "e94b1dc8-bef8-4ddd-9474-fdb4dceeca1b",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2239.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\":\"FAIL\",\"rationale\":\"The candidate output states encryption may be disabled for test backups 'including test backups sent to an external service,' which directly contradicts the rubric requirement that all externally stored backups, including test backups, must remain encrypted. This inverts the original rule's meaning and expands the testing exception across the external-storage prohibition.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003827,
+              "input_tokens": 429,
+              "output_tokens": 119,
+              "total_tokens": 548
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output states encryption may be disabled for test backups 'including test backups sent to an external service,' which directly contradicts the rubric requirement that all externally stored backups, including test backups, must remain encrypted. This inverts the original rule's meaning and expands the testing exception across the external-storage prohibition.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2932.529,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.016,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:10.864951Z"
+        }
+      ],
+      "example_id": "jcv2-08-a",
+      "expected": {
+        "rubric": "The response must preserve that manager approval and security approval are both prerequisites completed before temporary production access begins. It must not allow access while either approval is pending or move either review after access starts."
+      },
+      "failures": [],
+      "input": "Summarize this access condition: Temporary production access may begin only after both the engineering manager and the security lead have approved it.",
+      "latency_ms": 3087.759,
+      "metadata": {
+        "challenge_family": "conditionality",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Temporary production access may begin after manager approval while security approval is completed.",
+        "pair_id": "jcv2-pair-08",
+        "slices": {
+          "challenge_family": "conditionality"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Temporary production access may begin after manager approval while security approval is completed.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3087.313,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:10.865056Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3037.0,
+              "duration_ms": 2367.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003802,
+              "provider_reported_usage_cost_usd": 0.003802,
+              "request_id": "7cc3f6bd-189a-4faa-8c8b-94b38810705c",
+              "requested_model": "sonnet",
+              "session_id": "5a0ca314-2249-41e5-9388-4b99bb263b08",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2346.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The candidate output states access may begin after manager approval 'while security approval is completed,' implying security approval happens concurrently with or after access begins, rather than being a completed prerequisite before access starts. This contradicts the rubric requirement that both approvals must be completed before access begins, effectively allowing access while security approval is still pending.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003802,
+              "input_tokens": 405,
+              "output_tokens": 124,
+              "total_tokens": 529
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output states access may begin after manager approval 'while security approval is completed,' implying security approval happens concurrently with or after access begins, rather than being a completed prerequisite before access starts. This contradicts the rubric requirement that both approvals must be completed before access begins, effectively allowing access while security approval is still pending.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3087.629,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.019,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:11.459564Z"
+        }
+      ],
+      "example_id": "jcv2-08-b",
+      "expected": {
+        "rubric": "The response must preserve that manager approval and security approval are both prerequisites completed before temporary production access begins. It must not allow access while either approval is pending or move either review after access starts."
+      },
+      "failures": [],
+      "input": "Summarize this access condition: Temporary production access may begin only after both the engineering manager and the security lead have approved it.",
+      "latency_ms": 3213.232,
+      "metadata": {
+        "challenge_family": "conditionality",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Temporary production access may begin only after both manager and security approvals are complete.",
+        "pair_id": "jcv2-pair-08",
+        "slices": {
+          "challenge_family": "conditionality"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Temporary production access may begin only after both manager and security approvals are complete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3212.603,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:11.459720Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3606.0,
+              "duration_ms": 2512.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003477,
+              "provider_reported_usage_cost_usd": 0.003477,
+              "request_id": "7bfd7cf3-1291-4ca6-acbc-8ba3f1519d84",
+              "requested_model": "sonnet",
+              "session_id": "7493fb5e-62ae-4f3d-b413-f3e41933cab1",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2485.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output preserves both prerequisites (manager and security approvals) as required conditions completed before access begins, using 'only after both... are complete,' which matches the rubric's requirement without allowing access during pending approvals or reordering the reviews after access starts.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003477,
+              "input_tokens": 406,
+              "output_tokens": 102,
+              "total_tokens": 508
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output preserves both prerequisites (manager and security approvals) as required conditions completed before access begins, using 'only after both... are complete,' which matches the rubric's requirement without allowing access during pending approvals or reordering the reviews after access starts.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3213.028,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:13.952749Z"
+        }
+      ],
+      "example_id": "jcv2-09-a",
+      "expected": {
+        "rubric": "The response must state that the export stalled at 62 percent, that a retry is scheduled, and that the cause is unknown or undetermined. It must not invent a cause, diagnosis, timing, owner, or recovery result."
+      },
+      "failures": [],
+      "input": "Write a concise status update using only these facts: The export stalled at 62 percent, a retry is scheduled, and the cause is unknown.",
+      "latency_ms": 3787.325,
+      "metadata": {
+        "challenge_family": "unsupported_detail",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The export stalled at 62 percent, a retry is scheduled, and the cause remains unknown.",
+        "pair_id": "jcv2-pair-09",
+        "slices": {
+          "challenge_family": "unsupported_detail"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The export stalled at 62 percent, a retry is scheduled, and the cause remains unknown.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3786.958,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:13.952850Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2850.0,
+              "duration_ms": 3085.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003151,
+              "provider_reported_usage_cost_usd": 0.003151,
+              "request_id": "0ffc21e9-dccd-4a3b-9e27-1e0dac2420a0",
+              "requested_model": "sonnet",
+              "session_id": "bf8d3fa3-2b33-48d8-ae1e-eac6bb8da6e7",
+              "transport": "claude_code_cli",
+              "ttft_ms": 3050.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\":\"PASS\",\"rationale\":\"The response states all three required facts: export stalled at 62%, retry scheduled, cause unknown. It adds no invented cause, timing, owner, or recovery outcome.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003151,
+              "input_tokens": 434,
+              "output_tokens": 73,
+              "total_tokens": 507
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response states all three required facts: export stalled at 62%, retry scheduled, cause unknown. It adds no invented cause, timing, owner, or recovery outcome.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3787.194,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:14.672851Z"
+        }
+      ],
+      "example_id": "jcv2-09-b",
+      "expected": {
+        "rubric": "The response must state that the export stalled at 62 percent, that a retry is scheduled, and that the cause is unknown or undetermined. It must not invent a cause, diagnosis, timing, owner, or recovery result."
+      },
+      "failures": [],
+      "input": "Write a concise status update using only these facts: The export stalled at 62 percent, a retry is scheduled, and the cause is unknown.",
+      "latency_ms": 2884.553,
+      "metadata": {
+        "challenge_family": "unsupported_detail",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The export stalled at 62 percent after the storage quota was exceeded, and a retry is scheduled.",
+        "pair_id": "jcv2-pair-09",
+        "slices": {
+          "challenge_family": "unsupported_detail"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The export stalled at 62 percent after the storage quota was exceeded, and a retry is scheduled.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2884.162,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:14.673007Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2810.0,
+              "duration_ms": 2171.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003428,
+              "provider_reported_usage_cost_usd": 0.003428,
+              "request_id": "03ea89ea-e9ff-4110-92e8-e416d96c8f69",
+              "requested_model": "sonnet",
+              "session_id": "95cfd451-37bc-48b8-9062-cab990ad4e87",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2138.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The response fails to state that the cause is unknown/undetermined, and instead invents a specific cause (storage quota exceeded) that was not among the given facts, directly violating the rubric's prohibition on inventing a cause.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003428,
+              "input_tokens": 436,
+              "output_tokens": 91,
+              "total_tokens": 527
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response fails to state that the cause is unknown/undetermined, and instead invents a specific cause (storage quota exceeded) that was not among the given facts, directly violating the rubric's prohibition on inventing a cause.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2884.413,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:17.557428Z"
+        }
+      ],
+      "example_id": "jcv2-10-a",
+      "expected": {
+        "rubric": "The response must contain exactly two sentences, include an apology, state that the team is investigating, and obey the higher-priority prohibition against promising or stating any delivery date or guaranteed timing. Reassurance must remain noncommittal."
+      },
+      "failures": [],
+      "input": "Write exactly two customer-facing sentences about a delayed shipment. Highest-priority instruction: do not promise or state a delivery date because no ETA is verified. Also apologize and say the team is investigating.",
+      "latency_ms": 2881.896,
+      "metadata": {
+        "challenge_family": "instruction_priority",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "I\u2019m sorry your shipment is delayed, and our team is investigating. It will arrive by Friday.",
+        "pair_id": "jcv2-pair-10",
+        "slices": {
+          "challenge_family": "instruction_priority"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "I\u2019m sorry your shipment is delayed, and our team is investigating. It will arrive by Friday.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2881.232,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:17.557525Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2706.0,
+              "duration_ms": 2038.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003356,
+              "provider_reported_usage_cost_usd": 0.003356,
+              "request_id": "7d187079-3a47-4fb9-b4c2-1290f78248cc",
+              "requested_model": "sonnet",
+              "session_id": "c6773781-c349-4916-b161-0758d89933f8",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2022.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The response violates the highest-priority instruction by explicitly stating a delivery date ('It will arrive by Friday'), despite including an apology and mentioning investigation within two sentences.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003356,
+              "input_tokens": 465,
+              "output_tokens": 79,
+              "total_tokens": 544
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response violates the highest-priority instruction by explicitly stating a delivery date ('It will arrive by Friday'), despite including an apology and mentioning investigation within two sentences.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2881.746,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:17.740105Z"
+        }
+      ],
+      "example_id": "jcv2-10-b",
+      "expected": {
+        "rubric": "The response must contain exactly two sentences, include an apology, state that the team is investigating, and obey the higher-priority prohibition against promising or stating any delivery date or guaranteed timing. Reassurance must remain noncommittal."
+      },
+      "failures": [],
+      "input": "Write exactly two customer-facing sentences about a delayed shipment. Highest-priority instruction: do not promise or state a delivery date because no ETA is verified. Also apologize and say the team is investigating.",
+      "latency_ms": 3609.312,
+      "metadata": {
+        "challenge_family": "instruction_priority",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "I\u2019m sorry your shipment is delayed, and our team is investigating. We\u2019ll share an update as soon as reliable timing is available.",
+        "pair_id": "jcv2-pair-10",
+        "slices": {
+          "challenge_family": "instruction_priority"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "I\u2019m sorry your shipment is delayed, and our team is investigating. We\u2019ll share an update as soon as reliable timing is available.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3608.731,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:17.740207Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3608.0,
+              "duration_ms": 2944.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.005445,
+              "provider_reported_usage_cost_usd": 0.005445,
+              "request_id": "c4e706dd-58b8-4255-a4ca-6245ddbb1609",
+              "requested_model": "sonnet",
+              "session_id": "9a1b8392-1d46-481a-85f0-5c7b61fc312a",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1876.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The output contains exactly two sentences, includes an apology, states the team is investigating, and avoids promising or stating any delivery date\u2014reassurance is noncommittal ('as soon as reliable timing is available').\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.005445,
+              "input_tokens": 474,
+              "output_tokens": 217,
+              "total_tokens": 691
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The output contains exactly two sentences, includes an apology, states the team is investigating, and avoids promising or stating any delivery date\u2014reassurance is noncommittal ('as soon as reliable timing is available').",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3609.162,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.02,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:20.439390Z"
+        }
+      ],
+      "example_id": "jcv2-11-a",
+      "expected": {
+        "rubric": "The response must preserve both the default-off state and administrators' ability to enable the feature per individual workspace. It must not reverse the default, convert enablement into disablement, or broaden the scope beyond per-workspace control."
+      },
+      "failures": [],
+      "input": "Rewrite this configuration note as one polished sentence without changing its meaning: The feature is disabled by default, but administrators can enable it for individual workspaces.",
+      "latency_ms": 3449.074,
+      "metadata": {
+        "challenge_family": "semantic_preservation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The feature starts disabled, and administrators can enable it for individual workspaces.",
+        "pair_id": "jcv2-pair-11",
+        "slices": {
+          "challenge_family": "semantic_preservation"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The feature starts disabled, and administrators can enable it for individual workspaces.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3448.492,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:20.439568Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3400.0,
+              "duration_ms": 2801.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.00444,
+              "provider_reported_usage_cost_usd": 0.00444,
+              "request_id": "3b571db0-9092-49c6-9d22-9205363b632b",
+              "requested_model": "sonnet",
+              "session_id": "9566d116-eb4d-4838-a8ee-9e8bd18f566e",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1806.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The rewrite preserves the default-off state (\\\"starts disabled\\\") and the administrators' ability to enable the feature per individual workspace, without reversing the default, inverting enablement, or broadening scope. It is a single polished sentence with the same meaning as the original.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.00444,
+              "input_tokens": 435,
+              "output_tokens": 159,
+              "total_tokens": 594
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The rewrite preserves the default-off state (\"starts disabled\") and the administrators' ability to enable the feature per individual workspace, without reversing the default, inverting enablement, or broadening scope. It is a single polished sentence with the same meaning as the original.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3448.866,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.021,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:21.349481Z"
+        }
+      ],
+      "example_id": "jcv2-11-b",
+      "expected": {
+        "rubric": "The response must preserve both the default-off state and administrators' ability to enable the feature per individual workspace. It must not reverse the default, convert enablement into disablement, or broaden the scope beyond per-workspace control."
+      },
+      "failures": [],
+      "input": "Rewrite this configuration note as one polished sentence without changing its meaning: The feature is disabled by default, but administrators can enable it for individual workspaces.",
+      "latency_ms": 2954.007,
+      "metadata": {
+        "challenge_family": "semantic_preservation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The feature starts disabled, and administrators can enable it only across the entire organization.",
+        "pair_id": "jcv2-pair-11",
+        "slices": {
+          "challenge_family": "semantic_preservation"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The feature starts disabled, and administrators can enable it only across the entire organization.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2953.602,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:21.349652Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2847.0,
+              "duration_ms": 2176.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.00342,
+              "provider_reported_usage_cost_usd": 0.00342,
+              "request_id": "e3d7d833-e677-4798-b1fa-0cd942be4fbc",
+              "requested_model": "sonnet",
+              "session_id": "7b63def4-7fea-4c39-94e6-fdec2a3fdaea",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2151.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The original states administrators can enable the feature for individual workspaces, but the candidate output changes this to enabling 'only across the entire organization,' broadening the scope beyond per-workspace control and reversing the intended meaning.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.00342,
+              "input_tokens": 435,
+              "output_tokens": 91,
+              "total_tokens": 526
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The original states administrators can enable the feature for individual workspaces, but the candidate output changes this to enabling 'only across the entire organization,' broadening the scope beyond per-workspace control and reversing the intended meaning.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2953.82,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.026,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:23.888532Z"
+        }
+      ],
+      "example_id": "jcv2-12-a",
+      "expected": {
+        "rubric": "The response must be one sentence and preserve all four statuses: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It must distinguish drafting from testing and must not imply the rollback plan was validated."
+      },
+      "failures": [],
+      "input": "Write one sentence containing all of these status facts: tests passed; production is not verified; deployment has not begun; the rollback plan is drafted but has not been tested. Do not strengthen any status claim.",
+      "latency_ms": 3285.455,
+      "metadata": {
+        "challenge_family": "multi_constraint_near_miss",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted and tested.",
+        "pair_id": "jcv2-pair-12",
+        "slices": {
+          "challenge_family": "multi_constraint_near_miss"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted and tested.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3284.876,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:23.888720Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3253.0,
+              "duration_ms": 2590.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.004615,
+              "provider_reported_usage_cost_usd": 0.004615,
+              "request_id": "e2fe2e73-eb78-4bf7-a5dc-04c39715fe41",
+              "requested_model": "sonnet",
+              "session_id": "28455b4c-d650-41cc-9e66-7b7cc3e380fc",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2574.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The response contradicts the required fourth status fact. The input specifies the rollback plan is 'drafted but has not been tested,' but the candidate output states 'the rollback plan is drafted and tested,' which directly reverses the untested status into a validated one\u2014an impermissible strengthening of the claim. This violates the rubric's explicit requirement that the response must not imply the rollback plan was validated and must preserve the distinction between drafting and testing.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.004615,
+              "input_tokens": 470,
+              "output_tokens": 162,
+              "total_tokens": 632
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response contradicts the required fourth status fact. The input specifies the rollback plan is 'drafted but has not been tested,' but the candidate output states 'the rollback plan is drafted and tested,' which directly reverses the untested status into a validated one\u2014an impermissible strengthening of the claim. This violates the rubric's explicit requirement that the response must not imply the rollback plan was validated and must preserve the distinction between drafting and testing.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 3285.122,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "success",
+          "started_at": "2026-08-16T18:30:24.303526Z"
+        }
+      ],
+      "example_id": "jcv2-12-b",
+      "expected": {
+        "rubric": "The response must be one sentence and preserve all four statuses: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It must distinguish drafting from testing and must not imply the rollback plan was validated."
+      },
+      "failures": [],
+      "input": "Write one sentence containing all of these status facts: tests passed; production is not verified; deployment has not begun; the rollback plan is drafted but has not been tested. Do not strengthen any status claim.",
+      "latency_ms": 2805.455,
+      "metadata": {
+        "challenge_family": "multi_constraint_near_miss",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted but untested.",
+        "pair_id": "jcv2-pair-12",
+        "slices": {
+          "challenge_family": "multi_constraint_near_miss"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted but untested.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2804.981,
+                "outcome": "success",
+                "started_at": "2026-08-16T18:30:24.303606Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2777.0,
+              "duration_ms": 2178.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.004091,
+              "provider_reported_usage_cost_usd": 0.004091,
+              "request_id": "9384051d-6eab-4164-81de-803cb15cf99f",
+              "requested_model": "sonnet",
+              "session_id": "7a8a28c3-e5c4-49ed-9706-45ad791d6385",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2159.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The output is a single sentence containing all four required status facts: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It clearly distinguishes drafting from testing ('drafted but untested') and does not imply the rollback plan was validated. No claims are strengthened beyond the source facts.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.004091,
+              "input_tokens": 470,
+              "output_tokens": 127,
+              "total_tokens": 597
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The output is a single sentence containing all four required status facts: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It clearly distinguishes drafting from testing ('drafted but untested') and does not imply the rollback plan was validated. No claims are strengthened beyond the source facts.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2805.327,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_challenge_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "response_count": 24,
+      "source": "../artifacts/controlled-responses.run.json",
+      "source_candidate_id": "controlled:judge-challenge-v2",
+      "source_config_fingerprint": "ad811ded8e0f424028354795befddcc7f049d28aecfde94c8316bf465b8da3c1",
+      "source_dataset_checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+      "source_run_id": "20260816T025931.050110Z-ad811ded8e0f",
+      "type": "run_artifact"
+    },
+    "candidate_id": "replay:controlled:judge-challenge-v2@20260816T025931.050110Z-ad811ded8e0f",
+    "completed_at": "2026-08-16T18:30:27.174166Z",
+    "config_fingerprint": "0b7c10ee726c29fb1e1515c19243b99a8f43a7cdc30206bca983fe502baab303",
+    "dataset": {
+      "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+      "dataset_id": "judge-challenge-v2",
+      "example_count": 24,
+      "metadata": {
+        "case_count": 24,
+        "construction_balance": {
+          "intended_fail": 12,
+          "intended_pass": 12,
+          "status": "authorial_construction_only_not_human_reference"
+        },
+        "description": "Controlled paired near-miss responses for testing instruction-following judge discrimination.",
+        "experiment_role": "controlled_judge_challenge_set_not_candidate_model_benchmark",
+        "human_reference": {
+          "annotator_count": 0,
+          "ground_truth_claim": false,
+          "multi_annotator_consensus": false,
+          "status": "unlabeled"
+        },
+        "license": "MIT",
+        "pair_count": 12,
+        "provenance": "Project-authored prompts, rubrics, and frozen responses. These are controlled experiment materials, not organic candidate-model outputs."
+      },
+      "source": "../dataset/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 39756.915,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "1d15566db582dfe1197cf65db9b5ea2fa08a4520",
+      "git_dirty": false,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 0.0,
+        "timeout_seconds": 5.0
+      },
+      "concurrency": 2,
+      "scorer_timeout_seconds": 130.0,
+      "seed": null
+    },
+    "run_id": "20260816T182947.417082Z-0b7c10ee726c",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "candidate": {
+          "dynamic_system_prompt_sections_excluded": true,
+          "executable": "claude",
+          "max_turns": 1,
+          "model": "sonnet",
+          "output_format": "json",
+          "system_prompt": "You are an evaluation judge. Apply only the supplied rubric to the supplied response and return only the requested JSON.",
+          "timeout_seconds": 120.0,
+          "tools_disabled": true,
+          "type": "claude_cli"
+        },
+        "candidate_id": "claude-cli:sonnet",
+        "claim": "judge output is a measurement, not ground truth",
+        "exclude_expected_keys": null,
+        "invocation": {
+          "initial_backoff_seconds": 0.0,
+          "jitter_ratio": 0.0,
+          "max_attempts": 1,
+          "max_backoff_seconds": 0.0,
+          "timeout_seconds": 125.0
+        },
+        "name": "sonnet_challenge_judge",
+        "output_contract": "binary_verdict",
+        "pass_threshold": 0.5,
+        "prompt_payload_fields": [
+          "input",
+          "candidate_output",
+          "rubric"
+        ],
+        "rubric": null,
+        "rubric_key": "rubric",
+        "seed": null,
+        "type": "judge",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T18:29:47.417082Z"
+  }
+}
