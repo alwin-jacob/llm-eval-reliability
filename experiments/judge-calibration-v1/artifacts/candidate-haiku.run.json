@@ -1,0 +1,2206 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 3073.568,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:29.764931Z"
+        }
+      ],
+      "example_id": "jcv1-structured-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object with exactly the keys action and retention_days, action is the string \"archive\", retention_days is the integer 30, and there is no surrounding prose or Markdown.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "archive"
+            },
+            "retention_days": {
+              "const": 30
+            }
+          },
+          "required": [
+            "action",
+            "retention_days"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "action": "archive",
+          "retention_days": 30
+        }
+      },
+      "failures": [
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_schema"
+        },
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_fields"
+        }
+      ],
+      "input": "Return only a JSON object for a file-retention decision. It must have exactly two keys: action with string value \"archive\", and retention_days with integer value 30. Do not add Markdown or commentary.",
+      "latency_ms": 3074.886,
+      "metadata": {
+        "case_description": "Exact-key retention decision JSON object",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2003.0,
+          "duration_ms": 1368.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001429,
+          "provider_reported_usage_cost_usd": 0.001429,
+          "request_id": "b533d05b-6357-4065-aa52-715eee84eb63",
+          "requested_model": "haiku",
+          "session_id": "bed4981f-ef78-48bd-9e34-010a0bd4df79",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1271.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"action\": \"archive\",\n  \"retention_days\": 30\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001429,
+          "input_tokens": 209,
+          "output_tokens": 119,
+          "total_tokens": 328
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_schema"
+          },
+          "latency_ms": 1.071,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "mismatches": [
+              "action",
+              "retention_days"
+            ],
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_fields"
+          },
+          "latency_ms": 0.022,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 3131.125,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:29.768655Z"
+        }
+      ],
+      "example_id": "jcv1-structured-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is a valid JSON array exactly equal to [\"queued\",\"running\",\"done\"], with no surrounding prose or Markdown.",
+        "schema": {
+          "const": [
+            "queued",
+            "running",
+            "done"
+          ],
+          "type": "array"
+        }
+      },
+      "failures": [],
+      "input": "Return only a JSON array containing exactly these three strings in this order: \"queued\", \"running\", \"done\". Do not add a code fence or explanation.",
+      "latency_ms": 3131.669,
+      "metadata": {
+        "case_description": "Ordered three-state JSON array",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2127.0,
+          "duration_ms": 1430.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001297,
+          "provider_reported_usage_cost_usd": 0.001297,
+          "request_id": "46608944-64e7-4061-a306-18bdadf96279",
+          "requested_model": "haiku",
+          "session_id": "2ff56834-94e5-4e0c-9df9-b5fa58207839",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1415.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "[\"queued\", \"running\", \"done\"]",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001297,
+          "input_tokens": 198,
+          "output_tokens": 96,
+          "total_tokens": 294
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "schema_errors": [],
+            "valid_json": true
+          },
+          "failure": null,
+          "latency_ms": 0.354,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.007,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 3550.461,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:32.839863Z"
+        }
+      ],
+      "example_id": "jcv1-structured-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object exactly matching the requested nested window and days values, with no extra keys at either object level and no surrounding text.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "days": {
+              "const": [
+                "mon",
+                "wed"
+              ],
+              "type": "array"
+            },
+            "window": {
+              "additionalProperties": false,
+              "properties": {
+                "end": {
+                  "const": "17:00"
+                },
+                "start": {
+                  "const": "09:00"
+                }
+              },
+              "required": [
+                "start",
+                "end"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "window",
+            "days"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "days": [
+            "mon",
+            "wed"
+          ],
+          "window": {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        }
+      },
+      "failures": [
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_schema"
+        },
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_fields"
+        }
+      ],
+      "input": "Return only JSON describing a support window. Use exactly two top-level keys. window must be an object with start \"09:00\" and end \"17:00\" and no other keys. days must be the array [\"mon\",\"wed\"]. Add nothing outside the JSON.",
+      "latency_ms": 3551.915,
+      "metadata": {
+        "case_description": "Nested support-window JSON with closed schemas",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3262.0,
+          "duration_ms": 2863.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002195,
+          "provider_reported_usage_cost_usd": 0.002195,
+          "request_id": "b7ed6330-507d-4605-b289-26c7d485f2e1",
+          "requested_model": "haiku",
+          "session_id": "c66b0bc0-e401-405d-a4b5-53119f13a79d",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2777.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"window\": {\n    \"start\": \"09:00\",\n    \"end\": \"17:00\"\n  },\n  \"days\": [\"mon\", \"wed\"]\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002195,
+          "input_tokens": 222,
+          "output_tokens": 268,
+          "total_tokens": 490
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_schema"
+          },
+          "latency_ms": 1.258,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "mismatches": [
+              "days",
+              "window"
+            ],
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_fields"
+          },
+          "latency_ms": 0.014,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 2927.163,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:32.900326Z"
+        }
+      ],
+      "example_id": "jcv1-structured-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object with exactly enabled=true, retries=2 as an integer, and mode=\"safe\", without extra fields, prose, or Markdown.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "mode": {
+              "const": "safe"
+            },
+            "retries": {
+              "const": 2
+            }
+          },
+          "required": [
+            "enabled",
+            "retries",
+            "mode"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "enabled": true,
+          "mode": "safe",
+          "retries": 2
+        }
+      },
+      "failures": [
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_schema"
+        },
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_fields"
+        }
+      ],
+      "input": "Return only a JSON object with exactly these fields and values: enabled is true, retries is the integer 2, and mode is the string \"safe\". Do not include any other field or text.",
+      "latency_ms": 2928.263,
+      "metadata": {
+        "case_description": "Typed three-field safety configuration JSON",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3146.0,
+          "duration_ms": 2250.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001793,
+          "provider_reported_usage_cost_usd": 0.001793,
+          "request_id": "3223a272-f0ad-4c83-b7d1-519abc2ebc11",
+          "requested_model": "haiku",
+          "session_id": "bb07b0c3-37c1-44e6-91a6-0e73f6885d85",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2215.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"enabled\": true,\n  \"retries\": 2,\n  \"mode\": \"safe\"\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001793,
+          "input_tokens": 206,
+          "output_tokens": 189,
+          "total_tokens": 395
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_schema"
+          },
+          "latency_ms": 0.892,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "mismatches": [
+              "enabled",
+              "mode",
+              "retries"
+            ],
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_fields"
+          },
+          "latency_ms": 0.014,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.007,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 2290.413,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:35.828619Z"
+        }
+      ],
+      "example_id": "jcv1-exact-01",
+      "expected": {
+        "exact_text": "Mary Anne",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `Mary Anne` with that capitalization, one space, and no quotation marks, explanation, or extra whitespace."
+      },
+      "failures": [],
+      "input": "Convert the name mARy annE to title case. Return exactly the converted name and nothing else.",
+      "latency_ms": 2290.621,
+      "metadata": {
+        "case_description": "Title-case transformation with exact output",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2577.0,
+          "duration_ms": 1579.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001493,
+          "provider_reported_usage_cost_usd": 0.001493,
+          "request_id": "cf557bd6-268e-4acc-99e0-d01a31ef7722",
+          "requested_model": "haiku",
+          "session_id": "479e9562-0b54-49c7-9217-c43e6f8e19ff",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1563.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Mary Anne",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001493,
+          "input_tokens": 186,
+          "output_tokens": 141,
+          "total_tokens": 327
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.026,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "expected": "Mary Anne",
+            "normalization": {
+              "case_sensitive": true,
+              "collapse_whitespace": false,
+              "strip": false
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.019,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 1983.176,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:36.391807Z"
+        }
+      ],
+      "example_id": "jcv1-exact-02",
+      "expected": {
+        "exact_text": "east|north|west",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `east|north|west`, preserving lowercase and separators, with no spaces, Markdown, or commentary."
+      },
+      "failures": [],
+      "input": "Sort the tokens north, west, east alphabetically and join them with vertical bars. Return only the result.",
+      "latency_ms": 1983.35,
+      "metadata": {
+        "case_description": "Sorted tokens with exact delimiter formatting",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2091.0,
+          "duration_ms": 1334.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.00128,
+          "provider_reported_usage_cost_usd": 0.00128,
+          "request_id": "6390d565-9659-4b5a-a293-53171a83abfb",
+          "requested_model": "haiku",
+          "session_id": "72591fc2-93ae-4cbc-977f-a91c738b2d8b",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1295.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "east|north|west",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.00128,
+          "input_tokens": 187,
+          "output_tokens": 96,
+          "total_tokens": 283
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.02,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "expected": "east|north|west",
+            "normalization": {
+              "case_sensitive": true,
+              "collapse_whitespace": false,
+              "strip": false
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 2525.393,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:38.119274Z"
+        }
+      ],
+      "example_id": "jcv1-exact-03",
+      "expected": {
+        "exact_text": "ALPHA_BETA_07",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `ALPHA_BETA_07`, including capitalization and underscores, with no code fence or additional text."
+      },
+      "failures": [],
+      "input": "Transform `alpha beta 7` into uppercase snake case and zero-pad the number to two digits. Return only the transformed identifier.",
+      "latency_ms": 2525.704,
+      "metadata": {
+        "case_description": "Uppercase identifier transformation and zero-padding",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2610.0,
+          "duration_ms": 1850.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001505,
+          "provider_reported_usage_cost_usd": 0.001505,
+          "request_id": "863dfecf-152b-428e-a662-af4c71652acc",
+          "requested_model": "haiku",
+          "session_id": "c49dc883-bd12-48bc-89bc-add1dd8bb511",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1838.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "ALPHA_BETA_07",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001505,
+          "input_tokens": 192,
+          "output_tokens": 140,
+          "total_tokens": 332
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.043,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "expected": "ALPHA_BETA_07",
+            "normalization": {
+              "case_sensitive": true,
+              "collapse_whitespace": false,
+              "strip": false
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.025,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.013,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 2509.461,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:38.375188Z"
+        }
+      ],
+      "example_id": "jcv1-exact-04",
+      "expected": {
+        "exact_text": "Q-19 / pending / Lee",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `Q-19 / pending / Lee`, including case and spaces around each slash, with no explanation or extra whitespace."
+      },
+      "failures": [],
+      "input": "From `ticket=Q-19 status=pending owner=Lee`, return the three values in ticket / status / owner order, separated by ` / `. Return nothing else.",
+      "latency_ms": 2509.632,
+      "metadata": {
+        "case_description": "Field extraction with exact ordering and separators",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2505.0,
+          "duration_ms": 1849.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001482,
+          "provider_reported_usage_cost_usd": 0.001482,
+          "request_id": "849942b2-cf56-4af3-889e-68b7b7cce581",
+          "requested_model": "haiku",
+          "session_id": "487fc5fc-81a7-4408-ac7e-215cbc4bc93a",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1830.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Q-19 / pending / Lee",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001482,
+          "input_tokens": 203,
+          "output_tokens": 133,
+          "total_tokens": 336
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "expected": "Q-19 / pending / Lee",
+            "normalization": {
+              "case_sensitive": true,
+              "collapse_whitespace": false,
+              "strip": false
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 11812.969,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:40.645034Z"
+        }
+      ],
+      "example_id": "jcv1-multi-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line of exactly 12 whitespace-separated words, includes retry and duplicate, excludes database, and gives a coherent explanation that idempotency makes repeated operations safe or prevents duplicate effects.",
+        "text_constraints": {
+          "exact_line_count": 1,
+          "exact_word_count": 12,
+          "forbidden_terms": [
+            "database"
+          ],
+          "required_terms": [
+            "retry",
+            "duplicate"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "In exactly 12 whitespace-separated words on one line, explain why idempotency helps retries. Include the words `retry` and `duplicate`. Do not use the word `database`.",
+      "latency_ms": 11813.158,
+      "metadata": {
+        "case_description": "Semantic explanation under word and vocabulary constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 11584.0,
+          "duration_ms": 11031.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.006845,
+          "provider_reported_usage_cost_usd": 0.006845,
+          "request_id": "0a588747-a7c7-451a-87b2-82d45de0e7c6",
+          "requested_model": "haiku",
+          "session_id": "a87c94ae-1292-423c-91dc-ec253b426666",
+          "transport": "claude_code_cli",
+          "ttft_ms": 10899.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Idempotency enables safe retry operations because duplicate requests always produce identical results.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.006845,
+          "input_tokens": 207,
+          "output_tokens": 1198,
+          "total_tokens": 1405
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "checks": {
+              "exact_line_count": true,
+              "exact_word_count": true,
+              "forbidden_terms": true,
+              "required_terms": true
+            },
+            "constraints": {
+              "exact_line_count": 1,
+              "exact_word_count": 12,
+              "forbidden_terms": [
+                "database"
+              ],
+              "required_terms": [
+                "retry",
+                "duplicate"
+              ]
+            },
+            "observed_line_count": 1,
+            "observed_word_count": 12
+          },
+          "failure": null,
+          "latency_ms": 0.02,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 4261.592,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:40.884850Z"
+        }
+      ],
+      "example_id": "jcv1-multi-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if there are exactly three lines, every line starts with `- `, the response contains cache, latency, and cost, no colon appears, and each line describes a practical monitoring check rather than listing disconnected words.",
+        "text_constraints": {
+          "exact_line_count": 3,
+          "forbidden_terms": [
+            ":"
+          ],
+          "line_prefix": "- ",
+          "required_terms": [
+            "cache",
+            "latency",
+            "cost"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "Give exactly three one-line monitoring checks for an LLM service. Every line must begin with `- `. Across the response include the words cache, latency, and cost. Do not use a colon anywhere.",
+      "latency_ms": 4261.956,
+      "metadata": {
+        "case_description": "Three monitoring bullets with lexical and punctuation constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 4256.0,
+          "duration_ms": 3632.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002535,
+          "provider_reported_usage_cost_usd": 0.002535,
+          "request_id": "5dab7215-e19e-44f0-aaee-da684fe7c610",
+          "requested_model": "haiku",
+          "session_id": "48d4b37d-39ce-42e5-beb6-2f71ab8aed43",
+          "transport": "claude_code_cli",
+          "ttft_ms": 3492.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "- Monitor cache hit rate to measure performance improvement from prompt caching\n- Track request latency percentiles to ensure response times meet SLA targets\n- Alert on cost per token to identify unexpected spending increases",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002535,
+          "input_tokens": 212,
+          "output_tokens": 337,
+          "total_tokens": 549
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.044,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.016,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "checks": {
+              "exact_line_count": true,
+              "forbidden_terms": true,
+              "line_prefix": true,
+              "required_terms": true
+            },
+            "constraints": {
+              "exact_line_count": 3,
+              "forbidden_terms": [
+                ":"
+              ],
+              "line_prefix": "- ",
+              "required_terms": [
+                "cache",
+                "latency",
+                "cost"
+              ]
+            },
+            "observed_line_count": 3,
+            "observed_word_count": 35
+          },
+          "failure": null,
+          "latency_ms": 0.067,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 7160.991,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:45.146865Z"
+        }
+      ],
+      "example_id": "jcv1-multi-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line, begins with `DECISION:`, ends with `approved.`, contains risk and rollback, contains no digit, and coherently makes approval conditional on those safeguards.",
+        "text_constraints": {
+          "ends_with": "approved.",
+          "exact_line_count": 1,
+          "forbidden_terms": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "required_terms": [
+            "risk",
+            "rollback"
+          ],
+          "starts_with": "DECISION:"
+        }
+      },
+      "failures": [],
+      "input": "Write one line that begins exactly with `DECISION:` and ends exactly with `approved.` Include both risk and rollback. Use no digits. The line should communicate that approval depends on those safeguards.",
+      "latency_ms": 7161.338,
+      "metadata": {
+        "case_description": "Conditional decision statement with boundary and content constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 7160.0,
+          "duration_ms": 6508.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.004079,
+          "provider_reported_usage_cost_usd": 0.004079,
+          "request_id": "2c7b1943-6d18-499b-8190-14460bca1d4f",
+          "requested_model": "haiku",
+          "session_id": "5e35eab6-81ab-47a2-8d4f-258b2f79a4a4",
+          "transport": "claude_code_cli",
+          "ttft_ms": 6390.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "DECISION: Approval depends on completing a thorough risk assessment and establishing a tested rollback protocol as essential safeguards before this can be approved.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.004079,
+          "input_tokens": 209,
+          "output_tokens": 643,
+          "total_tokens": 852
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.038,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.013,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.013,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "checks": {
+              "ends_with": true,
+              "exact_line_count": true,
+              "forbidden_terms": true,
+              "required_terms": true,
+              "starts_with": true
+            },
+            "constraints": {
+              "ends_with": "approved.",
+              "exact_line_count": 1,
+              "forbidden_terms": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ],
+              "required_terms": [
+                "risk",
+                "rollback"
+              ],
+              "starts_with": "DECISION:"
+            },
+            "observed_line_count": 1,
+            "observed_word_count": 23
+          },
+          "failure": null,
+          "latency_ms": 0.055,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 6007.918,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:52.308254Z"
+        }
+      ],
+      "example_id": "jcv1-multi-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line of exactly 18 whitespace-separated words, contains bounded and backoff, contains neither infinite nor forever, and describes a coherent retry policy that limits attempts or duration.",
+        "text_constraints": {
+          "exact_line_count": 1,
+          "exact_word_count": 18,
+          "forbidden_terms": [
+            "infinite",
+            "forever"
+          ],
+          "required_terms": [
+            "bounded",
+            "backoff"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "In exactly 18 whitespace-separated words on one line, describe a safe retry policy. Include `bounded` and `backoff`. Do not use `infinite` or `forever`.",
+      "latency_ms": 6008.223,
+      "metadata": {
+        "case_description": "Safe retry policy under length and vocabulary constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 6079.0,
+          "duration_ms": 5365.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.003814,
+          "provider_reported_usage_cost_usd": 0.003814,
+          "request_id": "decf7837-294b-46c1-8883-992339074f12",
+          "requested_model": "haiku",
+          "session_id": "7decc7d3-5527-43e7-9ef6-238720f39f3b",
+          "transport": "claude_code_cli",
+          "ttft_ms": 5341.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "A safe retry policy implements bounded retries with exponential backoff to prevent overwhelming servers while recovering from failures",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.003814,
+          "input_tokens": 204,
+          "output_tokens": 594,
+          "total_tokens": 798
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.034,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "checks": {
+              "exact_line_count": true,
+              "exact_word_count": true,
+              "forbidden_terms": true,
+              "required_terms": true
+            },
+            "constraints": {
+              "exact_line_count": 1,
+              "exact_word_count": 18,
+              "forbidden_terms": [
+                "infinite",
+                "forever"
+              ],
+              "required_terms": [
+                "bounded",
+                "backoff"
+              ]
+            },
+            "observed_line_count": 1,
+            "observed_word_count": 18
+          },
+          "failure": null,
+          "latency_ms": 0.038,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 6026.279,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:52.458217Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response empathetically acknowledges the user's frustration, includes an apology, avoids blaming the user, does not claim certain restoration, and does not promise an unverified outcome. Helpful next steps are allowed if framed without guarantees."
+      },
+      "failures": [],
+      "input": "A user says: `Your editor lost my draft and I am furious.` Write a brief support response that acknowledges the frustration and apologizes. Do not blame the user, claim the draft can definitely be restored, or promise an outcome you cannot verify.",
+      "latency_ms": 6026.435,
+      "metadata": {
+        "case_description": "Empathetic support without blame or unsupported promises",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 6084.0,
+          "duration_ms": 5421.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.003014,
+          "provider_reported_usage_cost_usd": 0.003014,
+          "request_id": "de84097a-2ebe-4a2a-8420-fb661e9cb424",
+          "requested_model": "haiku",
+          "session_id": "f5401e31-ea28-4fa6-8c42-b4984ac46198",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4212.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "---\n\n**Subject: We're Sorry About Your Lost Draft**\n\nThank you for reaching out, and I'm truly sorry to hear that your draft was lost. I completely understand your frustration\u2014that's a stressful experience, and we take it seriously.\n\nI'd like to help look into this. If you can share some details\u2014such as when you last worked on the draft and what application you were using\u2014our team can investigate what may have happened and explore what recovery options might be available.\n\nWe appreciate your patience, and I'm here to help however we can.\n\n---",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.003014,
+          "input_tokens": 219,
+          "output_tokens": 430,
+          "total_tokens": 649
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 3570.142,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:58.316522Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if one concise sentence preserves that archiving after 90 days is optional, preserves that legal-hold channels cannot be archived, and does not imply that all inactive channels must be archived."
+      },
+      "failures": [],
+      "input": "Policy text: `Teams may archive inactive channels after 90 days. Channels under a legal hold must not be archived.` Summarize the policy in one concise sentence without turning the optional archive permission into a requirement.",
+      "latency_ms": 3570.435,
+      "metadata": {
+        "case_description": "Policy summary preserving permission versus obligation",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3695.0,
+          "duration_ms": 2770.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.00194,
+          "provider_reported_usage_cost_usd": 0.00194,
+          "request_id": "375261d1-e1e9-4f8d-b1ab-070abac664da",
+          "requested_model": "haiku",
+          "session_id": "f99ce32a-a63e-4b45-a9c6-9f2ff27ddf76",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2751.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Teams may archive inactive channels after 90 days, except those under legal hold.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.00194,
+          "input_tokens": 212,
+          "output_tokens": 219,
+          "total_tokens": 431
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.037,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 4983.94,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:12:58.484680Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response has two sentences, states that unit tests passed, clearly says production verification or deployment remains incomplete, does not imply resolution, and introduces no unsupported risk or status claim."
+      },
+      "failures": [],
+      "input": "Current state: a proposed fix passed unit tests, but production verification has not begun. Write a two-sentence stakeholder update that conveys progress and remaining uncertainty without implying the issue is resolved or deployed and without inventing new risks.",
+      "latency_ms": 4984.411,
+      "metadata": {
+        "case_description": "Calibrated status update without premature resolution",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 5127.0,
+          "duration_ms": 4348.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002632,
+          "provider_reported_usage_cost_usd": 0.002632,
+          "request_id": "b71abddb-2e50-4988-9c97-4baa8703a61f",
+          "requested_model": "haiku",
+          "session_id": "c69f5161-819e-4fbe-89f9-d855dafbe8d0",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4109.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "The proposed fix has successfully passed unit tests, demonstrating that the solution functions as designed in isolated conditions. Production verification will begin next, which is necessary to confirm the fix's effectiveness in the live environment.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002632,
+          "input_tokens": 213,
+          "output_tokens": 356,
+          "total_tokens": 569
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.083,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.028,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 5946.583,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:13:01.887009Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the rewrite preserves that incidents fell 20% after the dashboard launch, explicitly avoids or qualifies the causal conclusion, and does not assert any unobserved alternative explanation as fact."
+      },
+      "failures": [],
+      "input": "Rewrite this unsupported causal claim so it states only what the evidence supports: `After the new dashboard launched, incidents fell 20%, so the dashboard caused the decrease.` Preserve the observed timing and 20% association, reject the causal conclusion, and do not invent an alternative cause.",
+      "latency_ms": 5946.88,
+      "metadata": {
+        "case_description": "Causal-claim correction preserving observed association",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 5809.0,
+          "duration_ms": 5200.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002986,
+          "provider_reported_usage_cost_usd": 0.002986,
+          "request_id": "e6d17cb7-8699-48e0-a0f1-4c70c52c646d",
+          "requested_model": "haiku",
+          "session_id": "9c8b394d-0196-4b6e-a675-682df589e723",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4649.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "# Rewritten Claim\n\n\"After the new dashboard launched, incidents fell 20%.\"\n\nThis version preserves the observed timing and the 20% association while removing the unsupported causal inference. It states only what the evidence directly shows\u2014a temporal relationship and a measured decrease\u2014without concluding that the dashboard caused the decrease.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002986,
+          "input_tokens": 230,
+          "output_tokens": 418,
+          "total_tokens": 648
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.029,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.exact_text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_constraints",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.text_constraints is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "text_constraints",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "dynamic_system_prompt_sections_excluded": true,
+      "executable": "claude",
+      "max_turns": 1,
+      "model": "haiku",
+      "output_format": "json",
+      "system_prompt": "You are a model under evaluation. Answer only the user request.",
+      "timeout_seconds": 120.0,
+      "tools_disabled": true,
+      "type": "claude_cli"
+    },
+    "candidate_id": "claude-cli:haiku",
+    "completed_at": "2026-08-16T02:13:07.833983Z",
+    "config_fingerprint": "3d9596d782e493a27b83954cbc74a852bbb8f3a08971cd9a9e8380b02b81fc04",
+    "dataset": {
+      "checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+      "dataset_id": "judge-calibration-v1",
+      "example_count": 16,
+      "metadata": {
+        "description": "Instruction-following cases for comparing a future LLM judge with one human reference annotator.",
+        "label_provenance": {
+          "annotator_count": 0,
+          "ground_truth_claim": false,
+          "human_evaluation": false,
+          "multi_annotator_consensus": false,
+          "status": "unlabeled"
+        },
+        "license": "MIT",
+        "provenance": "Project-authored prompts and rubrics; no user, production, or model-generated examples."
+      },
+      "source": "../dataset/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 38069.306,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "28183e8f491044f6211d27fa62de68e3780bae99",
+      "git_dirty": true,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 0.0,
+        "timeout_seconds": 125.0
+      },
+      "concurrency": 2,
+      "scorer_timeout_seconds": 5.0,
+      "seed": null
+    },
+    "run_id": "20260816T021229.764598Z-3d9596d782e4",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "expected_key": "schema",
+        "name": "json_schema",
+        "schema": null,
+        "type": "json_schema",
+        "version": "1"
+      },
+      {
+        "expected_key": "values",
+        "name": "json_fields",
+        "type": "json_fields",
+        "version": "1"
+      },
+      {
+        "case_sensitive": true,
+        "collapse_whitespace": false,
+        "expected_key": "exact_text",
+        "name": "exact_constraints",
+        "strip": false,
+        "type": "exact_match",
+        "version": "1"
+      },
+      {
+        "case_sensitive": false,
+        "expected_key": "text_constraints",
+        "name": "text_constraints",
+        "type": "text_constraints",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T02:12:29.764598Z"
+  }
+}

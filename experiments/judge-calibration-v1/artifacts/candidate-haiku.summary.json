@@ -1,0 +1,515 @@
+{
+  "candidate_id": "claude-cli:haiku",
+  "counts": {
+    "completed": 16,
+    "failed": 0,
+    "partial": 0,
+    "total": 16
+  },
+  "dataset": {
+    "checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+    "dataset_id": "judge-calibration-v1",
+    "example_count": 16,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {
+      "malformed_json": 6
+    },
+    "by_origin": {
+      "model": 6
+    },
+    "by_stage": {
+      "scorer:json_fields": 3,
+      "scorer:json_schema": 3
+    },
+    "total": 6
+  },
+  "latency_ms": {
+    "count": 16,
+    "max": 11813.158,
+    "mean": 4485.555,
+    "min": 1983.35,
+    "p50": 3551.915,
+    "p95": 11813.158
+  },
+  "reliability": {
+    "attempts_total": 16,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 1.0,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T021229.764598Z-3d9596d782e4",
+  "schema_version": "1.0",
+  "scorers": {
+    "exact_constraints": {
+      "counts": {
+        "error": 0,
+        "fail": 0,
+        "measured": 4,
+        "pass": 4,
+        "skipped": 12
+      },
+      "coverage": 0.25,
+      "latency_ms": {
+        "count": 16,
+        "max": 0.028,
+        "mean": 0.013,
+        "min": 0.005,
+        "p50": 0.011,
+        "p95": 0.028
+      },
+      "mean_score": 1.0,
+      "pass_rate": 1.0
+    },
+    "json_fields": {
+      "counts": {
+        "error": 0,
+        "fail": 3,
+        "measured": 3,
+        "pass": 0,
+        "skipped": 13
+      },
+      "coverage": 0.1875,
+      "latency_ms": {
+        "count": 16,
+        "max": 0.022,
+        "mean": 0.011,
+        "min": 0.005,
+        "p50": 0.011,
+        "p95": 0.022
+      },
+      "mean_score": 0.0,
+      "pass_rate": 0.0
+    },
+    "json_schema": {
+      "counts": {
+        "error": 0,
+        "fail": 3,
+        "measured": 4,
+        "pass": 1,
+        "skipped": 12
+      },
+      "coverage": 0.25,
+      "latency_ms": {
+        "count": 16,
+        "max": 1.258,
+        "mean": 0.249,
+        "min": 0.017,
+        "p50": 0.037,
+        "p95": 1.258
+      },
+      "mean_score": 0.25,
+      "pass_rate": 0.25
+    },
+    "text_constraints": {
+      "counts": {
+        "error": 0,
+        "fail": 0,
+        "measured": 4,
+        "pass": 4,
+        "skipped": 12
+      },
+      "coverage": 0.25,
+      "latency_ms": {
+        "count": 16,
+        "max": 0.067,
+        "mean": 0.017,
+        "min": 0.005,
+        "p50": 0.009,
+        "p95": 0.067
+      },
+      "mean_score": 1.0,
+      "pass_rate": 1.0
+    }
+  },
+  "slices": [
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "exact_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 4,
+            "pass": 4,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.025,
+            "mean": 0.016,
+            "min": 0.01,
+            "p50": 0.011,
+            "p95": 0.025
+          },
+          "mean_score": 1.0,
+          "pass_rate": 1.0
+        },
+        "json_fields": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.012,
+            "mean": 0.008,
+            "min": 0.006,
+            "p50": 0.006,
+            "p95": 0.012
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_schema": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.043,
+            "mean": 0.027,
+            "min": 0.018,
+            "p50": 0.02,
+            "p95": 0.043
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "text_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.013,
+            "mean": 0.009,
+            "min": 0.006,
+            "p50": 0.006,
+            "p95": 0.013
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "exact_constraints"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "exact_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.016,
+            "mean": 0.012,
+            "min": 0.006,
+            "p50": 0.012,
+            "p95": 0.016
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_fields": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.015,
+            "mean": 0.011,
+            "min": 0.005,
+            "p50": 0.011,
+            "p95": 0.015
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_schema": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.044,
+            "mean": 0.033,
+            "min": 0.017,
+            "p50": 0.034,
+            "p95": 0.044
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "text_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 4,
+            "pass": 4,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.067,
+            "mean": 0.045,
+            "min": 0.02,
+            "p50": 0.038,
+            "p95": 0.067
+          },
+          "mean_score": 1.0,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "multi_constraint"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "exact_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.028,
+            "mean": 0.014,
+            "min": 0.005,
+            "p50": 0.011,
+            "p95": 0.028
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_fields": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.015,
+            "mean": 0.011,
+            "min": 0.005,
+            "p50": 0.01,
+            "p95": 0.015
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_schema": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.083,
+            "mean": 0.042,
+            "min": 0.018,
+            "p50": 0.029,
+            "p95": 0.083
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "text_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.012,
+            "mean": 0.009,
+            "min": 0.005,
+            "p50": 0.01,
+            "p95": 0.012
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "semantic_constraint"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "exact_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.015,
+            "mean": 0.011,
+            "min": 0.007,
+            "p50": 0.01,
+            "p95": 0.015
+          },
+          "mean_score": null,
+          "pass_rate": null
+        },
+        "json_fields": {
+          "counts": {
+            "error": 0,
+            "fail": 3,
+            "measured": 3,
+            "pass": 0,
+            "skipped": 1
+          },
+          "coverage": 0.75,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.022,
+            "mean": 0.015,
+            "min": 0.01,
+            "p50": 0.014,
+            "p95": 0.022
+          },
+          "mean_score": 0.0,
+          "pass_rate": 0.0
+        },
+        "json_schema": {
+          "counts": {
+            "error": 0,
+            "fail": 3,
+            "measured": 4,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 1.258,
+            "mean": 0.894,
+            "min": 0.354,
+            "p50": 0.892,
+            "p95": 1.258
+          },
+          "mean_score": 0.25,
+          "pass_rate": 0.25
+        },
+        "text_constraints": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 4
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.008,
+            "mean": 0.007,
+            "min": 0.006,
+            "p50": 0.006,
+            "p95": 0.008
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "structured_output"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 16,
+      "total": 0.040319
+    },
+    "input_tokens": {
+      "available_count": 16,
+      "total": 3309
+    },
+    "output_tokens": {
+      "available_count": 16,
+      "total": 5377
+    },
+    "responses": 16,
+    "total_tokens": {
+      "available_count": 16,
+      "total": 8686
+    }
+  }
+}

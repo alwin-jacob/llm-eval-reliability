@@ -2,7 +2,7 @@
   "schema_version": "1",
   "experiment_id": "judge-calibration-v1",
   "research_question": "How reliably can an LLM judge detect subtle instruction-following failures, and where does it disagree with a human reference?",
-  "status": "designed_unlabeled",
+  "status": "candidate_generated_unlabeled",
   "sample_size": 16,
   "slices": {
     "structured_output": 4,
@@ -13,7 +13,8 @@
   "candidate": {
     "transport": "claude_code_cli",
     "requested_model": "haiku",
-    "full_experiment_outputs_collected": 0
+    "canonical_model": "claude-haiku-4-5-20251001",
+    "full_experiment_outputs_collected": 16
   },
   "future_judge": {
     "transport": "claude_code_cli",
@@ -40,9 +41,72 @@
     "judge_calls_made": 0,
     "limitations": "One transport-smoke case is not an estimate of candidate or judge reliability."
   },
+  "candidate_generation": {
+    "status": "completed",
+    "run_id": "20260816T021229.764598Z-3d9596d782e4",
+    "started_at": "2026-08-16T02:12:29.764598Z",
+    "completed_at": "2026-08-16T02:13:07.833983Z",
+    "dataset_checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+    "config_fingerprint_sha256": "3d9596d782e493a27b83954cbc74a852bbb8f3a08971cd9a9e8380b02b81fc04",
+    "requested_examples": 16,
+    "candidate_calls": 16,
+    "attempts_total": 16,
+    "max_attempts": 1,
+    "concurrency": 2,
+    "transport_successes": 16,
+    "transport_failures": 0,
+    "judge_calls": 0,
+    "human_labels": 0,
+    "usage": {
+      "input_tokens": 3309,
+      "output_tokens": 5377,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "provider_reported_usage_cost_usd": 0.040319,
+      "cost_interpretation": "provider_usage_accounting_not_billing_evidence"
+    },
+    "latency_ms": {
+      "count": 16,
+      "min": 1983.35,
+      "mean": 4485.555,
+      "p50": 3551.915,
+      "p95": 11813.158,
+      "max": 11813.158
+    },
+    "ttft_ms": {
+      "count": 16,
+      "min": 1271.0,
+      "mean": 3502.9375,
+      "p50": 2751.0,
+      "p95": 10899.0,
+      "max": 10899.0
+    },
+    "deterministic_case_outcomes": {
+      "structured_output": {"n": 4, "pass": 1, "fail": 3, "unmeasured": 0},
+      "exact_constraints": {"n": 4, "pass": 4, "fail": 0, "unmeasured": 0},
+      "multi_constraint": {"n": 4, "pass": 4, "fail": 0, "unmeasured": 0},
+      "semantic_constraint": {"n": 4, "pass": 0, "fail": 0, "unmeasured": 4}
+    },
+    "malformed_output_examples": [
+      "jcv1-structured-01",
+      "jcv1-structured-03",
+      "jcv1-structured-04"
+    ],
+    "artifacts": {
+      "run": "artifacts/candidate-haiku.run.json",
+      "run_sha256": "01be29f9219100bfa5c583452b08e3edfed60d4b76206b2bb1a73a66f96e4b74",
+      "summary": "artifacts/candidate-haiku.summary.json",
+      "summary_sha256": "28ec3b4c033c66be681ea7143e9fb05c6ba2aa9c18e78eb69e866c91459721d8"
+    }
+  },
   "planned_real_model_calls": {
     "candidate": 16,
     "judge": 16,
     "total": 32
+  },
+  "completed_real_model_calls": {
+    "candidate_setup_smoke": 1,
+    "candidate_full_run": 16,
+    "judge": 0
   }
 }
