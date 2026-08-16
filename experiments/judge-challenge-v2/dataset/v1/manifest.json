@@ -1,0 +1,23 @@
+{
+  "schema_version": "1",
+  "dataset_id": "judge-challenge-v2",
+  "version": "1.0.0",
+  "data_file": "data.jsonl",
+  "description": "Controlled paired near-miss responses for testing instruction-following judge discrimination.",
+  "provenance": "Project-authored prompts, rubrics, and frozen responses. These are controlled experiment materials, not organic candidate-model outputs.",
+  "experiment_role": "controlled_judge_challenge_set_not_candidate_model_benchmark",
+  "pair_count": 12,
+  "case_count": 24,
+  "construction_balance": {
+    "intended_pass": 12,
+    "intended_fail": 12,
+    "status": "authorial_construction_only_not_human_reference"
+  },
+  "human_reference": {
+    "status": "unlabeled",
+    "annotator_count": 0,
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false
+  },
+  "license": "MIT"
+}

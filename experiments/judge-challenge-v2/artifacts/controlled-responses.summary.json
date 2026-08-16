@@ -1,0 +1,464 @@
+{
+  "candidate_id": "controlled:judge-challenge-v2",
+  "counts": {
+    "completed": 24,
+    "failed": 0,
+    "partial": 0,
+    "total": 24
+  },
+  "dataset": {
+    "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+    "dataset_id": "judge-challenge-v2",
+    "example_count": 24,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {},
+    "by_origin": {},
+    "by_stage": {},
+    "total": 0
+  },
+  "latency_ms": {
+    "count": 24,
+    "max": 0.252,
+    "mean": 0.147,
+    "min": 0.092,
+    "p50": 0.129,
+    "p95": 0.25
+  },
+  "reliability": {
+    "attempts_total": 24,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 1.0,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T025931.050110Z-ad811ded8e0f",
+  "schema_version": "1.0",
+  "scorers": {
+    "materialization_only": {
+      "counts": {
+        "error": 0,
+        "fail": 0,
+        "measured": 0,
+        "pass": 0,
+        "skipped": 24
+      },
+      "coverage": 0.0,
+      "latency_ms": {
+        "count": 24,
+        "max": 0.011,
+        "mean": 0.004,
+        "min": 0.003,
+        "p50": 0.003,
+        "p95": 0.009
+      },
+      "mean_score": null,
+      "pass_rate": null
+    }
+  },
+  "slices": [
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.004,
+            "mean": 0.004,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.004
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "causal_overclaim"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.003,
+            "mean": 0.003,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.003
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "conditionality"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.003,
+            "mean": 0.003,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.003
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "exception_scope"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.004,
+            "mean": 0.004,
+            "min": 0.004,
+            "p50": 0.004,
+            "p95": 0.004
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "instruction_priority"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.003,
+            "mean": 0.003,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.003
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "multi_constraint_near_miss"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.011,
+            "mean": 0.008,
+            "min": 0.005,
+            "p50": 0.005,
+            "p95": 0.011
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "negation_scope"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.003,
+            "mean": 0.003,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.003
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "numerical_boundary"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.009,
+            "mean": 0.007,
+            "min": 0.005,
+            "p50": 0.005,
+            "p95": 0.009
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "permission_vs_obligation"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.005,
+            "mean": 0.004,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.005
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "quantifier_shift"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.004,
+            "mean": 0.004,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.004
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "semantic_preservation"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.004,
+            "mean": 0.004,
+            "min": 0.003,
+            "p50": 0.003,
+            "p95": 0.004
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "uncertainty_overclaim"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "materialization_only": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 0,
+            "pass": 0,
+            "skipped": 2
+          },
+          "coverage": 0.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.007,
+            "mean": 0.005,
+            "min": 0.004,
+            "p50": 0.004,
+            "p95": 0.007
+          },
+          "mean_score": null,
+          "pass_rate": null
+        }
+      },
+      "value": "unsupported_detail"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 0,
+      "total": null
+    },
+    "input_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "output_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "responses": 24,
+    "total_tokens": {
+      "available_count": 0,
+      "total": null
+    }
+  }
+}

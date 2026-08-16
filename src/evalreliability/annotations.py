@@ -278,6 +278,11 @@ def analyze_human_referenced_run(
         if judge_run is not None and judge_scorer is not None
         else None
     )
+    judge_error_rationales = (
+        _judge_error_rationale_analysis(human, judge, judge_run, judge_scorer)
+        if judge_run is not None and judge_scorer is not None
+        else None
+    )
 
     slices: list[dict[str, Any]] = []
     slice_values = sorted(
@@ -333,6 +338,7 @@ def analyze_human_referenced_run(
         "human": human_summary,
         "judge": judge_summary,
         "judge_execution": judge_execution,
+        "judge_error_rationales": judge_error_rationales,
         "judge_vs_human": judge_agreement,
         "per_slice": slices,
         "deterministic_scorer_vs_human": {
@@ -389,12 +395,18 @@ def _judge_execution_summary(run: EvaluationRun, scorer_name: str) -> dict[str, 
     requested_models = _metadata_string_values(metadata_records, "requested_model")
     canonical_models = _metadata_string_values(metadata_records, "canonical_model")
     ttft_values = _metadata_numeric_values(metadata_records, "ttft_ms")
+    invalid_output_codes = {"judge_invalid_json", "judge_invalid_output"}
+    invalid_output_count = sum(
+        score.failure is not None and score.failure.code in invalid_output_codes for score in scores
+    )
 
     return {
         "requested_examples": len(run.examples),
         "scorer_results": len(scores),
         "valid_verdicts": sum(score.passed is not None for score in scores),
         "invalid_or_failed_verdicts": sum(score.passed is None for score in scores),
+        "invalid_output_count": invalid_output_count,
+        "invalid_output_rate": (round(invalid_output_count / len(scores), 6) if scores else None),
         "raw_judge_outputs_preserved": sum(
             isinstance(score.details.get("judge_output"), str) for score in scores
         ),
@@ -407,6 +419,8 @@ def _judge_execution_summary(run: EvaluationRun, scorer_name: str) -> dict[str, 
             {
                 "example_id": example_id,
                 "code": score.failure.code if score.failure is not None else "missing_verdict",
+                "message": score.failure.message if score.failure is not None else None,
+                "raw_judge_output": score.details.get("judge_output"),
             }
             for example_id, score in score_records
             if score.passed is None
@@ -430,6 +444,53 @@ def _judge_execution_summary(run: EvaluationRun, scorer_name: str) -> dict[str, 
         "latency_ms": _numeric_summary([score.latency_ms for score in scores]),
         "ttft_ms": _numeric_summary(ttft_values),
         "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+    }
+
+
+def _judge_error_rationale_analysis(
+    human: dict[str, str],
+    judge: dict[str, str],
+    run: EvaluationRun,
+    scorer_name: str,
+) -> dict[str, Any]:
+    scores = {
+        example.example_id: score
+        for example in run.examples
+        for score in example.scores
+        if score.scorer_name == scorer_name
+    }
+    disagreements = []
+    for example_id in sorted(set(human) & set(judge)):
+        if human[example_id] == judge[example_id]:
+            continue
+        score = scores[example_id]
+        disagreements.append(
+            {
+                "example_id": example_id,
+                "human_label": human[example_id],
+                "judge_label": judge[example_id],
+                "error_type": (
+                    "false_positive" if human[example_id] == "fail" else "false_negative"
+                ),
+                "judge_rationale": score.details.get("rationale"),
+                "raw_judge_output": score.details.get("judge_output"),
+            }
+        )
+    invalid_results = [
+        {
+            "example_id": example_id,
+            "code": score.failure.code if score.failure is not None else "missing_verdict",
+            "message": score.failure.message if score.failure is not None else None,
+            "raw_judge_output": score.details.get("judge_output"),
+        }
+        for example_id, score in sorted(scores.items())
+        if score.passed is None
+    ]
+    return {
+        "valid_disagreement_count": len(disagreements),
+        "valid_disagreements": disagreements,
+        "invalid_result_count": len(invalid_results),
+        "invalid_results": invalid_results,
     }
 
 
@@ -585,10 +646,20 @@ def _agreement_report(reference: dict[str, str], predicted: dict[str, str]) -> d
     agreement_count = sum(reference[item] == predicted[item] for item in paired_ids)
     accuracy = round(agreement_count / sample_size, 6) if sample_size else None
     kappa = _cohen_kappa(reference, predicted, paired_ids)
+    accuracy_by_reference_label = {}
+    for label in ("pass", "fail"):
+        label_ids = [example_id for example_id in paired_ids if reference[example_id] == label]
+        correct = sum(predicted[example_id] == label for example_id in label_ids)
+        accuracy_by_reference_label[label] = {
+            "sample_size": len(label_ids),
+            "correct": correct,
+            "accuracy": round(correct / len(label_ids), 6) if label_ids else None,
+        }
     return {
         "sample_size": sample_size,
         "accuracy": accuracy,
         "cohen_kappa": kappa,
+        "accuracy_by_reference_label": accuracy_by_reference_label,
         "confusion_matrix": confusion,
         "false_positives": {
             "sample_size": sample_size,

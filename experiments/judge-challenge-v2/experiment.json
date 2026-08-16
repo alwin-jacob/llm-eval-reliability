@@ -1,0 +1,65 @@
+{
+  "schema_version": "1",
+  "experiment_id": "judge-challenge-v2",
+  "purpose": "Controlled judge challenge set for subtle near-miss discrimination; not a benchmark of candidate-model quality.",
+  "status": "designed_unlabeled_not_judged",
+  "dataset": {
+    "dataset_id": "judge-challenge-v2",
+    "version": "1.0.0",
+    "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+    "case_count": 24,
+    "pair_count": 12,
+    "challenge_family_count": 12,
+    "response_origin": "project_authored_controlled_challenge_set"
+  },
+  "construction": {
+    "intended_pass": 12,
+    "intended_fail": 12,
+    "label_role": "authorial_construction_only",
+    "human_reference": false,
+    "ground_truth_claim": false
+  },
+  "controlled_response_materialization": {
+    "status": "completed_without_model_calls",
+    "run_id": "20260816T025931.050110Z-ad811ded8e0f",
+    "config_fingerprint_sha256": "ad811ded8e0f424028354795befddcc7f049d28aecfde94c8316bf465b8da3c1",
+    "response_count": 24,
+    "model_calls": 0,
+    "quality_labels_assigned": 0,
+    "run_artifact": "artifacts/controlled-responses.run.json",
+    "run_sha256": "8cc7cd8d824be0bda421ad9ba594b2a445659d4f5886c6c73797ce2f6b4f0be6",
+    "summary_artifact": "artifacts/controlled-responses.summary.json",
+    "summary_sha256": "1e09e5e381091acfd5645a48a7fcc4cd71ff0b3d6803c7ed69ee80654e6c597e"
+  },
+  "human_reference": {
+    "status": "unlabeled",
+    "annotator_count": 0,
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false
+  },
+  "future_judge": {
+    "transport": "claude_code_cli",
+    "requested_model": "sonnet",
+    "status": "not_run",
+    "calls_completed": 0,
+    "max_attempts": 1,
+    "concurrency": 2,
+    "output_contract": "binary_verdict",
+    "prompt_payload_fields": [
+      "input",
+      "candidate_output",
+      "rubric"
+    ]
+  },
+  "leakage_controls": {
+    "neutral_variant_ids": true,
+    "construction_label_excluded": true,
+    "human_fields_excluded": true,
+    "pair_id_excluded": true,
+    "sibling_response_excluded": true,
+    "deterministic_results_excluded": true,
+    "independent_cli_invocation_per_case": true
+  },
+  "real_model_calls_completed": 0,
+  "experimental_results": null
+}

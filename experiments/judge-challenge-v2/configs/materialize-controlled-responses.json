@@ -1,0 +1,28 @@
+{
+  "schema_version": "1",
+  "dataset": "../dataset/v1",
+  "candidate": {
+    "type": "controlled_response",
+    "identifier": "controlled:judge-challenge-v2",
+    "metadata_key": "controlled_response"
+  },
+  "scorers": [
+    {
+      "type": "exact_match",
+      "name": "materialization_only",
+      "expected_key": "__not_scored__"
+    }
+  ],
+  "evaluation": {
+    "concurrency": 4,
+    "scorer_timeout_seconds": 2.0,
+    "seed": null,
+    "candidate_invocation": {
+      "timeout_seconds": 2.0,
+      "max_attempts": 1,
+      "initial_backoff_seconds": 0.0,
+      "max_backoff_seconds": 0.0,
+      "jitter_ratio": 0.0
+    }
+  }
+}

@@ -10,7 +10,7 @@ from evalreliability.annotations import (
     annotate_run_interactively,
     read_annotations,
 )
-from evalreliability.artifacts import write_run
+from evalreliability.artifacts import read_run, write_run
 from evalreliability.candidates import FixtureCandidate, RunArtifactCandidate
 from evalreliability.dataset import EvaluationDataset
 from evalreliability.engine import EvaluationConfig, EvaluationEngine
@@ -44,6 +44,23 @@ def _dataset() -> EvaluationDataset:
         ),
         examples=examples,
     )
+
+
+def test_analysis_reports_invalid_judge_output_rate_and_raw_evidence() -> None:
+    root = Path(__file__).parents[1] / "experiments/judge-calibration-v1"
+    report = analyze_human_referenced_run(
+        read_run(root / "artifacts/candidate-haiku.run.json"),
+        read_annotations(root / "annotations/human-reference.json"),
+        judge_run=read_run(root / "artifacts/judge-sonnet.run.json"),
+        judge_scorer="sonnet_instruction_judge",
+    )
+
+    execution = report["judge_execution"]
+    assert execution["invalid_output_count"] == 1
+    assert execution["invalid_output_rate"] == 0.0625
+    assert execution["invalid_results"][0]["example_id"] == "jcv1-structured-02"
+    assert execution["invalid_results"][0]["raw_judge_output"].startswith('{"verdict": "PASS"')
+    assert report["judge_error_rationales"]["invalid_result_count"] == 1
 
 
 @pytest.mark.asyncio
@@ -153,8 +170,14 @@ async def test_annotation_workflow_preserves_raw_run_and_analysis_reports_agreem
     assert report["judge_vs_human"]["false_positives"]["example_ids"] == ["a3"]
     assert report["judge_vs_human"]["false_negatives"]["example_ids"] == ["a1"]
     assert report["judge_vs_human"]["disagreements"]["count"] == 2
+    assert report["judge_vs_human"]["accuracy_by_reference_label"] == {
+        "pass": {"sample_size": 2, "correct": 1, "accuracy": 0.5},
+        "fail": {"sample_size": 2, "correct": 1, "accuracy": 0.5},
+    }
     assert report["judge_execution"]["requested_examples"] == 4
     assert report["judge_execution"]["valid_verdicts"] == 4
+    assert report["judge_execution"]["invalid_output_count"] == 0
+    assert report["judge_execution"]["invalid_output_rate"] == 0.0
     assert report["judge_execution"]["raw_judge_outputs_preserved"] == 4
     assert report["judge_execution"]["attempts_total"] == 4
     assert report["judge_execution"]["retried_examples"] == 0
@@ -166,6 +189,11 @@ async def test_annotation_workflow_preserves_raw_run_and_analysis_reports_agreem
         "total": None,
     }
     assert report["judge_execution"]["latency_ms"]["count"] == 4
+    assert report["judge_error_rationales"]["valid_disagreement_count"] == 2
+    assert [
+        item["example_id"] for item in report["judge_error_rationales"]["valid_disagreements"]
+    ] == ["a1", "a3"]
+    assert report["judge_error_rationales"]["invalid_result_count"] == 0
     assert len(report["per_slice"]) == 2
     assert all(item["sample_size"] == 2 for item in report["per_slice"])
     deterministic = report["deterministic_scorer_vs_human"]["exact_match"]
@@ -206,3 +234,4 @@ async def test_analysis_without_judge_has_explicit_zero_sample_sizes(tmp_path: P
     assert report["judge_vs_human"]["accuracy"] is None
     assert report["judge_vs_human"]["cohen_kappa"] is None
     assert report["judge_execution"] is None
+    assert report["judge_error_rationales"] is None

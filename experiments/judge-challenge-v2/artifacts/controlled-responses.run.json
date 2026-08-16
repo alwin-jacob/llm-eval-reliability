@@ -1,0 +1,1589 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.023,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050418Z"
+        }
+      ],
+      "example_id": "jcv2-01-a",
+      "expected": {
+        "rubric": "The response must preserve that approval is discretionary permission rather than a duty or guarantee, retain the Friday scope, and retain maintained on-call coverage as a condition. It must not add a new obligation or exception."
+      },
+      "failures": [],
+      "input": "Rewrite this policy as one concise sentence without changing its force: Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+      "latency_ms": 0.25,
+      "metadata": {
+        "challenge_family": "permission_vs_obligation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+        "pair_id": "jcv2-pair-01",
+        "slices": {
+          "challenge_family": "permission_vs_obligation"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050467Z"
+        }
+      ],
+      "example_id": "jcv2-01-b",
+      "expected": {
+        "rubric": "The response must preserve that approval is discretionary permission rather than a duty or guarantee, retain the Friday scope, and retain maintained on-call coverage as a condition. It must not add a new obligation or exception."
+      },
+      "failures": [],
+      "input": "Rewrite this policy as one concise sentence without changing its force: Team leads may approve remote work on Fridays when on-call coverage is maintained.",
+      "latency_ms": 0.209,
+      "metadata": {
+        "challenge_family": "permission_vs_obligation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Team leads must approve remote work on Fridays when on-call coverage is maintained.",
+        "pair_id": "jcv2-pair-01",
+        "slices": {
+          "challenge_family": "permission_vs_obligation"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Team leads must approve remote work on Fridays when on-call coverage is maintained.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050502Z"
+        }
+      ],
+      "example_id": "jcv2-02-a",
+      "expected": {
+        "rubric": "The response must preserve that patch coverage is only indicated or likely, not confirmed or certain, and must preserve that deployment verification remains incomplete. It may be concise but must not upgrade the tentative status."
+      },
+      "failures": [],
+      "input": "Summarize this deployment note while preserving its confidence level: Monitoring indicates the patch is likely active on every canary host, but deployment verification is incomplete.",
+      "latency_ms": 0.179,
+      "metadata": {
+        "challenge_family": "uncertainty_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The patch is active on every canary host, although deployment verification is incomplete.",
+        "pair_id": "jcv2-pair-02",
+        "slices": {
+          "challenge_family": "uncertainty_overclaim"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The patch is active on every canary host, although deployment verification is incomplete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050522Z"
+        }
+      ],
+      "example_id": "jcv2-02-b",
+      "expected": {
+        "rubric": "The response must preserve that patch coverage is only indicated or likely, not confirmed or certain, and must preserve that deployment verification remains incomplete. It may be concise but must not upgrade the tentative status."
+      },
+      "failures": [],
+      "input": "Summarize this deployment note while preserving its confidence level: Monitoring indicates the patch is likely active on every canary host, but deployment verification is incomplete.",
+      "latency_ms": 0.162,
+      "metadata": {
+        "challenge_family": "uncertainty_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Monitoring indicates the patch is likely active on every canary host, while deployment verification remains incomplete.",
+        "pair_id": "jcv2-pair-02",
+        "slices": {
+          "challenge_family": "uncertainty_overclaim"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Monitoring indicates the patch is likely active on every canary host, while deployment verification remains incomplete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050701Z"
+        }
+      ],
+      "example_id": "jcv2-03-a",
+      "expected": {
+        "rubric": "The response must preserve the observed decline and its timing after the reminder email while explicitly avoiding or qualifying causation. It must not state or imply that the email caused the decline."
+      },
+      "failures": [],
+      "input": "Rewrite this finding concisely without making a causal claim: Late submissions declined after the reminder email was introduced; this observation alone does not establish that the email caused the decline.",
+      "latency_ms": 0.12,
+      "metadata": {
+        "challenge_family": "causal_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Late submissions declined after the reminder email, but the observation does not establish that the email caused the decline.",
+        "pair_id": "jcv2-pair-03",
+        "slices": {
+          "challenge_family": "causal_overclaim"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Late submissions declined after the reminder email, but the observation does not establish that the email caused the decline.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050716Z"
+        }
+      ],
+      "example_id": "jcv2-03-b",
+      "expected": {
+        "rubric": "The response must preserve the observed decline and its timing after the reminder email while explicitly avoiding or qualifying causation. It must not state or imply that the email caused the decline."
+      },
+      "failures": [],
+      "input": "Rewrite this finding concisely without making a causal claim: Late submissions declined after the reminder email was introduced; this observation alone does not establish that the email caused the decline.",
+      "latency_ms": 0.108,
+      "metadata": {
+        "challenge_family": "causal_overclaim",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Late submissions declined after the reminder email because the email caused the decline.",
+        "pair_id": "jcv2-pair-03",
+        "slices": {
+          "challenge_family": "causal_overclaim"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Late submissions declined after the reminder email because the email caused the decline.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050727Z"
+        }
+      ],
+      "example_id": "jcv2-04-a",
+      "expected": {
+        "rubric": "The response must preserve the 90-day inactivity rule and both exceptions. Channels under legal hold and channels in an active security investigation must remain available; neither exception may be narrowed, reversed, or omitted."
+      },
+      "failures": [],
+      "input": "Summarize this retention rule in one sentence: Archive channels after 90 inactive days, except channels under legal hold or in an active security investigation must remain available.",
+      "latency_ms": 0.1,
+      "metadata": {
+        "challenge_family": "exception_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Archive channels inactive for 90 days unless they are under legal hold or have completed a security investigation.",
+        "pair_id": "jcv2-pair-04",
+        "slices": {
+          "challenge_family": "exception_scope"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Archive channels inactive for 90 days unless they are under legal hold or have completed a security investigation.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050740Z"
+        }
+      ],
+      "example_id": "jcv2-04-b",
+      "expected": {
+        "rubric": "The response must preserve the 90-day inactivity rule and both exceptions. Channels under legal hold and channels in an active security investigation must remain available; neither exception may be narrowed, reversed, or omitted."
+      },
+      "failures": [],
+      "input": "Summarize this retention rule in one sentence: Archive channels after 90 inactive days, except channels under legal hold or in an active security investigation must remain available.",
+      "latency_ms": 0.092,
+      "metadata": {
+        "challenge_family": "exception_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Archive channels inactive for 90 days unless they are under legal hold or part of an active security investigation.",
+        "pair_id": "jcv2-pair-04",
+        "slices": {
+          "challenge_family": "exception_scope"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Archive channels inactive for 90 days unless they are under legal hold or part of an active security investigation.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050847Z"
+        }
+      ],
+      "example_id": "jcv2-05-a",
+      "expected": {
+        "rubric": "The response must preserve the quantifier asymmetry: automatic retry applies to most integrations, while operator-initiated manual retry applies to every integration. It must not broaden automatic retry to all integrations or weaken universal manual retry."
+      },
+      "failures": [],
+      "input": "Condense this capability statement without changing its quantifiers: Most integrations support automatic retry, and every integration supports a manual retry initiated by an operator.",
+      "latency_ms": 0.122,
+      "metadata": {
+        "challenge_family": "quantifier_shift",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Most integrations support automatic retry, while every integration supports operator-initiated manual retry.",
+        "pair_id": "jcv2-pair-05",
+        "slices": {
+          "challenge_family": "quantifier_shift"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Most integrations support automatic retry, while every integration supports operator-initiated manual retry.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050860Z"
+        }
+      ],
+      "example_id": "jcv2-05-b",
+      "expected": {
+        "rubric": "The response must preserve the quantifier asymmetry: automatic retry applies to most integrations, while operator-initiated manual retry applies to every integration. It must not broaden automatic retry to all integrations or weaken universal manual retry."
+      },
+      "failures": [],
+      "input": "Condense this capability statement without changing its quantifiers: Most integrations support automatic retry, and every integration supports a manual retry initiated by an operator.",
+      "latency_ms": 0.112,
+      "metadata": {
+        "challenge_family": "quantifier_shift",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Every integration supports automatic retry and operator-initiated manual retry.",
+        "pair_id": "jcv2-pair-05",
+        "slices": {
+          "challenge_family": "quantifier_shift"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Every integration supports automatic retry and operator-initiated manual retry.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050874Z"
+        }
+      ],
+      "example_id": "jcv2-06-a",
+      "expected": {
+        "rubric": "The response must preserve the strict boundary: only totals less than $10,000 qualify for expedited handling, and exactly $10,000 does not qualify. Inclusive wording such as up to or through $10,000 violates the rule."
+      },
+      "failures": [],
+      "input": "Restate this review threshold clearly: Expedite a request only when its total is strictly below $10,000; totals of $10,000 or more require standard review.",
+      "latency_ms": 0.102,
+      "metadata": {
+        "challenge_family": "numerical_boundary",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Requests totaling up to $10,000 qualify for expedited handling; larger totals require standard review.",
+        "pair_id": "jcv2-pair-06",
+        "slices": {
+          "challenge_family": "numerical_boundary"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Requests totaling up to $10,000 qualify for expedited handling; larger totals require standard review.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050886Z"
+        }
+      ],
+      "example_id": "jcv2-06-b",
+      "expected": {
+        "rubric": "The response must preserve the strict boundary: only totals less than $10,000 qualify for expedited handling, and exactly $10,000 does not qualify. Inclusive wording such as up to or through $10,000 violates the rule."
+      },
+      "failures": [],
+      "input": "Restate this review threshold clearly: Expedite a request only when its total is strictly below $10,000; totals of $10,000 or more require standard review.",
+      "latency_ms": 0.094,
+      "metadata": {
+        "challenge_family": "numerical_boundary",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Only requests totaling less than $10,000 qualify for expedited handling; all others require standard review.",
+        "pair_id": "jcv2-pair-06",
+        "slices": {
+          "challenge_family": "numerical_boundary"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Only requests totaling less than $10,000 qualify for expedited handling; all others require standard review.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.050998Z"
+        }
+      ],
+      "example_id": "jcv2-07-a",
+      "expected": {
+        "rubric": "The response must preserve that only internal test backups may be unencrypted and that every externally stored backup must remain encrypted, including external test backups. It must not expand the testing exception across the external-storage prohibition."
+      },
+      "failures": [],
+      "input": "Rewrite this backup rule concisely: Encryption may be disabled for internal test backups, but it must never be disabled for any backup sent to an external service.",
+      "latency_ms": 0.152,
+      "metadata": {
+        "challenge_family": "negation_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Encryption may be disabled for internal test backups, but never for backups sent to an external service.",
+        "pair_id": "jcv2-pair-07",
+        "slices": {
+          "challenge_family": "negation_scope"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Encryption may be disabled for internal test backups, but never for backups sent to an external service.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.011,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051014Z"
+        }
+      ],
+      "example_id": "jcv2-07-b",
+      "expected": {
+        "rubric": "The response must preserve that only internal test backups may be unencrypted and that every externally stored backup must remain encrypted, including external test backups. It must not expand the testing exception across the external-storage prohibition."
+      },
+      "failures": [],
+      "input": "Rewrite this backup rule concisely: Encryption may be disabled for internal test backups, but it must never be disabled for any backup sent to an external service.",
+      "latency_ms": 0.143,
+      "metadata": {
+        "challenge_family": "negation_scope",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Encryption may be disabled for test backups, including test backups sent to an external service.",
+        "pair_id": "jcv2-pair-07",
+        "slices": {
+          "challenge_family": "negation_scope"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Encryption may be disabled for test backups, including test backups sent to an external service.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051024Z"
+        }
+      ],
+      "example_id": "jcv2-08-a",
+      "expected": {
+        "rubric": "The response must preserve that manager approval and security approval are both prerequisites completed before temporary production access begins. It must not allow access while either approval is pending or move either review after access starts."
+      },
+      "failures": [],
+      "input": "Summarize this access condition: Temporary production access may begin only after both the engineering manager and the security lead have approved it.",
+      "latency_ms": 0.136,
+      "metadata": {
+        "challenge_family": "conditionality",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Temporary production access may begin after manager approval while security approval is completed.",
+        "pair_id": "jcv2-pair-08",
+        "slices": {
+          "challenge_family": "conditionality"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Temporary production access may begin after manager approval while security approval is completed.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051035Z"
+        }
+      ],
+      "example_id": "jcv2-08-b",
+      "expected": {
+        "rubric": "The response must preserve that manager approval and security approval are both prerequisites completed before temporary production access begins. It must not allow access while either approval is pending or move either review after access starts."
+      },
+      "failures": [],
+      "input": "Summarize this access condition: Temporary production access may begin only after both the engineering manager and the security lead have approved it.",
+      "latency_ms": 0.129,
+      "metadata": {
+        "challenge_family": "conditionality",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Temporary production access may begin only after both manager and security approvals are complete.",
+        "pair_id": "jcv2-pair-08",
+        "slices": {
+          "challenge_family": "conditionality"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Temporary production access may begin only after both manager and security approvals are complete.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051198Z"
+        }
+      ],
+      "example_id": "jcv2-09-a",
+      "expected": {
+        "rubric": "The response must state that the export stalled at 62 percent, that a retry is scheduled, and that the cause is unknown or undetermined. It must not invent a cause, diagnosis, timing, owner, or recovery result."
+      },
+      "failures": [],
+      "input": "Write a concise status update using only these facts: The export stalled at 62 percent, a retry is scheduled, and the cause is unknown.",
+      "latency_ms": 0.252,
+      "metadata": {
+        "challenge_family": "unsupported_detail",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The export stalled at 62 percent, a retry is scheduled, and the cause remains unknown.",
+        "pair_id": "jcv2-pair-09",
+        "slices": {
+          "challenge_family": "unsupported_detail"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The export stalled at 62 percent, a retry is scheduled, and the cause remains unknown.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.007,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051232Z"
+        }
+      ],
+      "example_id": "jcv2-09-b",
+      "expected": {
+        "rubric": "The response must state that the export stalled at 62 percent, that a retry is scheduled, and that the cause is unknown or undetermined. It must not invent a cause, diagnosis, timing, owner, or recovery result."
+      },
+      "failures": [],
+      "input": "Write a concise status update using only these facts: The export stalled at 62 percent, a retry is scheduled, and the cause is unknown.",
+      "latency_ms": 0.221,
+      "metadata": {
+        "challenge_family": "unsupported_detail",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The export stalled at 62 percent after the storage quota was exceeded, and a retry is scheduled.",
+        "pair_id": "jcv2-pair-09",
+        "slices": {
+          "challenge_family": "unsupported_detail"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The export stalled at 62 percent after the storage quota was exceeded, and a retry is scheduled.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051249Z"
+        }
+      ],
+      "example_id": "jcv2-10-a",
+      "expected": {
+        "rubric": "The response must contain exactly two sentences, include an apology, state that the team is investigating, and obey the higher-priority prohibition against promising or stating any delivery date or guaranteed timing. Reassurance must remain noncommittal."
+      },
+      "failures": [],
+      "input": "Write exactly two customer-facing sentences about a delayed shipment. Highest-priority instruction: do not promise or state a delivery date because no ETA is verified. Also apologize and say the team is investigating.",
+      "latency_ms": 0.208,
+      "metadata": {
+        "challenge_family": "instruction_priority",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "I\u2019m sorry your shipment is delayed, and our team is investigating. It will arrive by Friday.",
+        "pair_id": "jcv2-pair-10",
+        "slices": {
+          "challenge_family": "instruction_priority"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "I\u2019m sorry your shipment is delayed, and our team is investigating. It will arrive by Friday.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051309Z"
+        }
+      ],
+      "example_id": "jcv2-10-b",
+      "expected": {
+        "rubric": "The response must contain exactly two sentences, include an apology, state that the team is investigating, and obey the higher-priority prohibition against promising or stating any delivery date or guaranteed timing. Reassurance must remain noncommittal."
+      },
+      "failures": [],
+      "input": "Write exactly two customer-facing sentences about a delayed shipment. Highest-priority instruction: do not promise or state a delivery date because no ETA is verified. Also apologize and say the team is investigating.",
+      "latency_ms": 0.197,
+      "metadata": {
+        "challenge_family": "instruction_priority",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "I\u2019m sorry your shipment is delayed, and our team is investigating. We\u2019ll share an update as soon as reliable timing is available.",
+        "pair_id": "jcv2-pair-10",
+        "slices": {
+          "challenge_family": "instruction_priority"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "I\u2019m sorry your shipment is delayed, and our team is investigating. We\u2019ll share an update as soon as reliable timing is available.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.007,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051483Z"
+        }
+      ],
+      "example_id": "jcv2-11-a",
+      "expected": {
+        "rubric": "The response must preserve both the default-off state and administrators' ability to enable the feature per individual workspace. It must not reverse the default, convert enablement into disablement, or broaden the scope beyond per-workspace control."
+      },
+      "failures": [],
+      "input": "Rewrite this configuration note as one polished sentence without changing its meaning: The feature is disabled by default, but administrators can enable it for individual workspaces.",
+      "latency_ms": 0.134,
+      "metadata": {
+        "challenge_family": "semantic_preservation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The feature starts disabled, and administrators can enable it for individual workspaces.",
+        "pair_id": "jcv2-pair-11",
+        "slices": {
+          "challenge_family": "semantic_preservation"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The feature starts disabled, and administrators can enable it for individual workspaces.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051506Z"
+        }
+      ],
+      "example_id": "jcv2-11-b",
+      "expected": {
+        "rubric": "The response must preserve both the default-off state and administrators' ability to enable the feature per individual workspace. It must not reverse the default, convert enablement into disablement, or broaden the scope beyond per-workspace control."
+      },
+      "failures": [],
+      "input": "Rewrite this configuration note as one polished sentence without changing its meaning: The feature is disabled by default, but administrators can enable it for individual workspaces.",
+      "latency_ms": 0.115,
+      "metadata": {
+        "challenge_family": "semantic_preservation",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "The feature starts disabled, and administrators can enable it only across the entire organization.",
+        "pair_id": "jcv2-pair-11",
+        "slices": {
+          "challenge_family": "semantic_preservation"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "The feature starts disabled, and administrators can enable it only across the entire organization.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051519Z"
+        }
+      ],
+      "example_id": "jcv2-12-a",
+      "expected": {
+        "rubric": "The response must be one sentence and preserve all four statuses: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It must distinguish drafting from testing and must not imply the rollback plan was validated."
+      },
+      "failures": [],
+      "input": "Write one sentence containing all of these status facts: tests passed; production is not verified; deployment has not begun; the rollback plan is drafted but has not been tested. Do not strengthen any status claim.",
+      "latency_ms": 0.105,
+      "metadata": {
+        "challenge_family": "multi_constraint_near_miss",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "fail",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted and tested.",
+        "pair_id": "jcv2-pair-12",
+        "slices": {
+          "challenge_family": "multi_constraint_near_miss"
+        },
+        "variant_identifier": "a"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted and tested.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:59:31.051531Z"
+        }
+      ],
+      "example_id": "jcv2-12-b",
+      "expected": {
+        "rubric": "The response must be one sentence and preserve all four statuses: tests passed, production remains unverified, deployment has not begun, and the rollback plan is drafted but untested. It must distinguish drafting from testing and must not imply the rollback plan was validated."
+      },
+      "failures": [],
+      "input": "Write one sentence containing all of these status facts: tests passed; production is not verified; deployment has not begun; the rollback plan is drafted but has not been tested. Do not strengthen any status claim.",
+      "latency_ms": 0.098,
+      "metadata": {
+        "challenge_family": "multi_constraint_near_miss",
+        "construction": {
+          "human_reference": false,
+          "intended_label": "pass",
+          "label_source": "authorial_construction"
+        },
+        "controlled_response": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted but untested.",
+        "pair_id": "jcv2-pair-12",
+        "slices": {
+          "challenge_family": "multi_constraint_near_miss"
+        },
+        "variant_identifier": "b"
+      },
+      "response": {
+        "finish_reason": "authored_fixture",
+        "metadata": {
+          "model_call": false,
+          "response_origin": "project_authored_controlled_challenge_set"
+        },
+        "model_id": "controlled:judge-challenge-v2",
+        "output": "Tests passed; production remains unverified, deployment has not begun, and the rollback plan is drafted but untested.",
+        "provider": "controlled_experiment_fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.__not_scored__ is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "materialization_only",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "identifier": "controlled:judge-challenge-v2",
+      "metadata_key": "controlled_response",
+      "model_calls": false,
+      "response_origin": "project_authored_controlled_challenge_set",
+      "type": "controlled_response"
+    },
+    "candidate_id": "controlled:judge-challenge-v2",
+    "completed_at": "2026-08-16T02:59:31.051662Z",
+    "config_fingerprint": "ad811ded8e0f424028354795befddcc7f049d28aecfde94c8316bf465b8da3c1",
+    "dataset": {
+      "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+      "dataset_id": "judge-challenge-v2",
+      "example_count": 24,
+      "metadata": {
+        "case_count": 24,
+        "construction_balance": {
+          "intended_fail": 12,
+          "intended_pass": 12,
+          "status": "authorial_construction_only_not_human_reference"
+        },
+        "description": "Controlled paired near-miss responses for testing instruction-following judge discrimination.",
+        "experiment_role": "controlled_judge_challenge_set_not_candidate_model_benchmark",
+        "human_reference": {
+          "annotator_count": 0,
+          "ground_truth_claim": false,
+          "multi_annotator_consensus": false,
+          "status": "unlabeled"
+        },
+        "license": "MIT",
+        "pair_count": 12,
+        "provenance": "Project-authored prompts, rubrics, and frozen responses. These are controlled experiment materials, not organic candidate-model outputs."
+      },
+      "source": "../dataset/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 1.49,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "a48588b7696985b0e05359090e766b48ea1f3881",
+      "git_dirty": true,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 0.0,
+        "timeout_seconds": 2.0
+      },
+      "concurrency": 4,
+      "scorer_timeout_seconds": 2.0,
+      "seed": null
+    },
+    "run_id": "20260816T025931.050110Z-ad811ded8e0f",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "case_sensitive": false,
+        "collapse_whitespace": true,
+        "expected_key": "__not_scored__",
+        "name": "materialization_only",
+        "strip": true,
+        "type": "exact_match",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T02:59:31.050110Z"
+  }
+}
