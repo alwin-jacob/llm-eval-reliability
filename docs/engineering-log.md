@@ -37,6 +37,11 @@ Technical findings, known limitations, and unresolved questions for v1.
 - The Sonnet run's CLI usage metadata listed both Sonnet and Haiku model IDs even though the
   requested and canonical response model was Sonnet. Aggregate CLI usage is retained without
   assigning every token or cost unit exclusively to the response model.
+- Controlled judge challenge sets use a distinct candidate adapter that reads authored
+  responses from versioned dataset metadata and records `model_calls=false`. This prevents
+  controlled near misses from being represented as organic model outputs.
+- Rubric-key judge prompts omit all example metadata, which also prevents pair IDs,
+  construction intent, and sibling responses from entering paired challenge judgments.
 - The checked-in calibration example uses a scripted judge and synthetic specification
   labels because no provider model or collected human annotation is available locally. Its
   agreement result exercises the analysis code; it is not evidence about model-judge or

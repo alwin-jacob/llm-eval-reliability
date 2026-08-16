@@ -104,6 +104,52 @@ class FixtureCandidate(Candidate):
         )
 
 
+class ControlledResponseCandidate(Candidate):
+    """Materialize project-authored challenge responses embedded in dataset metadata."""
+
+    def __init__(self, identifier: str, *, metadata_key: str = "controlled_response") -> None:
+        if not identifier:
+            raise ValueError("controlled-response identifier cannot be empty")
+        if not metadata_key:
+            raise ValueError("controlled-response metadata_key cannot be empty")
+        self._identifier = identifier
+        self.metadata_key = metadata_key
+
+    @property
+    def identifier(self) -> str:
+        return self._identifier
+
+    def configuration(self) -> dict[str, Any]:
+        return {
+            "type": "controlled_response",
+            "identifier": self.identifier,
+            "metadata_key": self.metadata_key,
+            "response_origin": "project_authored_controlled_challenge_set",
+            "model_calls": False,
+        }
+
+    async def generate(self, request: CandidateRequest) -> CandidateResponse:
+        metadata = request.context.get("metadata")
+        output = metadata.get(self.metadata_key) if isinstance(metadata, dict) else None
+        if not isinstance(output, str):
+            raise CandidateError(
+                f"example {request.example_id!r} has no string metadata.{self.metadata_key}",
+                code="controlled_response_missing",
+                retryable=False,
+                origin=FailureOrigin.INFRASTRUCTURE,
+            )
+        return CandidateResponse(
+            output=output,
+            model_id=self.identifier,
+            provider="controlled_experiment_fixture",
+            finish_reason="authored_fixture",
+            metadata={
+                "response_origin": "project_authored_controlled_challenge_set",
+                "model_call": False,
+            },
+        )
+
+
 class RunArtifactCandidate(Candidate):
     """Replay immutable responses from a prior run without invoking its model again."""
 

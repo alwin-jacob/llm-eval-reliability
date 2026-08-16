@@ -9,7 +9,12 @@ from pathlib import Path
 from typing import Any
 
 from evalreliability.artifacts import read_run
-from evalreliability.candidates import Candidate, FixtureCandidate, RunArtifactCandidate
+from evalreliability.candidates import (
+    Candidate,
+    ControlledResponseCandidate,
+    FixtureCandidate,
+    RunArtifactCandidate,
+)
 from evalreliability.claude_cli import ClaudeCliCandidate
 from evalreliability.dataset import EvaluationDataset, load_dataset
 from evalreliability.engine import EvaluationConfig
@@ -166,6 +171,23 @@ def build_candidate(
             default_response=default,
             delay_seconds=float(delay),
         )
+    if candidate_type == "controlled_response":
+        _reject_unknown(
+            data,
+            {"type", "identifier", "metadata_key"},
+            "controlled-response candidate",
+        )
+        identifier = data.get("identifier")
+        metadata_key = data.get("metadata_key", "controlled_response")
+        if not isinstance(identifier, str) or not identifier:
+            raise ConfigurationError(
+                "controlled-response candidate identifier must be a non-empty string"
+            )
+        if not isinstance(metadata_key, str) or not metadata_key:
+            raise ConfigurationError(
+                "controlled-response candidate metadata_key must be a non-empty string"
+            )
+        return ControlledResponseCandidate(identifier, metadata_key=metadata_key)
     if candidate_type == "claude_cli":
         if not allow_external_processes:
             raise ConfigurationError("external-process candidates are disabled for this interface")
