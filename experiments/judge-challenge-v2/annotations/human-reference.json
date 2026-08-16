@@ -1,0 +1,171 @@
+{
+  "annotations": [
+    {
+      "annotated_at": "2026-08-16T18:11:05.300066Z",
+      "example_id": "jcv2-01-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:11:23.148716Z",
+      "example_id": "jcv2-01-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:11:33.795344Z",
+      "example_id": "jcv2-02-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:11:43.768770Z",
+      "example_id": "jcv2-02-b",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:11:53.644265Z",
+      "example_id": "jcv2-03-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:12:08.332316Z",
+      "example_id": "jcv2-03-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:12:17.818969Z",
+      "example_id": "jcv2-04-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:15:13.092582Z",
+      "example_id": "jcv2-04-b",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:15:23.916158Z",
+      "example_id": "jcv2-05-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:15:42.301179Z",
+      "example_id": "jcv2-05-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:15:55.071484Z",
+      "example_id": "jcv2-06-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:16:07.452357Z",
+      "example_id": "jcv2-06-b",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:16:17.199170Z",
+      "example_id": "jcv2-07-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:16:28.579352Z",
+      "example_id": "jcv2-07-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:16:39.178364Z",
+      "example_id": "jcv2-08-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:16:52.027045Z",
+      "example_id": "jcv2-08-b",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:00.572058Z",
+      "example_id": "jcv2-09-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:11.100481Z",
+      "example_id": "jcv2-09-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:21.014393Z",
+      "example_id": "jcv2-10-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:31.325730Z",
+      "example_id": "jcv2-10-b",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:43.565670Z",
+      "example_id": "jcv2-11-a",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:17:53.662895Z",
+      "example_id": "jcv2-11-b",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:18:31.711542Z",
+      "example_id": "jcv2-12-a",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T18:18:41.509439Z",
+      "example_id": "jcv2-12-b",
+      "label": "pass",
+      "note": null
+    }
+  ],
+  "counts": {
+    "annotated": 24,
+    "fail": 12,
+    "pass": 12
+  },
+  "created_at": "2026-08-16T18:09:40.961193Z",
+  "dataset": {
+    "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+    "dataset_id": "judge-challenge-v2",
+    "version": "1.0.0"
+  },
+  "experiment_id": "judge-challenge-v2",
+  "label_metadata": {
+    "adjudicated": false,
+    "annotator_count": 1,
+    "annotator_id": "alwin",
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false,
+    "reference_type": "single_human_reference"
+  },
+  "schema_version": "1.0",
+  "source_run_id": "20260816T025931.050110Z-ad811ded8e0f",
+  "updated_at": "2026-08-16T18:18:41.509439Z"
+}
