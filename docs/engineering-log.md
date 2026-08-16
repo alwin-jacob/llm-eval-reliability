@@ -41,6 +41,10 @@ Technical findings, known limitations, and unresolved questions for v1.
 - Python 3.14 surfaces a `pytest-asyncio` event-loop-policy deprecation outside the supported
   Python 3.11–3.13 CI matrix. A narrow warning filter remains until the dependency removes
   the compatibility warning.
+- Claude CLI authentication is inherited from the local CLI session. The adapter does not
+  provide credential management or an Anthropic API transport.
+- Claude CLI `costUSD` values are retained as provider usage accounting, not interpreted as
+  proof of a separate bill. TTFT remains absent when the CLI envelope does not report it.
 
 ## Open engineering questions
 

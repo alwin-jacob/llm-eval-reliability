@@ -1,0 +1,29 @@
+{
+  "schema_version": "1",
+  "dataset": "../../datasets/claude_cli_smoke/v1",
+  "candidate": {
+    "type": "claude_cli",
+    "model": "sonnet",
+    "system_prompt": "You are a model under evaluation. Answer only the user request.",
+    "timeout_seconds": 120.0,
+    "max_turns": 1,
+    "executable": "claude"
+  },
+  "scorers": [
+    {
+      "type": "exact_match"
+    }
+  ],
+  "evaluation": {
+    "concurrency": 1,
+    "scorer_timeout_seconds": 5.0,
+    "seed": null,
+    "candidate_invocation": {
+      "timeout_seconds": 125.0,
+      "max_attempts": 1,
+      "initial_backoff_seconds": 0.0,
+      "max_backoff_seconds": 0.0,
+      "jitter_ratio": 0.0
+    }
+  }
+}

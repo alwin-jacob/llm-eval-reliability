@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from evalreliability.candidates import Candidate, FixtureCandidate
+from evalreliability.claude_cli import ClaudeCliCandidate
 from evalreliability.dataset import EvaluationDataset, load_dataset
 from evalreliability.engine import EvaluationConfig
 from evalreliability.errors import ConfigurationError
@@ -61,6 +62,7 @@ def load_evaluation_spec(
     *,
     allowed_root: str | Path | None = None,
     allow_python_plugins: bool = True,
+    allow_external_processes: bool = True,
 ) -> EvaluationSpec:
     root = Path(allowed_root).resolve() if allowed_root is not None else None
     config_path = _resolve_path(path, Path.cwd(), root)
@@ -92,6 +94,7 @@ def load_evaluation_spec(
             base_dir=base_dir,
             allowed_root=root,
             allow_python_plugins=allow_python_plugins,
+            allow_external_processes=allow_external_processes,
         )
         for item in scorers_value
     )
@@ -100,6 +103,7 @@ def load_evaluation_spec(
         base_dir=base_dir,
         allowed_root=root,
         allow_python_plugins=allow_python_plugins,
+        allow_external_processes=allow_external_processes,
     )
     return EvaluationSpec(
         dataset=load_dataset(dataset_path, source=dataset_value),
@@ -116,6 +120,7 @@ def build_candidate(
     base_dir: Path,
     allowed_root: Path | None = None,
     allow_python_plugins: bool = True,
+    allow_external_processes: bool = True,
 ) -> Candidate:
     if not isinstance(data, dict):
         raise ConfigurationError("candidate configuration must be an object")
@@ -151,6 +156,33 @@ def build_candidate(
             default_response=default,
             delay_seconds=float(delay),
         )
+    if candidate_type == "claude_cli":
+        if not allow_external_processes:
+            raise ConfigurationError("external-process candidates are disabled for this interface")
+        _reject_unknown(
+            data,
+            {"type", "model", "system_prompt", "timeout_seconds", "max_turns", "executable"},
+            "Claude CLI candidate",
+        )
+        _validate_string_fields(
+            data,
+            {"model", "system_prompt", "executable"},
+            "Claude CLI candidate",
+        )
+        if "timeout_seconds" in data and (
+            not isinstance(data["timeout_seconds"], (int, float))
+            or isinstance(data["timeout_seconds"], bool)
+        ):
+            raise ConfigurationError("Claude CLI candidate timeout_seconds must be numeric")
+        if "max_turns" in data and (
+            not isinstance(data["max_turns"], int) or isinstance(data["max_turns"], bool)
+        ):
+            raise ConfigurationError("Claude CLI candidate max_turns must be an integer")
+        kwargs = {key: value for key, value in data.items() if key != "type"}
+        try:
+            return ClaudeCliCandidate(**kwargs)
+        except (TypeError, ValueError) as exc:
+            raise ConfigurationError(f"invalid Claude CLI candidate: {exc}") from exc
     if candidate_type == "python":
         if not allow_python_plugins:
             raise ConfigurationError("Python candidate plugins are disabled for this interface")
@@ -183,6 +215,7 @@ def build_scorer(
     base_dir: Path,
     allowed_root: Path | None = None,
     allow_python_plugins: bool = True,
+    allow_external_processes: bool = True,
 ) -> Scorer:
     if not isinstance(data, dict):
         raise ConfigurationError("scorer configuration must be an object")
@@ -243,6 +276,7 @@ def build_scorer(
             base_dir=base_dir,
             allowed_root=allowed_root,
             allow_python_plugins=allow_python_plugins,
+            allow_external_processes=allow_external_processes,
         )
         rubric = data.get("rubric")
         if not isinstance(rubric, str):

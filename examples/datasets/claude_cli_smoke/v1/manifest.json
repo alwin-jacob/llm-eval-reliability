@@ -1,0 +1,9 @@
+{
+  "schema_version": "1",
+  "dataset_id": "claude-cli-smoke",
+  "version": "1.0.0",
+  "data_file": "data.jsonl",
+  "description": "One-example transport smoke check; not an evaluation benchmark.",
+  "provenance": "Project-authored deterministic transport check; no user or production data.",
+  "license": "MIT"
+}

@@ -52,6 +52,8 @@ Package boundaries:
 
 - `dataset`: manifest/path validation, JSONL parsing, uniqueness checks, digesting.
 - `candidates`: provider-independent request/response contract and local fixture adapter.
+- `claude_cli`: subprocess isolation, Claude Code envelope parsing, usage normalization,
+  and provider failure classification.
 - `scorers`: deterministic, schema, and candidate-backed judge implementations.
 - `reliability`: timeout/retry invocation and normalized failure classification.
 - `engine`: concurrent orchestration and per-example isolation.
@@ -70,6 +72,13 @@ unexpected adapter exception is infrastructure failure.
 
 Candidates and scorers may receive concurrent calls from multiple examples. Implementations
 with mutable state must synchronize it or explicitly configure evaluation concurrency to one.
+
+The Claude CLI candidate uses an argument array with no shell, inherits authentication from
+the installed CLI, and runs each invocation in a new empty temporary working directory. Its
+process timeout terminates the child independently of the engine's outer attempt timeout.
+Tools and dynamic system-prompt sections are disabled to reduce unrelated Claude Code
+context. CLI-specific fields remain in `CandidateResponse.metadata`; the generic response
+contract only carries portable model, provider, finish, token, and cost fields.
 
 `Scorer.score(example, response) -> ScoreResult` is asynchronous. A normal quality miss
 returns a failed score, not an exception. Malformed candidate output is a model-quality
@@ -124,7 +133,9 @@ identify environment-variable names, never their values.
 - JSON Schema uses the standards-based `jsonschema` library rather than a partial custom
   validator.
 - Built-in fixtures make CI and the quickstart deterministic. They validate orchestration,
-  not remote-model quality or provider reliability.
+  not remote-model quality or provider reliability. The real Claude CLI smoke configuration
+  is explicit opt-in and contains one example so routine verification cannot consume model
+  usage.
 
 ## Open engineering questions
 
