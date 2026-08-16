@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from collections import Counter
 from collections.abc import Callable
 from dataclasses import dataclass, replace
@@ -272,6 +273,11 @@ def analyze_human_referenced_run(
     human_summary = _label_summary(human)
     judge_summary = _label_summary(judge)
     judge_agreement = _agreement_report(human, judge)
+    judge_execution = (
+        _judge_execution_summary(judge_run, judge_scorer)
+        if judge_run is not None and judge_scorer is not None
+        else None
+    )
 
     slices: list[dict[str, Any]] = []
     slice_values = sorted(
@@ -326,6 +332,7 @@ def analyze_human_referenced_run(
         },
         "human": human_summary,
         "judge": judge_summary,
+        "judge_execution": judge_execution,
         "judge_vs_human": judge_agreement,
         "per_slice": slices,
         "deterministic_scorer_vs_human": {
@@ -340,6 +347,130 @@ def analyze_human_referenced_run(
             "multi-annotator consensus."
         ),
     }
+
+
+def _judge_execution_summary(run: EvaluationRun, scorer_name: str) -> dict[str, Any]:
+    score_records = [
+        (example.example_id, score)
+        for example in run.examples
+        for score in example.scores
+        if score.scorer_name == scorer_name
+    ]
+    scores = [score for _, score in score_records]
+    attempts = [
+        attempt
+        for score in scores
+        for attempt in score.details.get("judge_attempts", [])
+        if isinstance(attempt, dict)
+    ]
+    usage_records = [
+        usage for score in scores if isinstance((usage := score.details.get("judge_usage")), dict)
+    ]
+    metadata_records = [
+        metadata
+        for score in scores
+        if isinstance((metadata := score.details.get("judge_metadata")), dict)
+    ]
+    error_codes = Counter(score.failure.code for score in scores if score.failure is not None)
+    model_ids = sorted(
+        {
+            model_id
+            for score in scores
+            if isinstance((model_id := score.details.get("judge_model_id")), str)
+        }
+    )
+    providers = sorted(
+        {
+            provider
+            for score in scores
+            if isinstance((provider := score.details.get("judge_provider")), str)
+        }
+    )
+    requested_models = _metadata_string_values(metadata_records, "requested_model")
+    canonical_models = _metadata_string_values(metadata_records, "canonical_model")
+    ttft_values = _metadata_numeric_values(metadata_records, "ttft_ms")
+
+    return {
+        "requested_examples": len(run.examples),
+        "scorer_results": len(scores),
+        "valid_verdicts": sum(score.passed is not None for score in scores),
+        "invalid_or_failed_verdicts": sum(score.passed is None for score in scores),
+        "raw_judge_outputs_preserved": sum(
+            isinstance(score.details.get("judge_output"), str) for score in scores
+        ),
+        "attempts_total": len(attempts),
+        "retried_examples": sum(
+            len(score.details.get("judge_attempts", [])) > 1 for score in scores
+        ),
+        "error_codes": dict(sorted(error_codes.items())),
+        "invalid_results": [
+            {
+                "example_id": example_id,
+                "code": score.failure.code if score.failure is not None else "missing_verdict",
+            }
+            for example_id, score in score_records
+            if score.passed is None
+        ],
+        "model_ids": model_ids,
+        "requested_models": requested_models,
+        "canonical_models": canonical_models,
+        "providers": providers,
+        "usage": {
+            key: _available_total(usage_records, key)
+            for key in ("input_tokens", "output_tokens", "total_tokens", "cost_usd")
+        },
+        "cache_tokens": {
+            key: _available_total(metadata_records, key)
+            for key in (
+                "cache_creation_input_tokens",
+                "cache_read_input_tokens",
+                "cache_tokens",
+            )
+        },
+        "latency_ms": _numeric_summary([score.latency_ms for score in scores]),
+        "ttft_ms": _numeric_summary(ttft_values),
+        "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+    }
+
+
+def _metadata_string_values(records: list[dict[str, Any]], key: str) -> list[str]:
+    return sorted({value for record in records if isinstance((value := record.get(key)), str)})
+
+
+def _metadata_numeric_values(records: list[dict[str, Any]], key: str) -> list[float]:
+    return [
+        float(value)
+        for record in records
+        if isinstance((value := record.get(key)), (int, float)) and not isinstance(value, bool)
+    ]
+
+
+def _available_total(records: list[dict[str, Any]], key: str) -> dict[str, Any]:
+    values = _metadata_numeric_values(records, key)
+    if not values:
+        return {"available_count": 0, "total": None}
+    total: int | float = round(sum(values), 6)
+    if all(value.is_integer() for value in values):
+        total = int(total)
+    return {"available_count": len(values), "total": total}
+
+
+def _numeric_summary(values: list[float]) -> dict[str, Any]:
+    if not values:
+        return {"count": 0, "min": None, "mean": None, "p50": None, "p95": None, "max": None}
+    ordered = sorted(values)
+    return {
+        "count": len(ordered),
+        "min": round(ordered[0], 6),
+        "mean": round(sum(ordered) / len(ordered), 6),
+        "p50": round(_nearest_rank(ordered, 0.50), 6),
+        "p95": round(_nearest_rank(ordered, 0.95), 6),
+        "max": round(ordered[-1], 6),
+    }
+
+
+def _nearest_rank(ordered: list[float], quantile: float) -> float:
+    return ordered[max(0, math.ceil(quantile * len(ordered)) - 1)]
 
 
 def _prompt_label(input_fn: Callable[[str], str]) -> str | None:

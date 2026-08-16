@@ -1,0 +1,214 @@
+{
+  "candidate_id": "replay:claude-cli:haiku@20260816T021229.764598Z-3d9596d782e4",
+  "counts": {
+    "completed": 15,
+    "failed": 0,
+    "partial": 1,
+    "total": 16
+  },
+  "dataset": {
+    "checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+    "dataset_id": "judge-calibration-v1",
+    "example_count": 16,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {
+      "judge_invalid_json": 1
+    },
+    "by_origin": {
+      "evaluator": 1
+    },
+    "by_stage": {
+      "scorer:sonnet_instruction_judge": 1
+    },
+    "total": 1
+  },
+  "latency_ms": {
+    "count": 16,
+    "max": 4066.247,
+    "mean": 3105.89,
+    "min": 2416.503,
+    "p50": 2922.433,
+    "p95": 4066.247
+  },
+  "reliability": {
+    "attempts_total": 16,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 0.9375,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T023632.081797Z-9759ed922978",
+  "schema_version": "1.0",
+  "scorers": {
+    "sonnet_instruction_judge": {
+      "counts": {
+        "error": 1,
+        "fail": 3,
+        "measured": 15,
+        "pass": 12,
+        "skipped": 0
+      },
+      "coverage": 0.9375,
+      "latency_ms": {
+        "count": 16,
+        "max": 4066.091,
+        "mean": 3105.52,
+        "min": 2416.33,
+        "p50": 2922.252,
+        "p95": 4066.091
+      },
+      "mean_score": 0.8,
+      "pass_rate": 0.8
+    }
+  },
+  "slices": [
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "sonnet_instruction_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 4,
+            "pass": 4,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 2922.252,
+            "mean": 2601.981,
+            "min": 2416.33,
+            "p50": 2457.715,
+            "p95": 2922.252
+          },
+          "mean_score": 1.0,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "exact_constraints"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "sonnet_instruction_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 4,
+            "pass": 4,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 3855.334,
+            "mean": 3595.265,
+            "min": 3063.949,
+            "p50": 3696.735,
+            "p95": 3855.334
+          },
+          "mean_score": 1.0,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "multi_constraint"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "sonnet_instruction_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 4,
+            "pass": 4,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 3214.348,
+            "mean": 2966.831,
+            "min": 2701.508,
+            "p50": 2777.009,
+            "p95": 3214.348
+          },
+          "mean_score": 1.0,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "semantic_constraint"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 3,
+        "failed": 0,
+        "partial": 1
+      },
+      "dimension": "constraint_type",
+      "scorers": {
+        "sonnet_instruction_judge": {
+          "counts": {
+            "error": 1,
+            "fail": 3,
+            "measured": 3,
+            "pass": 0,
+            "skipped": 0
+          },
+          "coverage": 0.75,
+          "latency_ms": {
+            "count": 4,
+            "max": 4066.091,
+            "mean": 3258.005,
+            "min": 2744.733,
+            "p50": 2844.974,
+            "p95": 4066.091
+          },
+          "mean_score": 0.0,
+          "pass_rate": 0.0
+        }
+      },
+      "value": "structured_output"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 16,
+      "total": 0.040319
+    },
+    "input_tokens": {
+      "available_count": 16,
+      "total": 3309
+    },
+    "output_tokens": {
+      "available_count": 16,
+      "total": 5377
+    },
+    "responses": 16,
+    "total_tokens": {
+      "available_count": 16,
+      "total": 8686
+    }
+  }
+}

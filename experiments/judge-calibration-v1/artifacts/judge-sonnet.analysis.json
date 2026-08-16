@@ -1,0 +1,459 @@
+{
+  "candidate_run_id": "20260816T021229.764598Z-3d9596d782e4",
+  "caution": "The human labels are one annotator's references, not ground truth or multi-annotator consensus.",
+  "deterministic_scorer_vs_human": {
+    "exact_constraints": {
+      "accuracy": 1.0,
+      "cohen_kappa": null,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 0,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 4
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 4
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "scorer_sample_size": 4
+    },
+    "json_fields": {
+      "accuracy": 1.0,
+      "cohen_kappa": null,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 3,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 0
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 3
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 3
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 3
+      },
+      "sample_size": 3,
+      "scorer_sample_size": 3
+    },
+    "json_schema": {
+      "accuracy": 1.0,
+      "cohen_kappa": 1.0,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 3,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 1
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 4
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "scorer_sample_size": 4
+    },
+    "text_constraints": {
+      "accuracy": 1.0,
+      "cohen_kappa": null,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 0,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 4
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 4
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "scorer_sample_size": 4
+    }
+  },
+  "experiment_id": "judge-calibration-v1",
+  "human": {
+    "fail_count": 3,
+    "pass_count": 13,
+    "pass_rate": 0.8125,
+    "sample_size": 16
+  },
+  "judge": {
+    "fail_count": 3,
+    "pass_count": 12,
+    "pass_rate": 0.8,
+    "sample_size": 15
+  },
+  "judge_execution": {
+    "attempts_total": 16,
+    "cache_tokens": {
+      "cache_creation_input_tokens": {
+        "available_count": 16,
+        "total": 0
+      },
+      "cache_read_input_tokens": {
+        "available_count": 16,
+        "total": 0
+      },
+      "cache_tokens": {
+        "available_count": 16,
+        "total": 0
+      }
+    },
+    "canonical_models": [
+      "claude-sonnet-5"
+    ],
+    "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+    "error_codes": {
+      "judge_invalid_json": 1
+    },
+    "invalid_or_failed_verdicts": 1,
+    "invalid_results": [
+      {
+        "code": "judge_invalid_json",
+        "example_id": "jcv1-structured-02"
+      }
+    ],
+    "latency_ms": {
+      "count": 16,
+      "max": 4066.091,
+      "mean": 3105.520375,
+      "min": 2416.33,
+      "p50": 2922.252,
+      "p95": 4066.091
+    },
+    "model_ids": [
+      "claude-sonnet-5"
+    ],
+    "providers": [
+      "anthropic_claude_code_cli"
+    ],
+    "raw_judge_outputs_preserved": 16,
+    "requested_examples": 16,
+    "requested_models": [
+      "sonnet"
+    ],
+    "retried_examples": 0,
+    "scorer_results": 16,
+    "ttft_ms": {
+      "count": 16,
+      "max": 2540.0,
+      "mean": 2094.3125,
+      "min": 1685.0,
+      "p50": 1988.0,
+      "p95": 2540.0
+    },
+    "usage": {
+      "cost_usd": {
+        "available_count": 16,
+        "total": 0.068678
+      },
+      "input_tokens": {
+        "available_count": 16,
+        "total": 7291
+      },
+      "output_tokens": {
+        "available_count": 16,
+        "total": 2294
+      },
+      "total_tokens": {
+        "available_count": 16,
+        "total": 9585
+      }
+    },
+    "valid_verdicts": 15
+  },
+  "judge_run_id": "20260816T023632.081797Z-9759ed922978",
+  "judge_scorer": "sonnet_instruction_judge",
+  "judge_vs_human": {
+    "accuracy": 1.0,
+    "cohen_kappa": 1.0,
+    "confusion_matrix": {
+      "human_fail": {
+        "predicted_fail": 3,
+        "predicted_pass": 0
+      },
+      "human_pass": {
+        "predicted_fail": 0,
+        "predicted_pass": 12
+      }
+    },
+    "disagreements": {
+      "count": 0,
+      "items": [],
+      "sample_size": 15
+    },
+    "false_negatives": {
+      "count": 0,
+      "example_ids": [],
+      "sample_size": 15
+    },
+    "false_positives": {
+      "count": 0,
+      "example_ids": [],
+      "sample_size": 15
+    },
+    "sample_size": 15
+  },
+  "per_slice": [
+    {
+      "dimension": "constraint_type",
+      "human": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "cohen_kappa": null,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 0,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 4
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 4
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "value": "exact_constraints"
+    },
+    {
+      "dimension": "constraint_type",
+      "human": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "cohen_kappa": null,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 0,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 4
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 4
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "value": "multi_constraint"
+    },
+    {
+      "dimension": "constraint_type",
+      "human": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge": {
+        "fail_count": 0,
+        "pass_count": 4,
+        "pass_rate": 1.0,
+        "sample_size": 4
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "cohen_kappa": null,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 0,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 4
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 4
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 4
+        },
+        "sample_size": 4
+      },
+      "sample_size": 4,
+      "value": "semantic_constraint"
+    },
+    {
+      "dimension": "constraint_type",
+      "human": {
+        "fail_count": 3,
+        "pass_count": 1,
+        "pass_rate": 0.25,
+        "sample_size": 4
+      },
+      "judge": {
+        "fail_count": 3,
+        "pass_count": 0,
+        "pass_rate": 0.0,
+        "sample_size": 3
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "cohen_kappa": null,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 3,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 0
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 3
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 3
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 3
+        },
+        "sample_size": 3
+      },
+      "sample_size": 4,
+      "value": "structured_output"
+    }
+  ],
+  "reference_metadata": {
+    "annotator_count": 1,
+    "annotator_id": "annotator-1",
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false,
+    "reference_type": "single_human_reference"
+  },
+  "sample_sizes": {
+    "candidate_responses": 16,
+    "experiment_examples": 16,
+    "human_labeled": 16,
+    "judge_human_paired": 15,
+    "judge_labeled": 15
+  },
+  "schema_version": "1.0"
+}

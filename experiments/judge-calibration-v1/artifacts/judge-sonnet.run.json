@@ -1,0 +1,2123 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.016,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:32.082218Z"
+        }
+      ],
+      "example_id": "jcv1-structured-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object with exactly the keys action and retention_days, action is the string \"archive\", retention_days is the integer 30, and there is no surrounding prose or Markdown.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "const": "archive"
+            },
+            "retention_days": {
+              "const": 30
+            }
+          },
+          "required": [
+            "action",
+            "retention_days"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "action": "archive",
+          "retention_days": 30
+        }
+      },
+      "failures": [],
+      "input": "Return only a JSON object for a file-retention decision. It must have exactly two keys: action with string value \"archive\", and retention_days with integer value 30. Do not add Markdown or commentary.",
+      "latency_ms": 4066.247,
+      "metadata": {
+        "case_description": "Exact-key retention decision JSON object",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2003.0,
+          "duration_ms": 1368.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001429,
+          "provider_reported_usage_cost_usd": 0.001429,
+          "request_id": "b533d05b-6357-4065-aa52-715eee84eb63",
+          "requested_model": "haiku",
+          "session_id": "bed4981f-ef78-48bd-9e34-010a0bd4df79",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1271.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"action\": \"archive\",\n  \"retention_days\": 30\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001429,
+          "input_tokens": 209,
+          "output_tokens": 119,
+          "total_tokens": 328
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 4065.756,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:32.082317Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3102.0,
+              "duration_ms": 2557.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.004644,
+              "provider_reported_usage_cost_usd": 0.004644,
+              "request_id": "6f2c7d14-87dc-4d47-86ab-56e420d2901a",
+              "requested_model": "sonnet",
+              "session_id": "1562fc66-d119-42d8-8b78-4f745085da95",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2540.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The instruction explicitly says 'Do not add Markdown or commentary,' but the candidate output wraps the JSON object in a Markdown code fence (```json ... ```). Although the JSON content itself is correct (exactly two keys, action='archive', retention_days=30), the presence of Markdown fencing means the entire response is not solely a valid JSON object with no surrounding formatting, violating the rubric's requirement of no surrounding Markdown.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.004644,
+              "input_tokens": 452,
+              "output_tokens": 167,
+              "total_tokens": 619
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The instruction explicitly says 'Do not add Markdown or commentary,' but the candidate output wraps the JSON object in a Markdown code fence (```json ... ```). Although the JSON content itself is correct (exactly two keys, action='archive', retention_days=30), the presence of Markdown fencing means the entire response is not solely a valid JSON object with no surrounding formatting, violating the rubric's requirement of no surrounding Markdown.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 4066.091,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:32.082255Z"
+        }
+      ],
+      "example_id": "jcv1-structured-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is a valid JSON array exactly equal to [\"queued\",\"running\",\"done\"], with no surrounding prose or Markdown.",
+        "schema": {
+          "const": [
+            "queued",
+            "running",
+            "done"
+          ],
+          "type": "array"
+        }
+      },
+      "failures": [
+        {
+          "code": "judge_invalid_json",
+          "exception_type": "EvaluatorError",
+          "message": "judge returned malformed JSON: Expecting ',' delimiter",
+          "origin": "evaluator",
+          "retryable": false,
+          "stage": "scorer:sonnet_instruction_judge"
+        }
+      ],
+      "input": "Return only a JSON array containing exactly these three strings in this order: \"queued\", \"running\", \"done\". Do not add a code fence or explanation.",
+      "latency_ms": 3379.529,
+      "metadata": {
+        "case_description": "Ordered three-state JSON array",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2127.0,
+          "duration_ms": 1430.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001297,
+          "provider_reported_usage_cost_usd": 0.001297,
+          "request_id": "46608944-64e7-4061-a306-18bdadf96279",
+          "requested_model": "haiku",
+          "session_id": "2ff56834-94e5-4e0c-9df9-b5fa58207839",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1415.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "[\"queued\", \"running\", \"done\"]",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001297,
+          "input_tokens": 198,
+          "output_tokens": 96,
+          "total_tokens": 294
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3375.971,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:32.085588Z"
+              }
+            ],
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2502.0,
+              "duration_ms": 1866.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.00303,
+              "provider_reported_usage_cost_usd": 0.00303,
+              "request_id": "b9e5417b-c91d-41aa-ba69-4df8b5d20b2e",
+              "requested_model": "sonnet",
+              "session_id": "513ad972-04f0-43ea-a339-fd714ba4da08",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1854.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output is exactly [\"queued\", \"running\", \"done\"], a valid JSON array matching the required elements and order, with no code fence, prose, or extra text.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.00303,
+              "input_tokens": 407,
+              "output_tokens": 71,
+              "total_tokens": 478
+            }
+          },
+          "failure": {
+            "code": "judge_invalid_json",
+            "exception_type": "EvaluatorError",
+            "message": "judge returned malformed JSON: Expecting ',' delimiter",
+            "origin": "evaluator",
+            "retryable": false,
+            "stage": "scorer:sonnet_instruction_judge"
+          },
+          "latency_ms": 3376.221,
+          "outcome": "error",
+          "passed": null,
+          "score": null,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "partial"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:35.461802Z"
+        }
+      ],
+      "example_id": "jcv1-structured-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object exactly matching the requested nested window and days values, with no extra keys at either object level and no surrounding text.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "days": {
+              "const": [
+                "mon",
+                "wed"
+              ],
+              "type": "array"
+            },
+            "window": {
+              "additionalProperties": false,
+              "properties": {
+                "end": {
+                  "const": "17:00"
+                },
+                "start": {
+                  "const": "09:00"
+                }
+              },
+              "required": [
+                "start",
+                "end"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "window",
+            "days"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "days": [
+            "mon",
+            "wed"
+          ],
+          "window": {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        }
+      },
+      "failures": [],
+      "input": "Return only JSON describing a support window. Use exactly two top-level keys. window must be an object with start \"09:00\" and end \"17:00\" and no other keys. days must be the array [\"mon\",\"wed\"]. Add nothing outside the JSON.",
+      "latency_ms": 2744.891,
+      "metadata": {
+        "case_description": "Nested support-window JSON with closed schemas",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3262.0,
+          "duration_ms": 2863.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002195,
+          "provider_reported_usage_cost_usd": 0.002195,
+          "request_id": "b7ed6330-507d-4605-b289-26c7d485f2e1",
+          "requested_model": "haiku",
+          "session_id": "c66b0bc0-e401-405d-a4b5-53119f13a79d",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2777.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"window\": {\n    \"start\": \"09:00\",\n    \"end\": \"17:00\"\n  },\n  \"days\": [\"mon\", \"wed\"]\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002195,
+          "input_tokens": 222,
+          "output_tokens": 268,
+          "total_tokens": 490
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2744.406,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:35.461939Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2817.0,
+              "duration_ms": 1870.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003514,
+              "provider_reported_usage_cost_usd": 0.003514,
+              "request_id": "5b8e186e-58ad-4482-bf28-460bcfc075df",
+              "requested_model": "sonnet",
+              "session_id": "520281fe-d8b6-4800-8948-933f834dbd52",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1850.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The response wraps the JSON in a markdown code fence (```json ... ```) instead of returning only the JSON object with nothing outside it, violating the 'no surrounding text' requirement.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003514,
+              "input_tokens": 495,
+              "output_tokens": 81,
+              "total_tokens": 576
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response wraps the JSON in a markdown code fence (```json ... ```) instead of returning only the JSON object with nothing outside it, violating the 'no surrounding text' requirement.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2744.733,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.012,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:36.148465Z"
+        }
+      ],
+      "example_id": "jcv1-structured-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the entire response is one valid JSON object with exactly enabled=true, retries=2 as an integer, and mode=\"safe\", without extra fields, prose, or Markdown.",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "const": true
+            },
+            "mode": {
+              "const": "safe"
+            },
+            "retries": {
+              "const": 2
+            }
+          },
+          "required": [
+            "enabled",
+            "retries",
+            "mode"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "enabled": true,
+          "mode": "safe",
+          "retries": 2
+        }
+      },
+      "failures": [],
+      "input": "Return only a JSON object with exactly these fields and values: enabled is true, retries is the integer 2, and mode is the string \"safe\". Do not include any other field or text.",
+      "latency_ms": 2845.127,
+      "metadata": {
+        "case_description": "Typed three-field safety configuration JSON",
+        "slices": {
+          "constraint_type": "structured_output"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3146.0,
+          "duration_ms": 2250.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001793,
+          "provider_reported_usage_cost_usd": 0.001793,
+          "request_id": "3223a272-f0ad-4c83-b7d1-519abc2ebc11",
+          "requested_model": "haiku",
+          "session_id": "bb07b0c3-37c1-44e6-91a6-0e73f6885d85",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2215.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "```json\n{\n  \"enabled\": true,\n  \"retries\": 2,\n  \"mode\": \"safe\"\n}\n```",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001793,
+          "input_tokens": 206,
+          "output_tokens": 189,
+          "total_tokens": 395
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2844.613,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:36.148561Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2898.0,
+              "duration_ms": 2208.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.00398,
+              "provider_reported_usage_cost_usd": 0.00398,
+              "request_id": "ced90343-5ee7-4f10-b884-65198857476a",
+              "requested_model": "sonnet",
+              "session_id": "41c2cf58-ff7e-43b9-ac9a-578836a43fea",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2189.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"FAIL\", \"rationale\": \"The instructions require the entire response to be one valid JSON object without any extra text or Markdown. The candidate output wraps the JSON in a Markdown code fence (```json ... ```), which violates the 'no Markdown' and 'entire response is one valid JSON object' requirement, even though the JSON content itself is correct.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.00398,
+              "input_tokens": 451,
+              "output_tokens": 123,
+              "total_tokens": 574
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The instructions require the entire response to be one valid JSON object without any extra text or Markdown. The candidate output wraps the JSON in a Markdown code fence (```json ... ```), which violates the 'no Markdown' and 'entire response is one valid JSON object' requirement, even though the JSON content itself is correct.",
+            "verdict": "fail"
+          },
+          "failure": null,
+          "latency_ms": 2844.974,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.016,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:38.206714Z"
+        }
+      ],
+      "example_id": "jcv1-exact-01",
+      "expected": {
+        "exact_text": "Mary Anne",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `Mary Anne` with that capitalization, one space, and no quotation marks, explanation, or extra whitespace."
+      },
+      "failures": [],
+      "input": "Convert the name mARy annE to title case. Return exactly the converted name and nothing else.",
+      "latency_ms": 2416.503,
+      "metadata": {
+        "case_description": "Title-case transformation with exact output",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2577.0,
+          "duration_ms": 1579.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001493,
+          "provider_reported_usage_cost_usd": 0.001493,
+          "request_id": "cf557bd6-268e-4acc-99e0-d01a31ef7722",
+          "requested_model": "haiku",
+          "session_id": "479e9562-0b54-49c7-9217-c43e6f8e19ff",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1563.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Mary Anne",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001493,
+          "input_tokens": 186,
+          "output_tokens": 141,
+          "total_tokens": 327
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2415.949,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:38.206841Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2399.0,
+              "duration_ms": 1701.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.002833,
+              "provider_reported_usage_cost_usd": 0.002833,
+              "request_id": "99312a5b-80d7-43e6-a26a-e78a7a9c38b3",
+              "requested_model": "sonnet",
+              "session_id": "e115b605-7438-4389-aea7-297b51b52aa9",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1685.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"Output is exactly 'Mary Anne' with correct title-case capitalization, single space between words, no quotes, explanation, or extra whitespace.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.002833,
+              "input_tokens": 368,
+              "output_tokens": 68,
+              "total_tokens": 436
+            },
+            "pass_threshold": 0.5,
+            "rationale": "Output is exactly 'Mary Anne' with correct title-case capitalization, single space between words, no quotes, explanation, or extra whitespace.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2416.33,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:38.993623Z"
+        }
+      ],
+      "example_id": "jcv1-exact-02",
+      "expected": {
+        "exact_text": "east|north|west",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `east|north|west`, preserving lowercase and separators, with no spaces, Markdown, or commentary."
+      },
+      "failures": [],
+      "input": "Sort the tokens north, west, east alphabetically and join them with vertical bars. Return only the result.",
+      "latency_ms": 2922.433,
+      "metadata": {
+        "case_description": "Sorted tokens with exact delimiter formatting",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2091.0,
+          "duration_ms": 1334.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.00128,
+          "provider_reported_usage_cost_usd": 0.00128,
+          "request_id": "6390d565-9659-4b5a-a293-53171a83abfb",
+          "requested_model": "haiku",
+          "session_id": "72591fc2-93ae-4cbc-977f-a91c738b2d8b",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1295.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "east|north|west",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.00128,
+          "input_tokens": 187,
+          "output_tokens": 96,
+          "total_tokens": 283
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2921.858,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:38.993758Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2965.0,
+              "duration_ms": 2226.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.002791,
+              "provider_reported_usage_cost_usd": 0.002791,
+              "request_id": "50f59061-32be-43df-8b4b-1160474e8922",
+              "requested_model": "sonnet",
+              "session_id": "24f962cd-1c92-4416-b574-1561d10d9e79",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1988.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"Output exactly matches 'east|north|west' with correct alphabetical order, lowercase, pipe separators, no spaces or extra text.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.002791,
+              "input_tokens": 368,
+              "output_tokens": 65,
+              "total_tokens": 433
+            },
+            "pass_threshold": 0.5,
+            "rationale": "Output exactly matches 'east|north|west' with correct alphabetical order, lowercase, pipe separators, no spaces or extra text.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2922.252,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:40.623250Z"
+        }
+      ],
+      "example_id": "jcv1-exact-03",
+      "expected": {
+        "exact_text": "ALPHA_BETA_07",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `ALPHA_BETA_07`, including capitalization and underscores, with no code fence or additional text."
+      },
+      "failures": [],
+      "input": "Transform `alpha beta 7` into uppercase snake case and zero-pad the number to two digits. Return only the transformed identifier.",
+      "latency_ms": 2611.85,
+      "metadata": {
+        "case_description": "Uppercase identifier transformation and zero-padding",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2610.0,
+          "duration_ms": 1850.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001505,
+          "provider_reported_usage_cost_usd": 0.001505,
+          "request_id": "863dfecf-152b-428e-a662-af4c71652acc",
+          "requested_model": "haiku",
+          "session_id": "c49dc883-bd12-48bc-89bc-add1dd8bb511",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1838.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "ALPHA_BETA_07",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001505,
+          "input_tokens": 192,
+          "output_tokens": 140,
+          "total_tokens": 332
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2611.29,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:40.623389Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2565.0,
+              "duration_ms": 1800.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.002997,
+              "provider_reported_usage_cost_usd": 0.002997,
+              "request_id": "54a6c7cf-20d7-4192-8173-65e1fe708198",
+              "requested_model": "sonnet",
+              "session_id": "7d04bb3e-9687-418b-9ca6-8f60d5ff985a",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1791.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"Candidate output exactly matches 'ALPHA_BETA_07' with correct uppercase, underscores, zero-padded number, and no extraneous text or formatting.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.002997,
+              "input_tokens": 384,
+              "output_tokens": 75,
+              "total_tokens": 459
+            },
+            "pass_threshold": 0.5,
+            "rationale": "Candidate output exactly matches 'ALPHA_BETA_07' with correct uppercase, underscores, zero-padded number, and no extraneous text or formatting.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2611.627,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.019,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:41.916081Z"
+        }
+      ],
+      "example_id": "jcv1-exact-04",
+      "expected": {
+        "exact_text": "Q-19 / pending / Lee",
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is exactly `Q-19 / pending / Lee`, including case and spaces around each slash, with no explanation or extra whitespace."
+      },
+      "failures": [],
+      "input": "From `ticket=Q-19 status=pending owner=Lee`, return the three values in ticket / status / owner order, separated by ` / `. Return nothing else.",
+      "latency_ms": 2457.898,
+      "metadata": {
+        "case_description": "Field extraction with exact ordering and separators",
+        "slices": {
+          "constraint_type": "exact_constraints"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 2505.0,
+          "duration_ms": 1849.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.001482,
+          "provider_reported_usage_cost_usd": 0.001482,
+          "request_id": "849942b2-cf56-4af3-889e-68b7b7cce581",
+          "requested_model": "haiku",
+          "session_id": "487fc5fc-81a7-4408-ac7e-215cbc4bc93a",
+          "transport": "claude_code_cli",
+          "ttft_ms": 1830.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Q-19 / pending / Lee",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.001482,
+          "input_tokens": 203,
+          "output_tokens": 133,
+          "total_tokens": 336
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2457.341,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:41.916235Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2211.0,
+              "duration_ms": 1718.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.002875,
+              "provider_reported_usage_cost_usd": 0.002875,
+              "request_id": "435f56ad-a261-4dcd-ba54-3a52433087d2",
+              "requested_model": "sonnet",
+              "session_id": "76f2e21f-2397-4f72-889d-92af0c0583fe",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1705.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The candidate output exactly matches 'Q-19 / pending / Lee' with correct case and spacing around slashes, no extra text.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.002875,
+              "input_tokens": 399,
+              "output_tokens": 63,
+              "total_tokens": 462
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The candidate output exactly matches 'Q-19 / pending / Lee' with correct case and spacing around slashes, no extra text.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2457.715,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:43.235140Z"
+        }
+      ],
+      "example_id": "jcv1-multi-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line of exactly 12 whitespace-separated words, includes retry and duplicate, excludes database, and gives a coherent explanation that idempotency makes repeated operations safe or prevents duplicate effects.",
+        "text_constraints": {
+          "exact_line_count": 1,
+          "exact_word_count": 12,
+          "forbidden_terms": [
+            "database"
+          ],
+          "required_terms": [
+            "retry",
+            "duplicate"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "In exactly 12 whitespace-separated words on one line, explain why idempotency helps retries. Include the words `retry` and `duplicate`. Do not use the word `database`.",
+      "latency_ms": 3064.123,
+      "metadata": {
+        "case_description": "Semantic explanation under word and vocabulary constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 11584.0,
+          "duration_ms": 11031.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.006845,
+          "provider_reported_usage_cost_usd": 0.006845,
+          "request_id": "0a588747-a7c7-451a-87b2-82d45de0e7c6",
+          "requested_model": "haiku",
+          "session_id": "a87c94ae-1292-423c-91dc-ec253b426666",
+          "transport": "claude_code_cli",
+          "ttft_ms": 10899.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Idempotency enables safe retry operations because duplicate requests always produce identical results.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.006845,
+          "input_tokens": 207,
+          "output_tokens": 1198,
+          "total_tokens": 1405
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3063.579,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:43.235286Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3069.0,
+              "duration_ms": 2353.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.005578,
+              "provider_reported_usage_cost_usd": 0.005578,
+              "request_id": "589ec256-7224-4017-9c11-ac2ca4475f9e",
+              "requested_model": "sonnet",
+              "session_id": "ae2ef6ee-723a-4434-a697-dfbb773a0870",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1815.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The response is exactly 12 whitespace-separated words on one line, includes 'retry' and 'duplicate', excludes 'database', and coherently explains that idempotency ensures duplicate/repeated requests produce identical (safe) results.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.005578,
+              "input_tokens": 444,
+              "output_tokens": 232,
+              "total_tokens": 676
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response is exactly 12 whitespace-separated words on one line, includes 'retry' and 'duplicate', excludes 'database', and coherently explains that idempotency ensures duplicate/repeated requests produce identical (safe) results.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3063.949,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:44.374002Z"
+        }
+      ],
+      "example_id": "jcv1-multi-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if there are exactly three lines, every line starts with `- `, the response contains cache, latency, and cost, no colon appears, and each line describes a practical monitoring check rather than listing disconnected words.",
+        "text_constraints": {
+          "exact_line_count": 3,
+          "forbidden_terms": [
+            ":"
+          ],
+          "line_prefix": "- ",
+          "required_terms": [
+            "cache",
+            "latency",
+            "cost"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "Give exactly three one-line monitoring checks for an LLM service. Every line must begin with `- `. Across the response include the words cache, latency, and cost. Do not use a colon anywhere.",
+      "latency_ms": 3855.502,
+      "metadata": {
+        "case_description": "Three monitoring bullets with lexical and punctuation constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 4256.0,
+          "duration_ms": 3632.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002535,
+          "provider_reported_usage_cost_usd": 0.002535,
+          "request_id": "5dab7215-e19e-44f0-aaee-da684fe7c610",
+          "requested_model": "haiku",
+          "session_id": "48d4b37d-39ce-42e5-beb6-2f71ab8aed43",
+          "transport": "claude_code_cli",
+          "ttft_ms": 3492.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "- Monitor cache hit rate to measure performance improvement from prompt caching\n- Track request latency percentiles to ensure response times meet SLA targets\n- Alert on cost per token to identify unexpected spending increases",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002535,
+          "input_tokens": 212,
+          "output_tokens": 337,
+          "total_tokens": 549
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3854.999,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:44.374141Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3746.0,
+              "duration_ms": 3150.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.006812,
+              "provider_reported_usage_cost_usd": 0.006812,
+              "request_id": "2fe3c76f-ab22-4b0d-ac75-bab9375acfac",
+              "requested_model": "sonnet",
+              "session_id": "124c0bc5-1025-4910-8131-2f86a455bf66",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2443.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"Exactly three lines, each starting with '- '. Contains 'cache', 'latency', and 'cost'. No colons appear anywhere. Each line describes a coherent, practical monitoring check (cache hit rate, latency percentiles, cost per token) rather than disconnected words.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.006812,
+              "input_tokens": 485,
+              "output_tokens": 304,
+              "total_tokens": 789
+            },
+            "pass_threshold": 0.5,
+            "rationale": "Exactly three lines, each starting with '- '. Contains 'cache', 'latency', and 'cost'. No colons appear anywhere. Each line describes a coherent, practical monitoring check (cache hit rate, latency percentiles, cost per token) rather than disconnected words.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3855.334,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:46.299283Z"
+        }
+      ],
+      "example_id": "jcv1-multi-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line, begins with `DECISION:`, ends with `approved.`, contains risk and rollback, contains no digit, and coherently makes approval conditional on those safeguards.",
+        "text_constraints": {
+          "ends_with": "approved.",
+          "exact_line_count": 1,
+          "forbidden_terms": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "required_terms": [
+            "risk",
+            "rollback"
+          ],
+          "starts_with": "DECISION:"
+        }
+      },
+      "failures": [],
+      "input": "Write one line that begins exactly with `DECISION:` and ends exactly with `approved.` Include both risk and rollback. Use no digits. The line should communicate that approval depends on those safeguards.",
+      "latency_ms": 3696.914,
+      "metadata": {
+        "case_description": "Conditional decision statement with boundary and content constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 7160.0,
+          "duration_ms": 6508.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.004079,
+          "provider_reported_usage_cost_usd": 0.004079,
+          "request_id": "2c7b1943-6d18-499b-8190-14460bca1d4f",
+          "requested_model": "haiku",
+          "session_id": "5e35eab6-81ab-47a2-8d4f-258b2f79a4a4",
+          "transport": "claude_code_cli",
+          "ttft_ms": 6390.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "DECISION: Approval depends on completing a thorough risk assessment and establishing a tested rollback protocol as essential safeguards before this can be approved.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.004079,
+          "input_tokens": 209,
+          "output_tokens": 643,
+          "total_tokens": 852
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3696.381,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:46.299440Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3624.0,
+              "duration_ms": 2929.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.006265,
+              "provider_reported_usage_cost_usd": 0.006265,
+              "request_id": "512a0f45-2fa0-4904-be27-957e6951be4e",
+              "requested_model": "sonnet",
+              "session_id": "dc24c98f-c463-431b-a089-78837a24e15b",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2279.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The output is a single line beginning with 'DECISION:' and ending exactly with 'approved.'. It contains both 'risk' and 'rollback', contains no digits, and coherently conditions approval on completing a risk assessment and establishing a rollback protocol.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.006265,
+              "input_tokens": 461,
+              "output_tokens": 274,
+              "total_tokens": 735
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The output is a single line beginning with 'DECISION:' and ending exactly with 'approved.'. It contains both 'risk' and 'rollback', contains no digits, and coherently conditions approval on completing a risk assessment and establishing a rollback protocol.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3696.735,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.014,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:48.229526Z"
+        }
+      ],
+      "example_id": "jcv1-multi-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response is one line of exactly 18 whitespace-separated words, contains bounded and backoff, contains neither infinite nor forever, and describes a coherent retry policy that limits attempts or duration.",
+        "text_constraints": {
+          "exact_line_count": 1,
+          "exact_word_count": 18,
+          "forbidden_terms": [
+            "infinite",
+            "forever"
+          ],
+          "required_terms": [
+            "bounded",
+            "backoff"
+          ]
+        }
+      },
+      "failures": [],
+      "input": "In exactly 18 whitespace-separated words on one line, describe a safe retry policy. Include `bounded` and `backoff`. Do not use `infinite` or `forever`.",
+      "latency_ms": 3765.192,
+      "metadata": {
+        "case_description": "Safe retry policy under length and vocabulary constraints",
+        "slices": {
+          "constraint_type": "multi_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 6079.0,
+          "duration_ms": 5365.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.003814,
+          "provider_reported_usage_cost_usd": 0.003814,
+          "request_id": "decf7837-294b-46c1-8883-992339074f12",
+          "requested_model": "haiku",
+          "session_id": "7decc7d3-5527-43e7-9ef6-238720f39f3b",
+          "transport": "claude_code_cli",
+          "ttft_ms": 5341.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "A safe retry policy implements bounded retries with exponential backoff to prevent overwhelming servers while recovering from failures",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.003814,
+          "input_tokens": 204,
+          "output_tokens": 594,
+          "total_tokens": 798
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3764.752,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:48.229636Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 4033.0,
+              "duration_ms": 2995.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.006649,
+              "provider_reported_usage_cost_usd": 0.006649,
+              "request_id": "fd5b427c-198d-4840-86a8-91344a5af83a",
+              "requested_model": "sonnet",
+              "session_id": "ec9d0bbb-1adc-4e57-a780-0887a29ca112",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2491.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The output is a single line containing exactly 18 whitespace-separated words, includes both 'bounded' and 'backoff', excludes 'infinite' and 'forever', and coherently describes a retry policy that limits attempts via bounded retries with exponential backoff.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.006649,
+              "input_tokens": 450,
+              "output_tokens": 303,
+              "total_tokens": 753
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The output is a single line containing exactly 18 whitespace-separated words, includes both 'bounded' and 'backoff', excludes 'infinite' and 'forever', and coherently describes a retry policy that limits attempts via bounded retries with exponential backoff.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3765.04,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:49.996213Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-01",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response empathetically acknowledges the user's frustration, includes an apology, avoids blaming the user, does not claim certain restoration, and does not promise an unverified outcome. Helpful next steps are allowed if framed without guarantees."
+      },
+      "failures": [],
+      "input": "A user says: `Your editor lost my draft and I am furious.` Write a brief support response that acknowledges the frustration and apologizes. Do not blame the user, claim the draft can definitely be restored, or promise an outcome you cannot verify.",
+      "latency_ms": 3214.538,
+      "metadata": {
+        "case_description": "Empathetic support without blame or unsupported promises",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 6084.0,
+          "duration_ms": 5421.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.003014,
+          "provider_reported_usage_cost_usd": 0.003014,
+          "request_id": "de84097a-2ebe-4a2a-8420-fb661e9cb424",
+          "requested_model": "haiku",
+          "session_id": "f5401e31-ea28-4fa6-8c42-b4984ac46198",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4212.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "---\n\n**Subject: We're Sorry About Your Lost Draft**\n\nThank you for reaching out, and I'm truly sorry to hear that your draft was lost. I completely understand your frustration\u2014that's a stressful experience, and we take it seriously.\n\nI'd like to help look into this. If you can share some details\u2014such as when you last worked on the draft and what application you were using\u2014our team can investigate what may have happened and explore what recovery options might be available.\n\nWe appreciate your patience, and I'm here to help however we can.\n\n---",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.003014,
+          "input_tokens": 219,
+          "output_tokens": 430,
+          "total_tokens": 649
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3213.929,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:49.996366Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3072.0,
+              "duration_ms": 2444.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.004927,
+              "provider_reported_usage_cost_usd": 0.004927,
+              "request_id": "a799027a-0d07-4736-aa8f-1f19354f706e",
+              "requested_model": "sonnet",
+              "session_id": "f799abb3-febe-4362-ab54-839cec278206",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2416.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\":\"PASS\",\"rationale\":\"The response acknowledges frustration ('I completely understand your frustration'), includes a clear apology ('I'm truly sorry'), does not blame the user, and avoids promising restoration\u2014using hedged language like 'explore what recovery options might be available' rather than guaranteeing an outcome. It offers helpful next steps (asking for details) without overpromising, satisfying all rubric criteria.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.004927,
+              "input_tokens": 622,
+              "output_tokens": 144,
+              "total_tokens": 766
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response acknowledges frustration ('I completely understand your frustration'), includes a clear apology ('I'm truly sorry'), does not blame the user, and avoids promising restoration\u2014using hedged language like 'explore what recovery options might be available' rather than guaranteeing an outcome. It offers helpful next steps (asking for details) without overpromising, satisfying all rubric criteria.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3214.348,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.018,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:51.994738Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-02",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if one concise sentence preserves that archiving after 90 days is optional, preserves that legal-hold channels cannot be archived, and does not imply that all inactive channels must be archived."
+      },
+      "failures": [],
+      "input": "Policy text: `Teams may archive inactive channels after 90 days. Channels under a legal hold must not be archived.` Summarize the policy in one concise sentence without turning the optional archive permission into a requirement.",
+      "latency_ms": 2777.174,
+      "metadata": {
+        "case_description": "Policy summary preserving permission versus obligation",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 3695.0,
+          "duration_ms": 2770.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.00194,
+          "provider_reported_usage_cost_usd": 0.00194,
+          "request_id": "375261d1-e1e9-4f8d-b1ab-070abac664da",
+          "requested_model": "haiku",
+          "session_id": "f99ce32a-a63e-4b45-a9c6-9f2ff27ddf76",
+          "transport": "claude_code_cli",
+          "ttft_ms": 2751.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "Teams may archive inactive channels after 90 days, except those under legal hold.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.00194,
+          "input_tokens": 212,
+          "output_tokens": 219,
+          "total_tokens": 431
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2776.667,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:51.994861Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2735.0,
+              "duration_ms": 2066.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003991,
+              "provider_reported_usage_cost_usd": 0.003991,
+              "request_id": "ba5bd8d7-b3ea-4fb5-9b9a-9c2576dce78c",
+              "requested_model": "sonnet",
+              "session_id": "d73de18a-4bef-48a0-8f66-b2f653a84d79",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2043.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The single sentence uses 'may archive' preserving the optional/permissive nature of archiving after 90 days, explicitly retains the exception that legal-hold channels are excluded ('except those under legal hold'), and does not use mandatory language like 'must' for archiving, so it doesn't imply archiving is required for all inactive channels.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003991,
+              "input_tokens": 440,
+              "output_tokens": 127,
+              "total_tokens": 567
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The single sentence uses 'may archive' preserving the optional/permissive nature of archiving after 90 days, explicitly retains the exception that legal-hold channels are excluded ('except those under legal hold'), and does not use mandatory language like 'must' for archiving, so it doesn't imply archiving is required for all inactive channels.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2777.009,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.016,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:53.210766Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-03",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the response has two sentences, states that unit tests passed, clearly says production verification or deployment remains incomplete, does not imply resolution, and introduces no unsupported risk or status claim."
+      },
+      "failures": [],
+      "input": "Current state: a proposed fix passed unit tests, but production verification has not begun. Write a two-sentence stakeholder update that conveys progress and remaining uncertainty without implying the issue is resolved or deployed and without inventing new risks.",
+      "latency_ms": 2701.675,
+      "metadata": {
+        "case_description": "Calibrated status update without premature resolution",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 5127.0,
+          "duration_ms": 4348.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002632,
+          "provider_reported_usage_cost_usd": 0.002632,
+          "request_id": "b71abddb-2e50-4988-9c97-4baa8703a61f",
+          "requested_model": "haiku",
+          "session_id": "c69f5161-819e-4fbe-89f9-d855dafbe8d0",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4109.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "The proposed fix has successfully passed unit tests, demonstrating that the solution functions as designed in isolated conditions. Production verification will begin next, which is necessary to confirm the fix's effectiveness in the live environment.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002632,
+          "input_tokens": 213,
+          "output_tokens": 356,
+          "total_tokens": 569
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 2701.228,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:53.210889Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 2726.0,
+              "duration_ms": 1997.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.003647,
+              "provider_reported_usage_cost_usd": 0.003647,
+              "request_id": "ec2020e1-c38b-4ec3-b012-7affebe9f290",
+              "requested_model": "sonnet",
+              "session_id": "e355ba70-069d-4efc-9d52-5b2082a45b14",
+              "transport": "claude_code_cli",
+              "ttft_ms": 1977.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\": \"PASS\", \"rationale\": \"The response contains exactly two sentences. It states unit tests passed, clearly indicates production verification has not begun/is upcoming (deployment/resolution not implied), and does not introduce any unsupported new risks or status claims.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.003647,
+              "input_tokens": 498,
+              "output_tokens": 91,
+              "total_tokens": 589
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The response contains exactly two sentences. It states unit tests passed, clearly indicates production verification has not begun/is upcoming (deployment/resolution not implied), and does not introduce any unsupported new risks or status claims.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 2701.508,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.017,
+          "outcome": "success",
+          "started_at": "2026-08-16T02:36:54.771944Z"
+        }
+      ],
+      "example_id": "jcv1-semantic-04",
+      "expected": {
+        "human_reference_label": null,
+        "human_reference_status": "unlabeled",
+        "rubric": "PASS only if the rewrite preserves that incidents fell 20% after the dashboard launch, explicitly avoids or qualifies the causal conclusion, and does not assert any unobserved alternative explanation as fact."
+      },
+      "failures": [],
+      "input": "Rewrite this unsupported causal claim so it states only what the evidence supports: `After the new dashboard launched, incidents fell 20%, so the dashboard caused the decrease.` Preserve the observed timing and 20% association, reject the causal conclusion, and do not invent an alternative cause.",
+      "latency_ms": 3174.638,
+      "metadata": {
+        "case_description": "Causal-claim correction preserving observed association",
+        "slices": {
+          "constraint_type": "semantic_constraint"
+        }
+      },
+      "response": {
+        "finish_reason": "end_turn",
+        "metadata": {
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "cache_tokens": 0,
+          "canonical_model": "claude-haiku-4-5-20251001",
+          "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+          "duration_api_ms": 5809.0,
+          "duration_ms": 5200.0,
+          "num_turns": 1,
+          "provider_reported_total_cost_usd": 0.002986,
+          "provider_reported_usage_cost_usd": 0.002986,
+          "request_id": "e6d17cb7-8699-48e0-a0f1-4c70c52c646d",
+          "requested_model": "haiku",
+          "session_id": "9c8b394d-0196-4b6e-a675-682df589e723",
+          "transport": "claude_code_cli",
+          "ttft_ms": 4649.0,
+          "usage_model_ids": [
+            "claude-haiku-4-5-20251001"
+          ]
+        },
+        "model_id": "claude-haiku-4-5-20251001",
+        "output": "# Rewritten Claim\n\n\"After the new dashboard launched, incidents fell 20%.\"\n\nThis version preserves the observed timing and the 20% association while removing the unsupported causal inference. It states only what the evidence directly shows\u2014a temporal relationship and a measured decrease\u2014without concluding that the dashboard caused the decrease.",
+        "provider": "anthropic_claude_code_cli",
+        "usage": {
+          "cost_usd": 0.002986,
+          "input_tokens": 230,
+          "output_tokens": 418,
+          "total_tokens": 648
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "judge_attempts": [
+              {
+                "attempt": 1,
+                "failure": null,
+                "latency_ms": 3174.241,
+                "outcome": "success",
+                "started_at": "2026-08-16T02:36:54.772093Z"
+              }
+            ],
+            "judge_candidate_id": "claude-cli:sonnet",
+            "judge_finish_reason": "end_turn",
+            "judge_metadata": {
+              "cache_creation_input_tokens": 0,
+              "cache_read_input_tokens": 0,
+              "cache_tokens": 0,
+              "canonical_model": "claude-sonnet-5",
+              "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+              "duration_api_ms": 3292.0,
+              "duration_ms": 2465.0,
+              "num_turns": 1,
+              "provider_reported_total_cost_usd": 0.004145,
+              "provider_reported_usage_cost_usd": 0.004145,
+              "request_id": "3347e6ab-42ed-4a10-a330-d9dbc61c7c73",
+              "requested_model": "sonnet",
+              "session_id": "5733f372-e6fa-4a62-a572-47e5e7428628",
+              "transport": "claude_code_cli",
+              "ttft_ms": 2443.0,
+              "usage_model_ids": [
+                "claude-haiku-4-5-20251001",
+                "claude-sonnet-5"
+              ]
+            },
+            "judge_model_id": "claude-sonnet-5",
+            "judge_output": "{\"verdict\":\"PASS\",\"rationale\":\"The rewrite preserves the temporal sequence (after dashboard launch) and the 20% decrease in incidents, removes the causal assertion 'the dashboard caused the decrease,' and does not introduce any alternative cause as fact. It matches all rubric requirements.\"}",
+            "judge_provider": "anthropic_claude_code_cli",
+            "judge_usage": {
+              "cost_usd": 0.004145,
+              "input_tokens": 567,
+              "output_tokens": 106,
+              "total_tokens": 673
+            },
+            "pass_threshold": 0.5,
+            "rationale": "The rewrite preserves the temporal sequence (after dashboard launch) and the 20% decrease in incidents, removes the causal assertion 'the dashboard caused the decrease,' and does not introduce any alternative cause as fact. It matches all rubric requirements.",
+            "verdict": "pass"
+          },
+          "failure": null,
+          "latency_ms": 3174.46,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "sonnet_instruction_judge",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "response_count": 16,
+      "source": "../artifacts/candidate-haiku.run.json",
+      "source_candidate_id": "claude-cli:haiku",
+      "source_config_fingerprint": "3d9596d782e493a27b83954cbc74a852bbb8f3a08971cd9a9e8380b02b81fc04",
+      "source_dataset_checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+      "source_run_id": "20260816T021229.764598Z-3d9596d782e4",
+      "type": "run_artifact"
+    },
+    "candidate_id": "replay:claude-cli:haiku@20260816T021229.764598Z-3d9596d782e4",
+    "completed_at": "2026-08-16T02:36:57.946608Z",
+    "config_fingerprint": "9759ed9229780f84c20ce5396cb00c4c7634cd22781676c09b9279024af35a63",
+    "dataset": {
+      "checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+      "dataset_id": "judge-calibration-v1",
+      "example_count": 16,
+      "metadata": {
+        "description": "Instruction-following cases for comparing a future LLM judge with one human reference annotator.",
+        "label_provenance": {
+          "annotator_count": 0,
+          "ground_truth_claim": false,
+          "human_evaluation": false,
+          "multi_annotator_consensus": false,
+          "status": "unlabeled"
+        },
+        "license": "MIT",
+        "provenance": "Project-authored prompts and rubrics; no user, production, or model-generated examples."
+      },
+      "source": "../dataset/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 25864.749,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "7f5eecd2c1a7c00651d6d94c6bb30eb769e99553",
+      "git_dirty": true,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.0,
+        "jitter_ratio": 0.0,
+        "max_attempts": 1,
+        "max_backoff_seconds": 0.0,
+        "timeout_seconds": 5.0
+      },
+      "concurrency": 2,
+      "scorer_timeout_seconds": 130.0,
+      "seed": null
+    },
+    "run_id": "20260816T023632.081797Z-9759ed922978",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "candidate": {
+          "dynamic_system_prompt_sections_excluded": true,
+          "executable": "claude",
+          "max_turns": 1,
+          "model": "sonnet",
+          "output_format": "json",
+          "system_prompt": "You are an evaluation judge. Apply the supplied rubric and return only the requested JSON.",
+          "timeout_seconds": 120.0,
+          "tools_disabled": true,
+          "type": "claude_cli"
+        },
+        "candidate_id": "claude-cli:sonnet",
+        "claim": "judge output is a measurement, not ground truth",
+        "exclude_expected_keys": null,
+        "invocation": {
+          "initial_backoff_seconds": 0.0,
+          "jitter_ratio": 0.0,
+          "max_attempts": 1,
+          "max_backoff_seconds": 0.0,
+          "timeout_seconds": 125.0
+        },
+        "name": "sonnet_instruction_judge",
+        "output_contract": "binary_verdict",
+        "pass_threshold": 0.5,
+        "prompt_payload_fields": [
+          "input",
+          "candidate_output",
+          "rubric"
+        ],
+        "rubric": null,
+        "rubric_key": "rubric",
+        "seed": null,
+        "type": "judge",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T02:36:32.081797Z"
+  }
+}

@@ -23,7 +23,20 @@ Technical findings, known limitations, and unresolved questions for v1.
 
 - `reference_label` and `human_label` are excluded from judge prompts by default to prevent
   calibration-label leakage. The exclusion list is configurable.
-- Judge results retain the raw judge output, attempt, model, provider, and usage evidence.
+- Exclusion lists were insufficient for a blinded calibration prompt because other expected
+  fields could still expose deterministic answers. Rubric-key mode now constructs a payload
+  containing only the original input, frozen candidate output, and case rubric.
+- Judge results retain the raw judge output, attempt, model, provider, usage, and
+  provider-specific metadata evidence.
+- The real Sonnet calibration run returned one syntactically invalid judgment: quotation
+  marks copied into a rationale were not escaped in the outer JSON. The strict binary
+  contract preserved it as `judge_invalid_json`; it was neither repaired nor retried.
+- Standard replay-run summaries attribute top-level usage to the replayed candidate response.
+  Human-reference analysis therefore derives judge tokens, cost accounting, TTFT, and
+  latency separately from scorer evidence.
+- The Sonnet run's CLI usage metadata listed both Sonnet and Haiku model IDs even though the
+  requested and canonical response model was Sonnet. Aggregate CLI usage is retained without
+  assigning every token or cost unit exclusively to the response model.
 - The checked-in calibration example uses a scripted judge and synthetic specification
   labels because no provider model or collected human annotation is available locally. Its
   agreement result exercises the analysis code; it is not evidence about model-judge or
