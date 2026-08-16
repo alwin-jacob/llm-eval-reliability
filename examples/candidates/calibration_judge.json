@@ -1,0 +1,10 @@
+{
+  "cal-01": "{\"score\":0.98,\"rationale\":\"The response is exactly 4.\"}",
+  "cal-02": "{\"score\":0.95,\"rationale\":\"The response identifies Tokyo.\"}",
+  "cal-03": "{\"score\":0.85,\"rationale\":\"It explains avoiding synchronized retries.\"}",
+  "cal-04": "{\"score\":0.90,\"rationale\":\"It is JSON with an integer count.\"}",
+  "cal-05": "{\"score\":0.05,\"rationale\":\"The arithmetic answer is incorrect.\"}",
+  "cal-06": "{\"score\":0.10,\"rationale\":\"Kyoto is not the requested capital.\"}",
+  "cal-07": "{\"score\":0.65,\"rationale\":\"It mentions a retry benefit, though imprecisely.\"}",
+  "cal-08": "{\"score\":0.20,\"rationale\":\"The count value is a string, not an integer.\"}"
+}

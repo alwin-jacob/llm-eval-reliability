@@ -1,0 +1,240 @@
+{
+  "candidate_id": "calibration-responses-v1",
+  "counts": {
+    "completed": 8,
+    "failed": 0,
+    "partial": 0,
+    "total": 8
+  },
+  "dataset": {
+    "checksum_sha256": "b36df631341cc5b2abcecfe0a4fdaff377d5767a539ff9d97ced3f04f66c9ae5",
+    "dataset_id": "judge-calibration-synthetic",
+    "example_count": 8,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {},
+    "by_origin": {},
+    "by_stage": {},
+    "total": 0
+  },
+  "latency_ms": {
+    "count": 8,
+    "max": 0.613,
+    "mean": 0.41,
+    "min": 0.267,
+    "p50": 0.305,
+    "p95": 0.613
+  },
+  "reliability": {
+    "attempts_total": 8,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 1.0,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T004439.416663Z-04ec5cf6f931",
+  "schema_version": "1.0",
+  "scorers": {
+    "scripted_judge": {
+      "counts": {
+        "error": 0,
+        "fail": 3,
+        "measured": 8,
+        "pass": 5,
+        "skipped": 0
+      },
+      "coverage": 1.0,
+      "latency_ms": {
+        "count": 8,
+        "max": 0.201,
+        "mean": 0.067,
+        "min": 0.04,
+        "p50": 0.044,
+        "p95": 0.201
+      },
+      "mean_score": 0.585,
+      "pass_rate": 0.625
+    }
+  },
+  "slices": [
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "response_style",
+      "scorers": {
+        "scripted_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 2,
+            "pass": 2,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.048,
+            "mean": 0.044,
+            "min": 0.04,
+            "p50": 0.04,
+            "p95": 0.048
+          },
+          "mean_score": 0.75,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "detailed"
+    },
+    {
+      "count": 6,
+      "counts": {
+        "completed": 6,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "response_style",
+      "scorers": {
+        "scripted_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 3,
+            "measured": 6,
+            "pass": 3,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 6,
+            "max": 0.201,
+            "mean": 0.075,
+            "min": 0.04,
+            "p50": 0.044,
+            "p95": 0.201
+          },
+          "mean_score": 0.53,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "direct"
+    },
+    {
+      "count": 4,
+      "counts": {
+        "completed": 4,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "task",
+      "scorers": {
+        "scripted_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 2,
+            "measured": 4,
+            "pass": 2,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 4,
+            "max": 0.201,
+            "mean": 0.091,
+            "min": 0.042,
+            "p50": 0.054,
+            "p95": 0.201
+          },
+          "mean_score": 0.52,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "closed_qa"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "task",
+      "scorers": {
+        "scripted_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 0,
+            "measured": 2,
+            "pass": 2,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.048,
+            "mean": 0.044,
+            "min": 0.04,
+            "p50": 0.04,
+            "p95": 0.048
+          },
+          "mean_score": 0.75,
+          "pass_rate": 1.0
+        }
+      },
+      "value": "explanation"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "task",
+      "scorers": {
+        "scripted_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 0.044,
+            "mean": 0.042,
+            "min": 0.04,
+            "p50": 0.04,
+            "p95": 0.044
+          },
+          "mean_score": 0.55,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "structured"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 0,
+      "total": null
+    },
+    "input_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "output_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "responses": 8,
+    "total_tokens": {
+      "available_count": 0,
+      "total": null
+    }
+  }
+}

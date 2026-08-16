@@ -1,0 +1,723 @@
+{
+  "examples": [
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.036,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417148Z"
+        }
+      ],
+      "example_id": "capital-france",
+      "expected": {
+        "text": "Paris"
+      },
+      "failures": [],
+      "input": "Return only the capital of France.",
+      "latency_ms": 0.384,
+      "metadata": {
+        "slices": {
+          "difficulty": "easy",
+          "domain": "factual",
+          "format": "text"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "Paris",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "expected": "Paris",
+            "normalization": {
+              "case_sensitive": false,
+              "collapse_whitespace": true,
+              "strip": true
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.019,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.required_terms is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.015,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417214Z"
+        }
+      ],
+      "example_id": "multiply",
+      "expected": {
+        "text": "42"
+      },
+      "failures": [],
+      "input": "Return only the result of 6 multiplied by 7.",
+      "latency_ms": 0.329,
+      "metadata": {
+        "slices": {
+          "difficulty": "easy",
+          "domain": "reasoning",
+          "format": "text"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "41",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "expected": "42",
+            "normalization": {
+              "case_sensitive": false,
+              "collapse_whitespace": true,
+              "strip": true
+            }
+          },
+          "failure": null,
+          "latency_ms": 0.009,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.required_terms is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417246Z"
+        }
+      ],
+      "example_id": "retry-explanation",
+      "expected": {
+        "required_terms": [
+          "exponential backoff",
+          "jitter",
+          "retryable"
+        ]
+      },
+      "failures": [],
+      "input": "In one sentence, name the three retry properties requested: exponential backoff, jitter, and retryable-error classification.",
+      "latency_ms": 0.303,
+      "metadata": {
+        "slices": {
+          "difficulty": "medium",
+          "domain": "systems",
+          "format": "text"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "Use exponential backoff and retry only retryable errors.",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "missing_terms": [
+              "jitter"
+            ],
+            "required_terms": [
+              "exponential backoff",
+              "jitter",
+              "retryable"
+            ]
+          },
+          "failure": null,
+          "latency_ms": 0.008,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.6666666666666666,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417267Z"
+        }
+      ],
+      "example_id": "artifact-properties",
+      "expected": {
+        "required_terms": [
+          "atomic",
+          "machine-readable"
+        ]
+      },
+      "failures": [],
+      "input": "State that evaluation artifacts should be atomic and machine-readable.",
+      "latency_ms": 0.286,
+      "metadata": {
+        "slices": {
+          "difficulty": "easy",
+          "domain": "systems",
+          "format": "text"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "Artifacts should be atomic and machine-readable.",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "missing_terms": [],
+            "required_terms": [
+              "atomic",
+              "machine-readable"
+            ]
+          },
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "no JSON schema configured for example"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.values is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.006,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417572Z"
+        }
+      ],
+      "example_id": "classify-ticket",
+      "expected": {
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "type": "string"
+            },
+            "urgent": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "category",
+            "urgent"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "category": "account_access",
+          "urgent": false
+        }
+      },
+      "failures": [],
+      "input": "Return JSON classifying a password reset request with keys category and urgent.",
+      "latency_ms": 1.434,
+      "metadata": {
+        "slices": {
+          "difficulty": "medium",
+          "domain": "support",
+          "format": "json"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "{\"category\":\"account_access\",\"urgent\":false}",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.required_terms is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.003,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "schema_errors": [],
+            "valid_json": true
+          },
+          "failure": null,
+          "latency_ms": 0.74,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "expected_values": {
+              "category": "account_access",
+              "urgent": false
+            },
+            "mismatches": []
+          },
+          "failure": null,
+          "latency_ms": 0.01,
+          "outcome": "pass",
+          "passed": true,
+          "score": 1.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    },
+    {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "success",
+          "started_at": "2026-08-16T00:44:39.417594Z"
+        }
+      ],
+      "example_id": "extract-order",
+      "expected": {
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "item_count": {
+              "type": "integer"
+            },
+            "order_id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order_id",
+            "item_count"
+          ],
+          "type": "object"
+        },
+        "values": {
+          "item_count": 3,
+          "order_id": "A-104"
+        }
+      },
+      "failures": [
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_schema"
+        },
+        {
+          "code": "malformed_json",
+          "exception_type": "JSONDecodeError",
+          "message": "candidate output is not valid JSON: Expecting value",
+          "origin": "model",
+          "retryable": false,
+          "stage": "scorer:json_fields"
+        }
+      ],
+      "input": "Return JSON with order_id set to A-104 and item_count set to 3.",
+      "latency_ms": 1.418,
+      "metadata": {
+        "slices": {
+          "difficulty": "medium",
+          "domain": "extraction",
+          "format": "json"
+        }
+      },
+      "response": {
+        "finish_reason": "stop",
+        "metadata": {},
+        "model_id": "baseline-fixture-v1",
+        "output": "order A-104 has three items",
+        "provider": "fixture",
+        "usage": {
+          "cost_usd": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null
+        }
+      },
+      "scores": [
+        {
+          "details": {
+            "reason": "expected.text is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.005,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "exact_match",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "reason": "expected.required_terms is absent"
+          },
+          "failure": null,
+          "latency_ms": 0.004,
+          "outcome": "skipped",
+          "passed": null,
+          "score": null,
+          "scorer_name": "contains_all",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_schema"
+          },
+          "latency_ms": 0.529,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_schema",
+          "scorer_version": "1"
+        },
+        {
+          "details": {
+            "mismatches": [
+              "item_count",
+              "order_id"
+            ],
+            "valid_json": false
+          },
+          "failure": {
+            "code": "malformed_json",
+            "exception_type": "JSONDecodeError",
+            "message": "candidate output is not valid JSON: Expecting value",
+            "origin": "model",
+            "retryable": false,
+            "stage": "scorer:json_fields"
+          },
+          "latency_ms": 0.013,
+          "outcome": "fail",
+          "passed": false,
+          "score": 0.0,
+          "scorer_name": "json_fields",
+          "scorer_version": "1"
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "metadata": {
+    "candidate_config": {
+      "delay_seconds": 0.0,
+      "fixture_payload_sha256": "c65718c6a9d12a0d34347c003b9f2048399009aebc88bd2af28908b3cfcce215",
+      "identifier": "baseline-fixture-v1",
+      "response_count": 6,
+      "type": "fixture"
+    },
+    "candidate_id": "baseline-fixture-v1",
+    "completed_at": "2026-08-16T00:44:39.419042Z",
+    "config_fingerprint": "53508981b9d73fa98e7f2177d61e9068f06114dae1d55d3c38ffaef72edc49b8",
+    "dataset": {
+      "checksum_sha256": "1654ac25d909d0a54184ef3758bf479d50a6881fda6e4a2636df026514664bba",
+      "dataset_id": "core-capabilities",
+      "example_count": 6,
+      "metadata": {
+        "description": "Small synthetic dataset exercising text and structured-output scorers.",
+        "license": "MIT",
+        "provenance": "Project-authored synthetic examples; no user or production data."
+      },
+      "source": "../datasets/core/v1",
+      "version": "1.0.0"
+    },
+    "duration_ms": 2.293,
+    "environment": {
+      "evalreliability_version": "0.1.0",
+      "git_commit": "bbaddc308426ccc572d53beb479cb459fcd404a9",
+      "git_dirty": false,
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python_implementation": "CPython",
+      "python_version": "3.14.3"
+    },
+    "evaluation_config": {
+      "candidate_invocation": {
+        "initial_backoff_seconds": 0.01,
+        "jitter_ratio": 0.1,
+        "max_attempts": 2,
+        "max_backoff_seconds": 0.05,
+        "timeout_seconds": 2.0
+      },
+      "concurrency": 4,
+      "scorer_timeout_seconds": 2.0,
+      "seed": 17
+    },
+    "run_id": "20260816T004439.416611Z-53508981b9d7",
+    "schema_version": "1.0",
+    "scorer_configs": [
+      {
+        "case_sensitive": false,
+        "collapse_whitespace": true,
+        "expected_key": "text",
+        "name": "exact_match",
+        "strip": true,
+        "type": "exact_match",
+        "version": "1"
+      },
+      {
+        "case_sensitive": false,
+        "expected_key": "required_terms",
+        "name": "contains_all",
+        "type": "contains_all",
+        "version": "1"
+      },
+      {
+        "expected_key": "schema",
+        "name": "json_schema",
+        "schema": null,
+        "type": "json_schema",
+        "version": "1"
+      },
+      {
+        "expected_key": "values",
+        "name": "json_fields",
+        "type": "json_fields",
+        "version": "1"
+      }
+    ],
+    "started_at": "2026-08-16T00:44:39.416611Z"
+  }
+}

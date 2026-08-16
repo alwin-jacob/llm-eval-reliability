@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "dataset": "../datasets/core/v1",
+  "candidate": {
+    "type": "fixture",
+    "identifier": "baseline-fixture-v1",
+    "responses_file": "../candidates/baseline.json"
+  },
+  "scorers": [
+    {"type": "exact_match"},
+    {"type": "contains_all"},
+    {"type": "json_schema"},
+    {"type": "json_fields"}
+  ],
+  "evaluation": {
+    "concurrency": 4,
+    "scorer_timeout_seconds": 2.0,
+    "seed": 17,
+    "candidate_invocation": {
+      "timeout_seconds": 2.0,
+      "max_attempts": 2,
+      "initial_backoff_seconds": 0.01,
+      "max_backoff_seconds": 0.05,
+      "jitter_ratio": 0.1
+    }
+  }
+}

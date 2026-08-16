@@ -1,0 +1,16 @@
+{
+  "schema_version": "1",
+  "dataset_id": "judge-calibration-synthetic",
+  "version": "1.0.0",
+  "data_file": "data.jsonl",
+  "description": "Synthetic reference labels for exercising judge agreement analysis.",
+  "provenance": "Project-authored synthetic prompts, responses, and specification labels.",
+  "label_provenance": {
+    "type": "synthetic_specification",
+    "annotator_count": 0,
+    "adjudicated": false,
+    "human_evaluation": false,
+    "warning": "These are not collected human judgments and cannot support a human-calibration claim."
+  },
+  "license": "MIT"
+}
