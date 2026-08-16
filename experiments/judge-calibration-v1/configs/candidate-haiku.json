@@ -23,7 +23,7 @@
     {"type": "text_constraints"}
   ],
   "evaluation": {
-    "concurrency": 1,
+    "concurrency": 2,
     "scorer_timeout_seconds": 5.0,
     "seed": null,
     "candidate_invocation": {
