@@ -1,0 +1,464 @@
+{
+  "candidate_id": "replay:controlled:judge-challenge-v2@20260816T025931.050110Z-ad811ded8e0f",
+  "counts": {
+    "completed": 24,
+    "failed": 0,
+    "partial": 0,
+    "total": 24
+  },
+  "dataset": {
+    "checksum_sha256": "a29d5d5d7308c2bf2296fb8ae5407c97daeacd2f86811c10ac7eeb253ca49a6f",
+    "dataset_id": "judge-challenge-v2",
+    "example_count": 24,
+    "version": "1.0.0"
+  },
+  "failures": {
+    "by_code": {},
+    "by_origin": {},
+    "by_stage": {},
+    "total": 0
+  },
+  "latency_ms": {
+    "count": 24,
+    "max": 5454.649,
+    "mean": 3310.28,
+    "min": 2719.262,
+    "p50": 3087.759,
+    "p95": 5106.41
+  },
+  "reliability": {
+    "attempts_total": 24,
+    "candidate_success_rate": 1.0,
+    "evaluation_complete_rate": 1.0,
+    "retried_examples": 0
+  },
+  "run_id": "20260816T182947.417082Z-0b7c10ee726c",
+  "schema_version": "1.0",
+  "scorers": {
+    "sonnet_challenge_judge": {
+      "counts": {
+        "error": 0,
+        "fail": 12,
+        "measured": 24,
+        "pass": 12,
+        "skipped": 0
+      },
+      "coverage": 1.0,
+      "latency_ms": {
+        "count": 24,
+        "max": 5454.474,
+        "mean": 3309.404,
+        "min": 2719.115,
+        "p50": 3087.629,
+        "p95": 5089.714
+      },
+      "mean_score": 0.5,
+      "pass_rate": 0.5
+    }
+  },
+  "slices": [
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3208.154,
+            "mean": 3045.477,
+            "min": 2882.8,
+            "p50": 2882.8,
+            "p95": 3208.154
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "causal_overclaim"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3213.028,
+            "mean": 3150.328,
+            "min": 3087.629,
+            "p50": 3087.629,
+            "p95": 3213.028
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "conditionality"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3211.543,
+            "mean": 2965.329,
+            "min": 2719.115,
+            "p50": 2719.115,
+            "p95": 3211.543
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "exception_scope"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3609.162,
+            "mean": 3245.454,
+            "min": 2881.746,
+            "p50": 2881.746,
+            "p95": 3609.162
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "instruction_priority"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3285.122,
+            "mean": 3045.225,
+            "min": 2805.327,
+            "p50": 2805.327,
+            "p95": 3285.122
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "multi_constraint_near_miss"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3236.108,
+            "mean": 3084.319,
+            "min": 2932.529,
+            "p50": 2932.529,
+            "p95": 3236.108
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "negation_scope"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 2899.747,
+            "mean": 2849.457,
+            "min": 2799.168,
+            "p50": 2799.168,
+            "p95": 2899.747
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "numerical_boundary"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 5454.474,
+            "mean": 5272.094,
+            "min": 5089.714,
+            "p50": 5089.714,
+            "p95": 5454.474
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "permission_vs_obligation"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3026.768,
+            "mean": 2897.472,
+            "min": 2768.177,
+            "p50": 2768.177,
+            "p95": 3026.768
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "quantifier_shift"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3448.866,
+            "mean": 3201.343,
+            "min": 2953.82,
+            "p50": 2953.82,
+            "p95": 3448.866
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "semantic_preservation"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3900.267,
+            "mean": 3620.541,
+            "min": 3340.815,
+            "p50": 3340.815,
+            "p95": 3900.267
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "uncertainty_overclaim"
+    },
+    {
+      "count": 2,
+      "counts": {
+        "completed": 2,
+        "failed": 0,
+        "partial": 0
+      },
+      "dimension": "challenge_family",
+      "scorers": {
+        "sonnet_challenge_judge": {
+          "counts": {
+            "error": 0,
+            "fail": 1,
+            "measured": 2,
+            "pass": 1,
+            "skipped": 0
+          },
+          "coverage": 1.0,
+          "latency_ms": {
+            "count": 2,
+            "max": 3787.194,
+            "mean": 3335.803,
+            "min": 2884.413,
+            "p50": 2884.413,
+            "p95": 3787.194
+          },
+          "mean_score": 0.5,
+          "pass_rate": 0.5
+        }
+      },
+      "value": "unsupported_detail"
+    }
+  ],
+  "usage": {
+    "cost_usd": {
+      "available_count": 0,
+      "total": null
+    },
+    "input_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "output_tokens": {
+      "available_count": 0,
+      "total": null
+    },
+    "responses": 24,
+    "total_tokens": {
+      "available_count": 0,
+      "total": null
+    }
+  }
+}

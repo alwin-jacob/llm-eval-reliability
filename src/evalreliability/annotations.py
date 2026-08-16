@@ -273,6 +273,18 @@ def analyze_human_referenced_run(
     human_summary = _label_summary(human)
     judge_summary = _label_summary(judge)
     judge_agreement = _agreement_report(human, judge)
+    construction = _authorial_construction_labels(candidate_run)
+    construction_validation = (
+        {
+            "label_role": "experiment_authoring_metadata",
+            "used_as_judge_reference": False,
+            "ground_truth_claim": False,
+            "construction": _label_summary(construction),
+            "human_vs_construction": _agreement_report(human, construction),
+        }
+        if construction
+        else None
+    )
     judge_execution = (
         _judge_execution_summary(judge_run, judge_scorer)
         if judge_run is not None and judge_scorer is not None
@@ -340,6 +352,7 @@ def analyze_human_referenced_run(
         "judge_execution": judge_execution,
         "judge_error_rationales": judge_error_rationales,
         "judge_vs_human": judge_agreement,
+        "authorial_construction_validation": construction_validation,
         "per_slice": slices,
         "deterministic_scorer_vs_human": {
             name: {
@@ -353,6 +366,22 @@ def analyze_human_referenced_run(
             "multi-annotator consensus."
         ),
     }
+
+
+def _authorial_construction_labels(run: EvaluationRun) -> dict[str, str]:
+    labels: dict[str, str] = {}
+    for example in run.examples:
+        construction = example.metadata.get("construction")
+        if not isinstance(construction, dict):
+            continue
+        label = construction.get("intended_label")
+        if construction.get("label_source") != "authorial_construction":
+            continue
+        if construction.get("human_reference") is not False:
+            continue
+        if label in ("pass", "fail"):
+            labels[example.example_id] = str(label)
+    return labels
 
 
 def _judge_execution_summary(run: EvaluationRun, scorer_name: str) -> dict[str, Any]:

@@ -32,7 +32,7 @@ Technical findings, known limitations, and unresolved questions for v1.
   marks copied into a rationale were not escaped in the outer JSON. The strict binary
   contract preserved it as `judge_invalid_json`; it was neither repaired nor retried.
 - Standard replay-run summaries attribute top-level usage to the replayed candidate response.
-  Human-reference analysis therefore derives judge tokens, cost accounting, TTFT, and
+  Reference analysis therefore derives judge tokens, cost accounting, TTFT, and
   latency separately from scorer evidence.
 - The Sonnet run's CLI usage metadata listed both Sonnet and Haiku model IDs even though the
   requested and canonical response model was Sonnet. Aggregate CLI usage is retained without
@@ -42,10 +42,14 @@ Technical findings, known limitations, and unresolved questions for v1.
   controlled near misses from being represented as organic model outputs.
 - Rubric-key judge prompts omit all example metadata, which also prevents pair IDs,
   construction intent, and sibling responses from entering paired challenge judgments.
-- The checked-in calibration example uses a scripted judge and synthetic specification
-  labels because no provider model or collected human annotation is available locally. Its
-  agreement result exercises the analysis code; it is not evidence about model-judge or
-  human agreement.
+- Authorial construction labels now have a separate dataset-validation comparison in the
+  analysis artifact and are explicitly excluded from the judge reference.
+- `judge-calibration-v1` uses an AI-assisted/operator reference set. Its legacy annotation
+  schema and artifact field names do not establish independent human provenance.
+- `judge-challenge-v2` returned 24 valid verdicts that all matched one independent
+  annotator's labels. This n=24 controlled result is not evidence of general reliability.
+- The checked-in scripted calibration example remains deterministic so it can exercise the
+  agreement pipeline in CI. It is not evidence about model-judge or human agreement.
 - Slice metrics are descriptive and include sample counts. V1 does not provide confidence
   intervals or make significance claims from the small example datasets.
 
@@ -63,9 +67,10 @@ Technical findings, known limitations, and unresolved questions for v1.
   provide credential management or an Anthropic API transport.
 - Claude CLI `costUSD` values are retained as provider usage accounting, not interpreted as
   proof of a separate bill. TTFT remains absent when the CLI envelope does not report it.
-- Human-reference labels are checkpointed separately from raw run artifacts. The annotation
+- Reference labels are checkpointed separately from raw run artifacts. The annotation
   artifact binds to the exact run and dataset checksum and explicitly represents one
-  annotator rather than consensus or ground truth.
+  annotator rather than consensus or ground truth; external provenance disclosures remain
+  necessary when label entry was assisted.
 - A later judge must score replayed candidate responses. Regenerating the candidate during
   judge execution would confound judge disagreement with candidate stochasticity.
 

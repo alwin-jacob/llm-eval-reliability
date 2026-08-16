@@ -1,0 +1,964 @@
+{
+  "authorial_construction_validation": {
+    "construction": {
+      "fail_count": 12,
+      "pass_count": 12,
+      "pass_rate": 0.5,
+      "sample_size": 24
+    },
+    "ground_truth_claim": false,
+    "human_vs_construction": {
+      "accuracy": 1.0,
+      "accuracy_by_reference_label": {
+        "fail": {
+          "accuracy": 1.0,
+          "correct": 12,
+          "sample_size": 12
+        },
+        "pass": {
+          "accuracy": 1.0,
+          "correct": 12,
+          "sample_size": 12
+        }
+      },
+      "cohen_kappa": 1.0,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 12,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 12
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 24
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 24
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 24
+      },
+      "sample_size": 24
+    },
+    "label_role": "experiment_authoring_metadata",
+    "used_as_judge_reference": false
+  },
+  "candidate_run_id": "20260816T025931.050110Z-ad811ded8e0f",
+  "caution": "The human labels are one annotator's references, not ground truth or multi-annotator consensus.",
+  "deterministic_scorer_vs_human": {
+    "materialization_only": {
+      "accuracy": null,
+      "accuracy_by_reference_label": {
+        "fail": {
+          "accuracy": null,
+          "correct": 0,
+          "sample_size": 0
+        },
+        "pass": {
+          "accuracy": null,
+          "correct": 0,
+          "sample_size": 0
+        }
+      },
+      "cohen_kappa": null,
+      "confusion_matrix": {
+        "human_fail": {
+          "predicted_fail": 0,
+          "predicted_pass": 0
+        },
+        "human_pass": {
+          "predicted_fail": 0,
+          "predicted_pass": 0
+        }
+      },
+      "disagreements": {
+        "count": 0,
+        "items": [],
+        "sample_size": 0
+      },
+      "false_negatives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 0
+      },
+      "false_positives": {
+        "count": 0,
+        "example_ids": [],
+        "sample_size": 0
+      },
+      "sample_size": 0,
+      "scorer_sample_size": 0
+    }
+  },
+  "experiment_id": "judge-challenge-v2",
+  "human": {
+    "fail_count": 12,
+    "pass_count": 12,
+    "pass_rate": 0.5,
+    "sample_size": 24
+  },
+  "judge": {
+    "fail_count": 12,
+    "pass_count": 12,
+    "pass_rate": 0.5,
+    "sample_size": 24
+  },
+  "judge_error_rationales": {
+    "invalid_result_count": 0,
+    "invalid_results": [],
+    "valid_disagreement_count": 0,
+    "valid_disagreements": []
+  },
+  "judge_execution": {
+    "attempts_total": 24,
+    "cache_tokens": {
+      "cache_creation_input_tokens": {
+        "available_count": 24,
+        "total": 0
+      },
+      "cache_read_input_tokens": {
+        "available_count": 24,
+        "total": 0
+      },
+      "cache_tokens": {
+        "available_count": 24,
+        "total": 0
+      }
+    },
+    "canonical_models": [
+      "claude-sonnet-5"
+    ],
+    "cost_interpretation": "provider_usage_accounting_not_billing_evidence",
+    "error_codes": {},
+    "invalid_or_failed_verdicts": 0,
+    "invalid_output_count": 0,
+    "invalid_output_rate": 0.0,
+    "invalid_results": [],
+    "latency_ms": {
+      "count": 24,
+      "max": 5454.474,
+      "mean": 3309.403583,
+      "min": 2719.115,
+      "p50": 3087.629,
+      "p95": 5089.714
+    },
+    "model_ids": [
+      "claude-sonnet-5"
+    ],
+    "providers": [
+      "anthropic_claude_code_cli"
+    ],
+    "raw_judge_outputs_preserved": 24,
+    "requested_examples": 24,
+    "requested_models": [
+      "sonnet"
+    ],
+    "retried_examples": 0,
+    "scorer_results": 24,
+    "ttft_ms": {
+      "count": 24,
+      "max": 3856.0,
+      "mean": 2392.666667,
+      "min": 1806.0,
+      "p50": 2206.0,
+      "p95": 3210.0
+    },
+    "usage": {
+      "cost_usd": {
+        "available_count": 24,
+        "total": 0.090481
+      },
+      "input_tokens": {
+        "available_count": 24,
+        "total": 10530
+      },
+      "output_tokens": {
+        "available_count": 24,
+        "total": 2720
+      },
+      "total_tokens": {
+        "available_count": 24,
+        "total": 13250
+      }
+    },
+    "valid_verdicts": 24
+  },
+  "judge_run_id": "20260816T182947.417082Z-0b7c10ee726c",
+  "judge_scorer": "sonnet_challenge_judge",
+  "judge_vs_human": {
+    "accuracy": 1.0,
+    "accuracy_by_reference_label": {
+      "fail": {
+        "accuracy": 1.0,
+        "correct": 12,
+        "sample_size": 12
+      },
+      "pass": {
+        "accuracy": 1.0,
+        "correct": 12,
+        "sample_size": 12
+      }
+    },
+    "cohen_kappa": 1.0,
+    "confusion_matrix": {
+      "human_fail": {
+        "predicted_fail": 12,
+        "predicted_pass": 0
+      },
+      "human_pass": {
+        "predicted_fail": 0,
+        "predicted_pass": 12
+      }
+    },
+    "disagreements": {
+      "count": 0,
+      "items": [],
+      "sample_size": 24
+    },
+    "false_negatives": {
+      "count": 0,
+      "example_ids": [],
+      "sample_size": 24
+    },
+    "false_positives": {
+      "count": 0,
+      "example_ids": [],
+      "sample_size": 24
+    },
+    "sample_size": 24
+  },
+  "per_slice": [
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "causal_overclaim"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "conditionality"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "exception_scope"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "instruction_priority"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "multi_constraint_near_miss"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "negation_scope"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "numerical_boundary"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "permission_vs_obligation"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "quantifier_shift"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "semantic_preservation"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "uncertainty_overclaim"
+    },
+    {
+      "dimension": "challenge_family",
+      "human": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge": {
+        "fail_count": 1,
+        "pass_count": 1,
+        "pass_rate": 0.5,
+        "sample_size": 2
+      },
+      "judge_vs_human": {
+        "accuracy": 1.0,
+        "accuracy_by_reference_label": {
+          "fail": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          },
+          "pass": {
+            "accuracy": 1.0,
+            "correct": 1,
+            "sample_size": 1
+          }
+        },
+        "cohen_kappa": 1.0,
+        "confusion_matrix": {
+          "human_fail": {
+            "predicted_fail": 1,
+            "predicted_pass": 0
+          },
+          "human_pass": {
+            "predicted_fail": 0,
+            "predicted_pass": 1
+          }
+        },
+        "disagreements": {
+          "count": 0,
+          "items": [],
+          "sample_size": 2
+        },
+        "false_negatives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "false_positives": {
+          "count": 0,
+          "example_ids": [],
+          "sample_size": 2
+        },
+        "sample_size": 2
+      },
+      "sample_size": 2,
+      "value": "unsupported_detail"
+    }
+  ],
+  "reference_metadata": {
+    "annotator_count": 1,
+    "annotator_id": "alwin",
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false,
+    "reference_type": "single_human_reference"
+  },
+  "sample_sizes": {
+    "candidate_responses": 24,
+    "experiment_examples": 24,
+    "human_labeled": 24,
+    "judge_human_paired": 24,
+    "judge_labeled": 24
+  },
+  "schema_version": "1.0"
+}
