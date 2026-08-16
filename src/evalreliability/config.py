@@ -8,7 +8,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from evalreliability.candidates import Candidate, FixtureCandidate
+from evalreliability.artifacts import read_run
+from evalreliability.candidates import Candidate, FixtureCandidate, RunArtifactCandidate
 from evalreliability.claude_cli import ClaudeCliCandidate
 from evalreliability.dataset import EvaluationDataset, load_dataset
 from evalreliability.engine import EvaluationConfig
@@ -23,6 +24,7 @@ from evalreliability.scorers import (
     JsonSchemaScorer,
     JudgeScorer,
     Scorer,
+    TextConstraintScorer,
 )
 
 
@@ -105,8 +107,16 @@ def load_evaluation_spec(
         allow_python_plugins=allow_python_plugins,
         allow_external_processes=allow_external_processes,
     )
+    dataset = load_dataset(dataset_path, source=dataset_value)
+    if (
+        isinstance(candidate, RunArtifactCandidate)
+        and candidate.source_dataset_checksum != dataset.descriptor.checksum_sha256
+    ):
+        raise ConfigurationError(
+            "run-artifact candidate dataset checksum does not match evaluation dataset"
+        )
     return EvaluationSpec(
-        dataset=load_dataset(dataset_path, source=dataset_value),
+        dataset=dataset,
         candidate=candidate,
         scorers=scorers,
         evaluation=_parse_evaluation_config(evaluation_value),
@@ -183,6 +193,13 @@ def build_candidate(
             return ClaudeCliCandidate(**kwargs)
         except (TypeError, ValueError) as exc:
             raise ConfigurationError(f"invalid Claude CLI candidate: {exc}") from exc
+    if candidate_type == "run_artifact":
+        _reject_unknown(data, {"type", "run_file"}, "run-artifact candidate")
+        run_file = data.get("run_file")
+        if not isinstance(run_file, str) or not run_file:
+            raise ConfigurationError("run-artifact candidate run_file must be a path string")
+        run_path = _resolve_path(run_file, base_dir, allowed_root)
+        return RunArtifactCandidate(read_run(run_path), source=run_file)
     if candidate_type == "python":
         if not allow_python_plugins:
             raise ConfigurationError("Python candidate plugins are disabled for this interface")
@@ -246,6 +263,15 @@ def build_scorer(
         _validate_string_fields(data, {"name", "expected_key"}, "contains-all scorer")
         _validate_boolean_fields(data, {"case_sensitive"}, "contains-all scorer")
         return _construct(ContainsAllScorer, data)
+    if scorer_type == "text_constraints":
+        _reject_unknown(
+            data,
+            {"type", "name", "expected_key", "case_sensitive"},
+            "text-constraint scorer",
+        )
+        _validate_string_fields(data, {"name", "expected_key"}, "text-constraint scorer")
+        _validate_boolean_fields(data, {"case_sensitive"}, "text-constraint scorer")
+        return _construct(TextConstraintScorer, data)
     if scorer_type == "json_schema":
         _reject_unknown(data, {"type", "name", "expected_key", "schema"}, "JSON-schema scorer")
         _validate_string_fields(data, {"name", "expected_key"}, "JSON-schema scorer")

@@ -11,7 +11,13 @@ from dataclasses import asdict
 from typing import Any
 
 from evalreliability.errors import CandidateError
-from evalreliability.models import CandidateRequest, CandidateResponse, FailureOrigin, Usage
+from evalreliability.models import (
+    CandidateRequest,
+    CandidateResponse,
+    EvaluationRun,
+    FailureOrigin,
+    Usage,
+)
 
 
 class Candidate(ABC):
@@ -96,3 +102,48 @@ class FixtureCandidate(Candidate):
             finish_reason="stop",
             usage=self._usage_by_example.get(request.example_id, Usage()),
         )
+
+
+class RunArtifactCandidate(Candidate):
+    """Replay immutable responses from a prior run without invoking its model again."""
+
+    def __init__(self, run: EvaluationRun, *, source: str) -> None:
+        if not source:
+            raise ValueError("run artifact source cannot be empty")
+        self.run = run
+        self.source = source
+        self._responses = {
+            example.example_id: example.response
+            for example in run.examples
+            if example.response is not None
+        }
+
+    @property
+    def identifier(self) -> str:
+        return f"replay:{self.run.metadata.candidate_id}@{self.run.metadata.run_id}"
+
+    @property
+    def source_dataset_checksum(self) -> str:
+        return self.run.metadata.dataset.checksum_sha256
+
+    def configuration(self) -> dict[str, Any]:
+        return {
+            "type": "run_artifact",
+            "source": self.source,
+            "source_run_id": self.run.metadata.run_id,
+            "source_candidate_id": self.run.metadata.candidate_id,
+            "source_config_fingerprint": self.run.metadata.config_fingerprint,
+            "source_dataset_checksum_sha256": self.source_dataset_checksum,
+            "response_count": len(self._responses),
+        }
+
+    async def generate(self, request: CandidateRequest) -> CandidateResponse:
+        response = self._responses.get(request.example_id)
+        if response is None:
+            raise CandidateError(
+                f"source run has no successful response for example {request.example_id!r}",
+                code="run_artifact_response_missing",
+                retryable=False,
+                origin=FailureOrigin.INFRASTRUCTURE,
+            )
+        return response

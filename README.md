@@ -20,7 +20,7 @@ about model quality, production reliability, or scale.
 - An opt-in Claude Code CLI transport that disables tools and dynamic environment context,
   runs in an empty temporary directory, and normalizes CLI envelope metadata and failures.
 - Independent scorers for normalized exact match, required terms, JSON Schema, expected
-  JSON fields, and configurable candidate-backed judging.
+  JSON fields, lexical/layout constraints, and configurable candidate-backed judging.
 - Bounded concurrent evaluation with isolation at both example and scorer boundaries.
 - JSON run artifacts with dataset/candidate/scorer/evaluation configuration, run and config
   IDs, timestamps, latency, optional token/cost usage, environment, and Git provenance.
@@ -29,6 +29,8 @@ about model quality, production reliability, or scale.
   per-example policies; a failed policy exits with status `2`.
 - Judge/reference agreement with coverage, confusion matrix, Cohen's kappa, disagreement
   records, slice analysis, and label-provenance warnings.
+- Resumable single-human annotation artifacts and aligned human/judge/deterministic-scorer
+  analysis with explicit sample sizes and no ground-truth claim.
 - A strict JSON-configured CLI and a small path-confined local FastAPI interface.
 - Unit and integration tests for malformed output, candidate timeouts, retries, unexpected
   adapter exceptions, evaluator exceptions, partial results, concurrency, API confinement,
@@ -87,6 +89,14 @@ separate paid Anthropic API bill.
 Missing executables, authentication errors, process timeouts, malformed envelopes,
 model/API errors, and other nonzero process exits receive distinct failure codes. The
 adapter never substitutes fixture output after a real invocation fails.
+
+### First real evaluation experiment
+
+[`judge-calibration-v1`](experiments/judge-calibration-v1/README.md) is a designed but
+unlabeled 16-case experiment for instruction-following judge agreement. It has four balanced
+slices, deterministic checks where appropriate, a Haiku candidate config, a future Sonnet
+judge config, and a one-annotator workflow that keeps labels separate from raw outputs. No
+full candidate run, human label, or judge result is checked in or claimed.
 
 Run the calibration-analysis example separately:
 
@@ -194,6 +204,10 @@ Expected provider/model errors should raise `CandidateError` with an explicit or
 retryability. Unexpected exceptions are normalized as infrastructure failures. New scorers
 subclass `Scorer`; a normal quality miss returns `ScoreOutcome.FAIL`, while an inability to
 evaluate reliably raises `EvaluatorError`.
+
+A `run_artifact` candidate replays successful responses from an immutable run. It is used
+when a later judge must evaluate the exact outputs seen by a human annotator rather than a
+fresh stochastic generation. Dataset checksums must match before replay is accepted.
 
 Configuration and artifacts must not contain secrets. Adapters are responsible for
 returning redacted provenance from `configuration()`.

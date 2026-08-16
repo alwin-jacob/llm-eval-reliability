@@ -45,6 +45,11 @@ Technical findings, known limitations, and unresolved questions for v1.
   provide credential management or an Anthropic API transport.
 - Claude CLI `costUSD` values are retained as provider usage accounting, not interpreted as
   proof of a separate bill. TTFT remains absent when the CLI envelope does not report it.
+- Human-reference labels are checkpointed separately from raw run artifacts. The annotation
+  artifact binds to the exact run and dataset checksum and explicitly represents one
+  annotator rather than consensus or ground truth.
+- A later judge must score replayed candidate responses. Regenerating the candidate during
+  judge execution would confound judge disagreement with candidate stochasticity.
 
 ## Open engineering questions
 
