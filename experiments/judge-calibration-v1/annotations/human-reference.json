@@ -1,0 +1,123 @@
+{
+  "annotations": [
+    {
+      "annotated_at": "2026-08-16T02:22:41.225458Z",
+      "example_id": "jcv1-structured-01",
+      "label": "fail",
+      "note": "Correct semantics, but response is wrapped in a Markdown code fence instead of returning raw JSON only."
+    },
+    {
+      "annotated_at": "2026-08-16T02:23:30.661854Z",
+      "example_id": "jcv1-structured-02",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:23:52.060600Z",
+      "example_id": "jcv1-structured-03",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:24:07.142029Z",
+      "example_id": "jcv1-structured-04",
+      "label": "fail",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:24:37.203776Z",
+      "example_id": "jcv1-exact-01",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:24:49.387272Z",
+      "example_id": "jcv1-exact-02",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:25:01.202046Z",
+      "example_id": "jcv1-exact-03",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:25:15.112426Z",
+      "example_id": "jcv1-exact-04",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:25:28.929842Z",
+      "example_id": "jcv1-multi-01",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:25:59.117334Z",
+      "example_id": "jcv1-multi-02",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:26:17.816602Z",
+      "example_id": "jcv1-multi-03",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:27:52.952556Z",
+      "example_id": "jcv1-multi-04",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:29:19.038920Z",
+      "example_id": "jcv1-semantic-01",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:29:34.965356Z",
+      "example_id": "jcv1-semantic-02",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:29:49.125912Z",
+      "example_id": "jcv1-semantic-03",
+      "label": "pass",
+      "note": null
+    },
+    {
+      "annotated_at": "2026-08-16T02:30:03.828833Z",
+      "example_id": "jcv1-semantic-04",
+      "label": "pass",
+      "note": null
+    }
+  ],
+  "counts": {
+    "annotated": 16,
+    "fail": 3,
+    "pass": 13
+  },
+  "created_at": "2026-08-16T02:19:34.763026Z",
+  "dataset": {
+    "checksum_sha256": "d7be3a8cae585cdd50a77b204ccdf7a47ab66eef03dcbcdc956cda69078450ff",
+    "dataset_id": "judge-calibration-v1",
+    "version": "1.0.0"
+  },
+  "experiment_id": "judge-calibration-v1",
+  "label_metadata": {
+    "adjudicated": false,
+    "annotator_count": 1,
+    "annotator_id": "annotator-1",
+    "ground_truth_claim": false,
+    "multi_annotator_consensus": false,
+    "reference_type": "single_human_reference"
+  },
+  "schema_version": "1.0",
+  "source_run_id": "20260816T021229.764598Z-3d9596d782e4",
+  "updated_at": "2026-08-16T02:30:03.828833Z"
+}
