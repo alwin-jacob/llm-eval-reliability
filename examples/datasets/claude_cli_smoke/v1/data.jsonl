@@ -1,0 +1,1 @@
+{"id":"claude-cli-smoke","input":"Return exactly this text: CLAUDE_CLI_SMOKE_OK","expected":{"text":"CLAUDE_CLI_SMOKE_OK"},"metadata":{"slices":{"purpose":"transport_smoke"}}}

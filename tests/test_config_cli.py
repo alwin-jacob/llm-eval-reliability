@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 
+from evalreliability.claude_cli import ClaudeCliCandidate
 from evalreliability.cli import EXIT_ERROR, EXIT_OK, EXIT_REGRESSION, main
 from evalreliability.config import load_evaluation_spec
 from evalreliability.errors import ConfigurationError
@@ -25,6 +26,24 @@ def test_example_config_constructs_all_components() -> None:
         "json_fields",
     ]
     assert spec.evaluation.concurrency == 4
+
+
+def test_real_claude_example_config_constructs_without_invoking_provider() -> None:
+    spec = load_evaluation_spec(PROJECT_ROOT / "examples/configs/real/claude-sonnet-smoke.json")
+
+    assert spec.dataset.descriptor.dataset_id == "claude-cli-smoke"
+    assert spec.dataset.descriptor.example_count == 1
+    assert isinstance(spec.candidate, ClaudeCliCandidate)
+    assert spec.candidate.identifier == "claude-cli:sonnet"
+    assert spec.candidate.max_turns == 1
+    assert spec.evaluation.candidate_policy.max_attempts == 1
+
+
+def test_config_can_disable_external_process_candidates() -> None:
+    config = PROJECT_ROOT / "examples/configs/real/claude-sonnet-smoke.json"
+
+    with pytest.raises(ConfigurationError, match="external-process candidates are disabled"):
+        load_evaluation_spec(config, allow_external_processes=False)
 
 
 def test_config_rejects_unknown_fields(tmp_path: Path) -> None:

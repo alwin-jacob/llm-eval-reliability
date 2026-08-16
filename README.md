@@ -6,10 +6,10 @@ evidence, treats partial failure as data, and turns explicit regression policy i
 machine-checkable exit status.
 
 This is a working first version, not a hosted platform. Its built-in fixture adapter makes
-the complete workflow deterministic in CI; real provider or agent integrations implement
-the same asynchronous `Candidate` boundary. The checked-in measurements use fixtures and
-small synthetic datasets and are not claims about model quality, production reliability,
-or scale.
+the complete workflow deterministic in CI. A Claude Code CLI adapter supports opt-in local
+calls through an existing Claude login using the same asynchronous `Candidate` boundary.
+The checked-in measurements use fixtures and small synthetic datasets and are not claims
+about model quality, production reliability, or scale.
 
 ## What is implemented
 
@@ -17,6 +17,8 @@ or scale.
   canonical SHA-256 content identity.
 - Provider-independent asynchronous candidates with typed failures, per-attempt timeouts,
   bounded exponential backoff, deterministic seeded jitter, and retained attempt history.
+- An opt-in Claude Code CLI transport that disables tools and dynamic environment context,
+  runs in an empty temporary directory, and normalizes CLI envelope metadata and failures.
 - Independent scorers for normalized exact match, required terms, JSON Schema, expected
   JSON fields, and configurable candidate-backed judging.
 - Bounded concurrent evaluation with isolation at both example and scorer boundaries.
@@ -60,6 +62,32 @@ gate fails, and `1` for invalid configuration/artifacts or other operational err
 distinction reserves argparse's conventional status `2` for command-usage errors and lets
 CI fail specifically on a measured regression.
 
+### Opt-in Claude Code smoke check
+
+The real-model example is deliberately separate from fixture configurations and contains
+exactly one example with one allowed attempt. It requires an installed, authenticated
+`claude` executable and consumes Claude usage, so neither pytest nor CI runs it:
+
+```bash
+evalrel run examples/configs/real/claude-sonnet-smoke.json \
+  --output /tmp/claude-sonnet-smoke.run.json \
+  --summary-output /tmp/claude-sonnet-smoke.summary.json
+```
+
+The adapter executes Claude Code with `--output-format json`, `--max-turns 1`, `--tools ""`,
+and `--exclude-dynamic-system-prompt-sections` from a new empty temporary directory. The
+system prompt, model alias, executable, process timeout, and maximum turns are explicit
+configuration. It parses the model text from the JSON envelope's `result` field.
+
+This is a local Claude Code transport, not an Anthropic API adapter or an API deployment.
+Authentication remains owned by the user's CLI session. Any `costUSD` value is persisted as
+provider-reported usage accounting; it does not demonstrate that the user received a
+separate paid Anthropic API bill.
+
+Missing executables, authentication errors, process timeouts, malformed envelopes,
+model/API errors, and other nonzero process exits receive distinct failure codes. The
+adapter never substitutes fixture output after a real invocation fails.
+
 Run the calibration-analysis example separately:
 
 ```bash
@@ -75,7 +103,7 @@ evalrel judge-agreement /tmp/judge-calibration.run.json \
 ```mermaid
 flowchart LR
     D["manifest.json + versioned JSONL"] --> E["async evaluation engine"]
-    C["Candidate adapter"] --> R["timeout / retry boundary"]
+    C["Fixture or Claude CLI Candidate"] --> R["timeout / retry boundary"]
     R --> E
     E --> S["isolated Scorers"]
     S --> A["per-example run artifact"]
@@ -126,11 +154,14 @@ Evaluation configuration is JSON so unknown fields and ambiguous values fail ear
 are resolved relative to the config file. The checked-in
 [`candidate.json`](examples/configs/candidate.json) demonstrates all deterministic scorers;
 [`judge_calibration.json`](examples/configs/judge_calibration.json) demonstrates a nested
-judge candidate and separate retry policy.
+scripted judge candidate and separate retry policy. The opt-in
+[`claude-sonnet-smoke.json`](examples/configs/real/claude-sonnet-smoke.json) exercises one
+real CLI transport call and is not a benchmark.
 
 The local API additionally confines all resolved paths to `--allowed-root` and rejects the
-dynamic Python candidate factory. CLI configs are trusted local code/configuration and may
-use a `python` candidate factory with `module:callable` syntax.
+dynamic Python candidate factory and external-process candidates. CLI configs are trusted
+local code/configuration and may use the built-in Claude CLI transport or a `python`
+candidate factory with `module:callable` syntax.
 
 ## Extending candidates and scorers
 
@@ -184,6 +215,11 @@ Writes use a temporary file, `fsync`, and atomic replacement so readers never ob
 partial final JSON file. The artifact stores a stable configuration fingerprint separately
 from the unique timestamped run ID. Per-example results retain candidate attempts, response,
 usage, scorer details, normalized failures, and measured latency.
+
+Claude CLI responses use the generic input/output/total-token and cost fields when the
+envelope supplies them. Provider-specific cache-token, duration, optional TTFT,
+session/request, requested-model, and canonical-model values remain in response metadata so
+the core artifact model does not depend on Claude's envelope schema.
 
 ## Checked-in measurements
 
@@ -249,8 +285,9 @@ smoke test. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for extension expectations.
 - Completed examples are held in memory until the final atomic write; a process crash loses
   progress because v1 has no checkpoint/resume protocol.
 - Execution is bounded single-process `asyncio`, not a distributed scheduler.
-- The package ships no vendor adapter. Real adapters must be supplied by users and tested
-  against provider-specific rate limits, usage accounting, and error contracts.
+- Claude Code CLI is the only built-in real-model transport. It depends on the locally
+  installed CLI's JSON contract and authenticated session; it has not been characterized
+  under rate limits, concurrent load, CLI upgrades, or long-running evaluations.
 - Regression metrics are descriptive point estimates. The tiny examples do not justify
   confidence, significance, or generalization claims.
 - Judge analysis currently assumes one binary reference label. It does not represent

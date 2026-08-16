@@ -48,7 +48,12 @@ def create_app(*, allowed_root: str | Path | None = None) -> FastAPI:
     async def evaluate(request: EvaluationRequest) -> dict[str, Any]:
         try:
             config_path = _confined(request.config_path, root)
-            spec = load_evaluation_spec(config_path, allowed_root=root, allow_python_plugins=False)
+            spec = load_evaluation_spec(
+                config_path,
+                allowed_root=root,
+                allow_python_plugins=False,
+                allow_external_processes=False,
+            )
             run = await EvaluationEngine().evaluate(
                 spec.dataset, spec.candidate, spec.scorers, spec.evaluation
             )
