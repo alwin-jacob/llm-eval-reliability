@@ -153,6 +153,19 @@ async def test_annotation_workflow_preserves_raw_run_and_analysis_reports_agreem
     assert report["judge_vs_human"]["false_positives"]["example_ids"] == ["a3"]
     assert report["judge_vs_human"]["false_negatives"]["example_ids"] == ["a1"]
     assert report["judge_vs_human"]["disagreements"]["count"] == 2
+    assert report["judge_execution"]["requested_examples"] == 4
+    assert report["judge_execution"]["valid_verdicts"] == 4
+    assert report["judge_execution"]["raw_judge_outputs_preserved"] == 4
+    assert report["judge_execution"]["attempts_total"] == 4
+    assert report["judge_execution"]["retried_examples"] == 0
+    assert report["judge_execution"]["invalid_results"] == []
+    assert report["judge_execution"]["model_ids"] == ["judge"]
+    assert report["judge_execution"]["providers"] == ["fixture"]
+    assert report["judge_execution"]["usage"]["input_tokens"] == {
+        "available_count": 0,
+        "total": None,
+    }
+    assert report["judge_execution"]["latency_ms"]["count"] == 4
     assert len(report["per_slice"]) == 2
     assert all(item["sample_size"] == 2 for item in report["per_slice"])
     deterministic = report["deterministic_scorer_vs_human"]["exact_match"]
@@ -192,3 +205,4 @@ async def test_analysis_without_judge_has_explicit_zero_sample_sizes(tmp_path: P
     assert report["judge_vs_human"]["sample_size"] == 0
     assert report["judge_vs_human"]["accuracy"] is None
     assert report["judge_vs_human"]["cohen_kappa"] is None
+    assert report["judge_execution"] is None

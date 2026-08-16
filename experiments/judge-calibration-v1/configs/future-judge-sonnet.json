@@ -9,10 +9,10 @@
     {
       "type": "judge",
       "name": "sonnet_instruction_judge",
-      "rubric": "Apply the per-example expected.rubric exactly. Pass only when every stated requirement is satisfied. Treat deterministic expectations as supporting evidence and do not assume an unlabeled human verdict.",
+      "rubric_key": "rubric",
+      "output_contract": "binary_verdict",
       "pass_threshold": 0.5,
       "seed": null,
-      "exclude_expected_keys": ["human_reference_label", "human_reference_status"],
       "candidate": {
         "type": "claude_cli",
         "model": "sonnet",
@@ -31,7 +31,7 @@
     }
   ],
   "evaluation": {
-    "concurrency": 1,
+    "concurrency": 2,
     "scorer_timeout_seconds": 130.0,
     "seed": null,
     "candidate_invocation": {

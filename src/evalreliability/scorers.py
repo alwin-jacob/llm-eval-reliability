@@ -421,7 +421,7 @@ class JudgeScorer(Scorer):
     """Use another Candidate as a configurable judge; its output remains fallible evidence."""
 
     version = "1"
-    _output_schema = {
+    _score_output_schema = {
         "type": "object",
         "required": ["score", "rationale"],
         "properties": {
@@ -430,31 +430,52 @@ class JudgeScorer(Scorer):
         },
         "additionalProperties": False,
     }
+    _binary_verdict_output_schema = {
+        "type": "object",
+        "required": ["verdict", "rationale"],
+        "properties": {
+            "verdict": {"enum": ["PASS", "FAIL"]},
+            "rationale": {"type": "string"},
+        },
+        "additionalProperties": False,
+    }
+    _output_contracts = ("score", "binary_verdict")
 
     def __init__(
         self,
         candidate: Candidate,
-        rubric: str,
+        rubric: str | None,
         *,
         name: str = "judge",
         pass_threshold: float = 0.5,
         invocation_policy: InvocationPolicy | None = None,
         seed: int | None = 0,
         exclude_expected_keys: Sequence[str] = ("reference_label", "human_label"),
+        rubric_key: str | None = None,
+        output_contract: str = "score",
     ) -> None:
-        if not rubric.strip():
+        if rubric is not None and not rubric.strip():
             raise ConfigurationError("judge rubric cannot be empty")
+        if rubric_key is not None and not rubric_key.strip():
+            raise ConfigurationError("judge rubric_key cannot be empty")
+        if (rubric is None) == (rubric_key is None):
+            raise ConfigurationError("judge requires exactly one of rubric or rubric_key")
         if not 0 <= pass_threshold <= 1:
             raise ConfigurationError("judge pass_threshold must be between 0 and 1")
         if not all(isinstance(key, str) and key for key in exclude_expected_keys):
             raise ConfigurationError("judge exclude_expected_keys must contain non-empty strings")
+        if output_contract not in self._output_contracts:
+            allowed = ", ".join(self._output_contracts)
+            raise ConfigurationError(f"judge output_contract must be one of: {allowed}")
         self.name = name
         self.candidate = candidate
         self.rubric = rubric
+        self.rubric_key = rubric_key
         self.pass_threshold = pass_threshold
         self.invocation_policy = invocation_policy or InvocationPolicy()
         self.seed = seed
         self.exclude_expected_keys = tuple(exclude_expected_keys)
+        self.output_contract = output_contract
 
     def configuration(self) -> dict[str, Any]:
         return {
@@ -462,12 +483,21 @@ class JudgeScorer(Scorer):
             "name": self.name,
             "version": self.version,
             "rubric": self.rubric,
+            "rubric_key": self.rubric_key,
             "pass_threshold": self.pass_threshold,
+            "output_contract": self.output_contract,
             "candidate_id": self.candidate.identifier,
             "candidate": self.candidate.configuration(),
             "invocation": self.invocation_policy.to_dict(),
             "seed": self.seed,
-            "exclude_expected_keys": list(self.exclude_expected_keys),
+            "exclude_expected_keys": (
+                list(self.exclude_expected_keys) if self.rubric_key is None else None
+            ),
+            "prompt_payload_fields": (
+                ["input", "candidate_output", "rubric"]
+                if self.rubric_key is not None
+                else ["example_id", "input", "reference", "candidate_output", "rubric"]
+            ),
             "claim": "judge output is a measurement, not ground truth",
         }
 
@@ -501,6 +531,7 @@ class JudgeScorer(Scorer):
             "judge_provider": invocation.response.provider,
             "judge_finish_reason": invocation.response.finish_reason,
             "judge_usage": asdict(invocation.response.usage),
+            "judge_metadata": invocation.response.metadata,
         }
         try:
             parsed = json.loads(invocation.response.output)
@@ -510,15 +541,24 @@ class JudgeScorer(Scorer):
                 code="judge_invalid_json",
                 details=evidence,
             ) from exc
-        errors = list(Draft202012Validator(self._output_schema).iter_errors(parsed))
+        output_schema = (
+            self._binary_verdict_output_schema
+            if self.output_contract == "binary_verdict"
+            else self._score_output_schema
+        )
+        errors = list(Draft202012Validator(output_schema).iter_errors(parsed))
         if errors:
             raise EvaluatorError(
                 f"judge output failed contract: {errors[0].message}",
                 code="judge_invalid_output",
                 details=evidence,
             )
-        numeric_score = float(parsed["score"])
-        passed = numeric_score >= self.pass_threshold
+        if self.output_contract == "binary_verdict":
+            passed = parsed["verdict"] == "PASS"
+            numeric_score = 1.0 if passed else 0.0
+        else:
+            numeric_score = float(parsed["score"])
+            passed = numeric_score >= self.pass_threshold
         details = {
             "verdict": "pass" if passed else "fail",
             "rationale": parsed["rationale"],
@@ -535,24 +575,51 @@ class JudgeScorer(Scorer):
         )
 
     def _prompt(self, example: EvaluationExample, response: CandidateResponse) -> str:
+        if self.rubric_key is not None:
+            case_rubric = example.expected.get(self.rubric_key)
+            if not isinstance(case_rubric, str) or not case_rubric.strip():
+                raise EvaluatorError(
+                    f"expected.{self.rubric_key} must be a non-empty string",
+                    code="invalid_judge_rubric",
+                )
+            payload = {
+                "input": example.input,
+                "candidate_output": response.output,
+                "rubric": case_rubric,
+            }
+        else:
+            payload = self._reference_prompt_payload(example, response)
+        if self.output_contract == "binary_verdict":
+            contract = (
+                'Return exactly one JSON object with verdict equal to "PASS" or "FAIL" '
+                "and a concise rationale; do not add markdown.\n"
+            )
+        else:
+            contract = (
+                "Return exactly one JSON object with numeric score in [0,1] and a concise "
+                "rationale; do not add markdown.\n"
+            )
+        return (
+            "Evaluate the candidate output using only the supplied rubric and evidence. "
+            + contract
+            + json.dumps(payload, ensure_ascii=False, sort_keys=True)
+        )
+
+    def _reference_prompt_payload(
+        self, example: EvaluationExample, response: CandidateResponse
+    ) -> dict[str, Any]:
         reference = {
             key: value
             for key, value in example.expected.items()
             if key not in self.exclude_expected_keys
         }
-        payload = {
+        return {
             "example_id": example.id,
             "input": example.input,
             "reference": reference,
             "candidate_output": response.output,
             "rubric": self.rubric,
         }
-        return (
-            "Evaluate the candidate output using only the supplied rubric and evidence. "
-            "Return exactly one JSON object with numeric score in [0,1] and a concise "
-            "rationale; do not add markdown.\n"
-            + json.dumps(payload, ensure_ascii=False, sort_keys=True)
-        )
 
 
 def _parse_candidate_json(output: str, scorer_name: str) -> tuple[Any | None, FailureRecord | None]:

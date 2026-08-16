@@ -294,6 +294,8 @@ def build_scorer(
                 "invocation",
                 "seed",
                 "exclude_expected_keys",
+                "rubric_key",
+                "output_contract",
             },
             "judge scorer",
         )
@@ -305,9 +307,14 @@ def build_scorer(
             allow_external_processes=allow_external_processes,
         )
         rubric = data.get("rubric")
-        if not isinstance(rubric, str):
+        rubric_key = data.get("rubric_key")
+        if rubric is not None and not isinstance(rubric, str):
             raise ConfigurationError("judge rubric must be a string")
-        _validate_string_fields(data, {"name"}, "judge scorer")
+        if rubric_key is not None and not isinstance(rubric_key, str):
+            raise ConfigurationError("judge rubric_key must be a string")
+        if (rubric is None) == (rubric_key is None):
+            raise ConfigurationError("judge requires exactly one of rubric or rubric_key")
+        _validate_string_fields(data, {"name", "rubric_key", "output_contract"}, "judge scorer")
         if "pass_threshold" in data and (
             not isinstance(data["pass_threshold"], (int, float))
             or isinstance(data["pass_threshold"], bool)
@@ -330,7 +337,15 @@ def build_scorer(
         kwargs = {
             key: value
             for key, value in data.items()
-            if key in {"name", "pass_threshold", "seed", "exclude_expected_keys"}
+            if key
+            in {
+                "name",
+                "pass_threshold",
+                "seed",
+                "exclude_expected_keys",
+                "rubric_key",
+                "output_contract",
+            }
         }
         try:
             return JudgeScorer(

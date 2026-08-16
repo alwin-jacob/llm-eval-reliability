@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import pytest
 
 from evalreliability.candidates import Candidate, FixtureCandidate
@@ -197,3 +199,87 @@ async def test_judge_prompt_excludes_calibration_label_but_keeps_evaluation_refe
 
     assert "reference_label" not in candidate.prompt
     assert "Must state the correct answer." in candidate.prompt
+
+
+@pytest.mark.asyncio
+async def test_binary_judge_uses_only_case_rubric_and_preserves_raw_evidence() -> None:
+    class CapturingJudge(Candidate):
+        prompt = ""
+
+        @property
+        def identifier(self) -> str:
+            return "capturing-binary-judge"
+
+        def configuration(self) -> dict[str, str]:
+            return {"type": "test"}
+
+        async def generate(self, request: CandidateRequest) -> CandidateResponse:
+            self.prompt = request.input
+            return CandidateResponse(
+                output='{"verdict":"FAIL","rationale":"Markdown violates the rubric."}',
+                model_id="judge-model",
+                provider="judge-provider",
+                metadata={"canonical_model": "judge-model", "ttft_ms": 12.0},
+            )
+
+    candidate = CapturingJudge()
+    scorer = JudgeScorer(
+        candidate,
+        None,
+        rubric_key="rubric",
+        output_contract="binary_verdict",
+        invocation_policy=InvocationPolicy(max_attempts=1),
+    )
+    example = EvaluationExample(
+        "one",
+        "Return raw JSON.",
+        {
+            "rubric": "FAIL if Markdown surrounds the JSON.",
+            "schema": {"type": "object"},
+            "human_reference_label": "fail",
+            "human_annotation_note": "Formatting failure.",
+        },
+    )
+
+    result = await scorer.score(example, CandidateResponse(output="```json\n{}\n```"))
+    prompt_payload = json.loads(candidate.prompt.split("\n", 1)[1])
+
+    assert prompt_payload == {
+        "candidate_output": "```json\n{}\n```",
+        "input": "Return raw JSON.",
+        "rubric": "FAIL if Markdown surrounds the JSON.",
+    }
+    assert result.outcome == ScoreOutcome.FAIL
+    assert result.details["verdict"] == "fail"
+    assert result.details["judge_output"] == (
+        '{"verdict":"FAIL","rationale":"Markdown violates the rubric."}'
+    )
+    assert result.details["judge_metadata"] == {
+        "canonical_model": "judge-model",
+        "ttft_ms": 12.0,
+    }
+
+
+@pytest.mark.asyncio
+async def test_binary_judge_does_not_normalize_invalid_verdict() -> None:
+    scorer = JudgeScorer(
+        FixtureCandidate(
+            "invalid-binary-judge",
+            {"one": '{"verdict":"pass","rationale":"lowercase verdict"}'},
+        ),
+        None,
+        rubric_key="rubric",
+        output_contract="binary_verdict",
+        invocation_policy=InvocationPolicy(max_attempts=1),
+    )
+
+    with pytest.raises(EvaluatorError, match="failed contract") as captured:
+        await scorer.score(
+            EvaluationExample("one", "question", {"rubric": "Apply strictly."}),
+            CandidateResponse(output="answer"),
+        )
+
+    assert captured.value.code == "judge_invalid_output"
+    assert captured.value.details["judge_output"] == (
+        '{"verdict":"pass","rationale":"lowercase verdict"}'
+    )

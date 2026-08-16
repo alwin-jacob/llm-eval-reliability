@@ -48,7 +48,7 @@ def test_judge_calibration_candidate_config_constructs_without_invoking_provider
     assert spec.dataset.descriptor.example_count == 16
     assert isinstance(spec.candidate, ClaudeCliCandidate)
     assert spec.candidate.identifier == "claude-cli:haiku"
-    assert spec.evaluation.concurrency == 1
+    assert spec.evaluation.concurrency == 2
     assert spec.evaluation.candidate_policy.max_attempts == 1
     assert [scorer.name for scorer in spec.scorers] == [
         "json_schema",
@@ -58,18 +58,31 @@ def test_judge_calibration_candidate_config_constructs_without_invoking_provider
     ]
 
 
-def test_future_judge_config_targets_frozen_outputs_and_excludes_human_fields() -> None:
+def test_future_judge_config_targets_frozen_outputs_with_rubric_only_prompt() -> None:
     config_path = PROJECT_ROOT / "experiments/judge-calibration-v1/configs/future-judge-sonnet.json"
     payload = json.loads(config_path.read_text(encoding="utf-8"))
     judge = payload["scorers"][0]
+    spec = load_evaluation_spec(config_path)
+    scorer_config = spec.scorers[0].configuration()
 
     assert payload["candidate"]["type"] == "run_artifact"
+    assert isinstance(spec.candidate, RunArtifactCandidate)
     assert judge["candidate"]["type"] == "claude_cli"
     assert judge["candidate"]["model"] == "sonnet"
     assert judge["invocation"]["max_attempts"] == 1
-    assert judge["exclude_expected_keys"] == [
-        "human_reference_label",
-        "human_reference_status",
+    assert judge["rubric_key"] == "rubric"
+    assert judge["output_contract"] == "binary_verdict"
+    assert "rubric" not in judge
+    assert "exclude_expected_keys" not in judge
+    assert payload["evaluation"]["concurrency"] == 2
+    assert spec.evaluation.concurrency == 2
+    assert scorer_config["rubric_key"] == "rubric"
+    assert scorer_config["output_contract"] == "binary_verdict"
+    assert scorer_config["exclude_expected_keys"] is None
+    assert scorer_config["prompt_payload_fields"] == [
+        "input",
+        "candidate_output",
+        "rubric",
     ]
 
 
